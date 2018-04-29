@@ -1,4 +1,7 @@
 # MERN Boilerplate
+MongoDB Express.js React.js Node.js
+
+A Full MERN Stack Boilerplate for Web Apps. Includes a local authentication system using passport. User is given a simple profile with Full Name and Profile Picture. User is also able to reset password and username case.
 
 ## Quick Start
 
@@ -63,6 +66,8 @@ npm run lint:fix
 [Express](http://expressjs.com/) - Node Application Framework
 
 [Mongoose](http://mongoosejs.com/) - MongoDB Framework
+
+[Passport](http://www.passportjs.org/) - Authentication Framework
 
 [Bulma](http://bulma.io/) - CSS Framework
 

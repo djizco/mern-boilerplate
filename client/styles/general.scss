@@ -1,0 +1,38 @@
+html {
+  background-color: $whitesmoke;
+  font-size: 12px;
+}
+
+a {
+  color: $info;
+}
+
+.title {
+  font-weight: $weight-normal;
+}
+
+.section {
+  background-color: transparent;
+}
+
+.box {
+  border-radius: 2px;
+}
+
+.select::after {
+  border-color: $dark-grey;
+}
+
+.control.has-icons-right .fa {
+  &.fa.is-success {
+    color: $success;
+  }
+
+  &.fa.is-danger {
+    color: $danger;
+  }
+}
+
+.field.has-help {
+  height: 67px;
+}

@@ -1,0 +1,60 @@
+.settings-menu {
+  a.is-active {
+    background-color: $mern-primary;
+  }
+
+  a.is-active:hover {
+    color: $white;
+  }
+
+  a:hover {
+    color: $dark-grey;
+  }
+}
+
+.profile-settings {
+  .select {
+    width: 100%;
+
+    select {
+      width: 100%;
+    }
+  }
+
+  .image {
+    height: 192px;
+    margin: -1rem auto 1rem;
+    max-height: 192px;
+    max-width: 192px;
+    padding-top: 0;
+
+    .profile-img {
+      border-radius: 5px;
+      box-shadow: 2px 2px 5px 0 $light-opacity;
+      margin: 20px auto;
+      max-height: 192px;
+      max-width: 192px;
+      position: relative;
+    }
+  }
+
+  .icon {
+    margin-left: .5rem;
+
+    .fa-refresh {
+      color: $info;
+    }
+
+    .fa-floppy-o {
+      color: $light-grey;
+
+      &.is-success {
+        color: $success;
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

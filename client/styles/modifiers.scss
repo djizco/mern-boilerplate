@@ -1,0 +1,19 @@
+.is-fullscreen {
+  min-height: 100vh;
+}
+
+.is-fullpage {
+  min-height: calc(100vh - 129px);
+}
+
+.is-fullwidth {
+  width: 100%;
+}
+
+.separator {
+  margin: 0 -1.25rem 1.25rem;
+}
+
+.has-space-below {
+  margin-bottom: 1.5rem;
+}

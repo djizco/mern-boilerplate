@@ -1,0 +1,8 @@
+// Override bulma variables here
+
+@import '~bulma';
+
+// Bug in production
+.select select {
+  padding-right: 2.5em;
+}

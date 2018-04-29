@@ -1,0 +1,10 @@
+.footer {
+  background-color: $light-grey;
+  padding: 3rem 1.5rem;
+
+  .content {
+    a:visited {
+      color: $black;
+    }
+  }
+}

@@ -31,6 +31,7 @@
     "redux",
     "webpack",
     "express",
+    "passport",
     "bulma",
     "material-ui",
     "fontawesome",
@@ -105,7 +106,7 @@
     "react-test-renderer": "^16.3.2",
     "sass-loader": "^6.0.7",
     "style-loader": "^0.19.1",
-    "superagent": "^3.8.2",
+    "superagent": "^3.8.3",
     "supertest": "^3.0.0",
     "url-loader": "^0.6.2"
   }

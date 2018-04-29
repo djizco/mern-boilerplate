@@ -69,11 +69,15 @@ npm run lint:fix
 
 [Passport](http://www.passportjs.org/) - Authentication Framework
 
+[React Notification System](https://github.com/igorprado/react-notification-system) - Notification System
+
 [Bulma](http://bulma.io/) - CSS Framework
 
 [FontAwesome](http://fontawesome.io/) - Icons
 
 [Ramda](http://ramdajs.com/) - Functional Library
+
+[SuperAgent](https://github.com/visionmedia/superagent) - HTTP Request Library
 
 [ESLint](http://eslint.org/) - Code Linter
 

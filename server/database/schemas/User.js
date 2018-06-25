@@ -24,17 +24,18 @@ userSchema.plugin(immutablePlugin);
 userSchema.virtual('full_name').get(function() {
   if (this.first_name && this.last_name) {
     return `${this.first_name} ${this.last_name}`;
-  } else if (this.first_name && !this.last_name) {
+  }
+  if (this.first_name && !this.last_name) {
     return this.first_name;
-  } else if (!this.first_name && this.last_name) {
+  }
+  if (!this.first_name && this.last_name) {
     return this.last_name;
   }
   return undefined;
 });
 
 userSchema.virtual('initials').get(function() {
-  return this.first_name && this.last_name &&
-    `${this.first_name[0].concat(this.last_name[0]).toUpperCase()}`;
+  return this.first_name && this.last_name && `${this.first_name[0].concat(this.last_name[0]).toUpperCase()}`;
 });
 
 userSchema.methods.validPassword = function(password) {

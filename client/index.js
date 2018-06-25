@@ -4,15 +4,16 @@ import { browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 
 import 'font-awesome-webpack';
-import './styles/index.scss';
-import './assets';
+import '_styles/index.scss';
+import '_assets';
 
-import Root from './components/Root';
+import Root from '_layouts/Root';
+import routes from './routes';
 import store from './store';
 
 const history = syncHistoryWithStore(browserHistory, store);
 
 render(
-  <Root store={store} history={history} />,
+  <Root store={store} history={history} routes={routes} />,
   document.getElementById('app'),
 );

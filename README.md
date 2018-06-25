@@ -50,10 +50,59 @@ npm run lint
 npm run lint:fix
 ```
 
-## Todo
+## Setup Instructions
 
-- Update Bulma to 7.0
-- Reorganize Components
+To setup your own project, you will need to copy the contents of this project into a new repo.
+You will need to update the content in these files to names of your project and yourself:
+
+* package.json: name, version, description, repository, author, bugs, homepage,
+* LICENSE: (update to your preferred license)
+* client/index.html: description and title
+* this README.md
+
+This is also a good time to go through the included libraries to add or remove features that you want.
+
+After this you can commit the files into a new repository and push up to your github.
+You can now start updating files in your client to begin working on your own project!
+
+## Code Structure
+
+```
+- client
+  - assets
+    - images
+    - icons
+  - components
+    - components
+    - elements
+    - layouts
+    - pages
+    - sections
+    - structures
+  - store
+    - actions
+    - reducers
+  - styles
+  - utils
+- server
+  - config
+  - routes
+- test
+  - client
+  - server
+- scripts
+```
+
+Component Heirarchy:
+
+Layouts > Pages > Sections > Structures > Components > Elements
+
+This is somewhat based on atomic design with names that make more sense for the web.
+If you were to rename the element groups to the match atomic design it would look like this:
+
+Environment > Pages > Templates > Organisms > Molecules > Atoms
+
+Learn more about [atomic design](http://bradfrost.com/blog/post/atomic-web-design/).
 
 ## Technologies
 

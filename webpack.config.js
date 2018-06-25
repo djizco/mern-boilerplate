@@ -27,6 +27,20 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     publicPath: '/',
   },
+  resolve: {
+    alias: {
+      _elements: path.resolve(__dirname, 'client/components/elements/'),
+      _components: path.resolve(__dirname, 'client/components/components/'),
+      _structures: path.resolve(__dirname, 'client/components/structures/'),
+      _sections: path.resolve(__dirname, 'client/components/sections/'),
+      _pages: path.resolve(__dirname, 'client/components/pages/'),
+      _layouts: path.resolve(__dirname, 'client/components/layouts/'),
+      _store: path.resolve(__dirname, 'client/store/'),
+      _assets: path.resolve(__dirname, 'client/assets/'),
+      _styles: path.resolve(__dirname, 'client/styles/'),
+      _utils: path.resolve(__dirname, 'client/utils/'),
+    },
+  },
   module: {
     rules: [
       {

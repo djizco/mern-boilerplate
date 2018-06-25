@@ -36,3 +36,8 @@ a {
 .field.has-help {
   height: 67px;
 }
+
+// Bug in production
+.select select {
+  padding-right: 2.5em;
+}

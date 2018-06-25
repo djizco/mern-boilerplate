@@ -1,7 +1,12 @@
+const path = require('path');
+
 module.exports = {
   "env": {
     "browser": true,
     "node": true,
+  },
+  settings: {
+    'import/resolver': 'webpack',
   },
   "extends": "airbnb",
   "parser": "babel-eslint",
@@ -25,11 +30,11 @@ module.exports = {
       "VariableDeclarator": true
     }}],
     "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx"] }],
-    "react/jsx-closing-bracket-location": [2, { selfClosing: 'after-props', nonEmpty: 'after-props' }],
 
     // disable rules
     "arrow-parens": 0,
     "function-paren-newline": 0,
+    "implicit-arrow-linebreak": 0,
     "import/no-extraneous-dependencies": 0,
     "import/no-named-as-default": 0, // causes error with redux testing
     "jsx-a11y/anchor-is-valid": 0,
@@ -41,6 +46,7 @@ module.exports = {
     "no-shadow": 0,
     "no-underscore-dangle": 0,
     "object-curly-newline": 0,
+    "react/destructuring-assignment": 0,
     "react/forbid-prop-types": 0,
     "react/jsx-boolean-value": 0,
   },

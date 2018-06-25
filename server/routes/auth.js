@@ -18,9 +18,9 @@ router.post('/register', (req, res) => {
   const newUser = User(req.body);
 
   User.find({ username }, (err, users) =>
-    err ? res.status(400).send({ message: 'Create user failed', err }) :
-      users[0] ? res.status(400).send({ message: 'Username exists' }) :
-        newUser.hashPassword().then(() =>
+    err ? res.status(400).send({ message: 'Create user failed', err })
+      : users[0] ? res.status(400).send({ message: 'Username exists' })
+        : newUser.hashPassword().then(() =>
           newUser.save((err, savedUser) =>
             err ? res.status(400).send({ message: 'Create user failed', err })
               : res.send({ message: 'User created successfully', user: savedUser.hidePassword() }))));

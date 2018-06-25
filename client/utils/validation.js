@@ -1,4 +1,4 @@
-import R from 'ramda';
+import * as R from 'ramda';
 
 export const validateUsername = username => {
   let valid = true;
@@ -44,9 +44,11 @@ export const validatePassword = (username, password) => {
 export const validateName = name => {
   if (name === '') {
     return true;
-  } else if (!R.match(/^[a-zA-ZÀ-ÿ'.\s]+$/, name).length) {
+  }
+  if (!R.match(/^[a-zA-ZÀ-ÿ'.\s]+$/, name).length) {
     return false;
-  } else if (name.length > 20) {
+  }
+  if (name.length > 20) {
     return false;
   }
   return true;

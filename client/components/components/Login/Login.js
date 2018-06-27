@@ -12,7 +12,7 @@ export default function Login(props) {
       </h3>
       <hr className="separator" />
       <p className="has-space-below">
-        Not Registered Yet?
+        {'Not Registered Yet? '}
         <Link to="/register">
           Create an account.
         </Link>

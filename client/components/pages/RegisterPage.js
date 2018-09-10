@@ -1,5 +1,5 @@
 import React from 'react';
-import Register from '_sections/RegisterSection';
+import Register from '_templates/RegisterSection';
 
 export default function RegisterPage() {
   return (

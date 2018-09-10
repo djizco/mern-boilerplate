@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import SettingsMenu from '_structures/Settings/Menu';
+import SettingsMenu from '_organisms/SettingsMenu';
 
 export default function SettingsPage(props) {
   const { location, children } = props;

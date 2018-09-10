@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 
+import Input from '_molecules/Input';
+
 export default function Login(props) {
   const { remember, username, password, updateUsername, updatePassword, rememberMe, login } = props;
 
@@ -18,35 +20,20 @@ export default function Login(props) {
         </Link>
       </p>
 
-      <div className="field">
-        <p className="control has-icons-left">
-          <input
-            className="input"
-            type="text"
-            placeholder="Username"
-            onChange={e => updateUsername(e.target.value)}
-            value={username}
-          />
-          <span className="icon is-small is-left">
-            <i className="fa fa-user" />
-          </span>
-        </p>
-      </div>
+      <Input
+        onChange={e => updateUsername(e.target.value)}
+        placeholder="Username"
+        value={username}
+        leftIcon="user"
+      />
 
-      <div className="field">
-        <p className="control has-icons-left">
-          <input
-            className="input"
-            type="password"
-            placeholder="Password"
-            onChange={e => updatePassword(e.target.value)}
-            value={password}
-          />
-          <span className="icon is-small is-left">
-            <i className="fa fa-lock" />
-          </span>
-        </p>
-      </div>
+      <Input
+        onChange={e => updatePassword(e.target.value)}
+        placeholder="Password"
+        value={password}
+        leftIcon="lock"
+        type="password"
+      />
 
       <p className="has-space-below">
         <Link to="/recovery">

@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as R from 'ramda';
 import { validateName } from '_utils/validation';
-import Profile from './Profile';
+import ProfileSettings from './ProfileSettings';
 
-export default class ProfileContainer extends Component {
+export default class ProfileSettingsContainer extends Component {
   static propTypes = {
     user: PropTypes.shape({
       usernameCase: PropTypes.string,
@@ -85,7 +85,7 @@ export default class ProfileContainer extends Component {
     const edited = firstNameEdited || lastNameEdited || bioEdited || profilePicEdited;
 
     return (
-      <Profile
+      <ProfileSettings
         edited={edited}
         usernameCase={this.props.user.usernameCase}
         firstName={firstName}

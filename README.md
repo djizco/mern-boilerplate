@@ -73,12 +73,12 @@ You can now start updating files in your client to begin working on your own pro
     - images
     - icons
   - components
-    - components
-    - elements
-    - layouts
+    - atoms
+    - molecules
+    - organisms
+    - templates
     - pages
-    - sections
-    - structures
+    - environment
   - store
     - actions
     - reducers
@@ -95,14 +95,9 @@ You can now start updating files in your client to begin working on your own pro
 
 Component Heirarchy:
 
-Layouts > Pages > Sections > Structures > Components > Elements
-
-This is somewhat based on atomic design with names that make more sense for the web.
-If you were to rename the element groups to the match atomic design it would look like this:
-
 Environment > Pages > Templates > Organisms > Molecules > Atoms
 
-Learn more about [atomic design](http://bradfrost.com/blog/post/atomic-web-design/).
+This is based on atomic design. Learn more about [atomic design](http://bradfrost.com/blog/post/atomic-web-design/).
 
 ## Technologies
 

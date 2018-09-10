@@ -2,14 +2,14 @@ import React from 'react';
 import * as R from 'ramda';
 import { Route, IndexRoute } from 'react-router';
 
-import Main from '_layouts/Main';
+import Main from '_environment/Main';
 import WelcomePage from '_pages/WelcomePage';
 import HomePage from '_pages/HomePage';
 import LoginPage from '_pages/LoginPage';
 import RegisterPage from '_pages/RegisterPage';
 import SettingsPage from '_pages/SettingsPage';
-import SettingsProfile from '_structures/Settings/Profile';
-import SettingsAccount from '_structures/Settings/Account';
+import ProfileSettings from '_templates/ProfileSettings';
+import AccountSettings from '_templates/AccountSettings';
 import LostPage from '_pages/LostPage';
 
 import store from './store';
@@ -25,9 +25,9 @@ export default (
     <Route path="login" component={LoginPage} onEnter={requireUnauth} />
     <Route path="register" component={RegisterPage} onEnter={requireUnauth} />
     <Route path="settings" component={SettingsPage} onEnter={requireAuth}>
-      <IndexRoute component={SettingsProfile} />
-      <Route path="profile" component={SettingsProfile} />
-      <Route path="account" component={SettingsAccount} />
+      <IndexRoute component={ProfileSettings} />
+      <Route path="profile" component={ProfileSettings} />
+      <Route path="account" component={AccountSettings} />
     </Route>
     <Route path="*" component={LostPage} />
   </Route>

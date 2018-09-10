@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as R from 'ramda';
 
-import Menu from './Menu';
+import SettingsMenu from './SettingsMenu';
 
-export default class MenuContainer extends Component {
+export default class SettingsMenuContainer extends Component {
   static propTypes = {
     pathname: PropTypes.string.isRequired,
     attemptLogout: PropTypes.func.isRequired,
@@ -17,7 +17,7 @@ export default class MenuContainer extends Component {
 
   render() {
     return (
-      <Menu
+      <SettingsMenu
         pathname={this.props.pathname}
         logout={this.logout}
       />

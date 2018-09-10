@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Profile(props) {
+export default function ProfileSettings(props) {
   const {
     edited, save, refresh, usernameCase, firstName, lastName, bio, profilePic,
     updateFirstName, updateLastName, updateBio, updateProfilePic,
@@ -110,7 +110,7 @@ export default function Profile(props) {
   );
 }
 
-Profile.propTypes = {
+ProfileSettings.propTypes = {
   edited: PropTypes.bool.isRequired,
   usernameCase: PropTypes.string,
   firstName: PropTypes.string.isRequired,
@@ -125,6 +125,6 @@ Profile.propTypes = {
   save: PropTypes.func.isRequired,
 };
 
-Profile.defaultProps = {
+ProfileSettings.defaultProps = {
   usernameCase: '',
 };

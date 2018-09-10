@@ -1,7 +1,7 @@
 import * as R from 'ramda';
 import { connect } from 'react-redux';
 import { attemptLogout } from '_store/actions/user';
-import MenuContainer from './MenuContainer';
+import SettingsMenuContainer from './SettingsMenuContainer';
 
 const mapStateToProps = R.pick([]);
 
@@ -9,4 +9,4 @@ const mapDispatchToProps = dispatch => ({
   attemptLogout: () => dispatch(attemptLogout()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(MenuContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(SettingsMenuContainer);

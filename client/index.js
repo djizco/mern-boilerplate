@@ -7,7 +7,7 @@ import 'font-awesome-webpack';
 import '_styles/index.scss';
 import '_assets';
 
-import Root from '_layouts/Root';
+import Root from '_environment/Root';
 import routes from './routes';
 import store from './store';
 

@@ -1,10 +1,10 @@
 import React from 'react';
-import Lost from '_sections/LostSection';
+import LostSection from '_templates/LostSection';
 
 export default function LostPage() {
   return (
     <div className="lost-page">
-      <Lost />
+      <LostSection />
     </div>
   );
 }

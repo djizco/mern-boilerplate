@@ -29,12 +29,12 @@ module.exports = {
   },
   resolve: {
     alias: {
-      _elements: path.resolve(__dirname, 'client/components/elements/'),
-      _components: path.resolve(__dirname, 'client/components/components/'),
-      _structures: path.resolve(__dirname, 'client/components/structures/'),
-      _sections: path.resolve(__dirname, 'client/components/sections/'),
+      _atoms: path.resolve(__dirname, 'client/components/atoms/'),
+      _molecules: path.resolve(__dirname, 'client/components/molecules/'),
+      _organisms: path.resolve(__dirname, 'client/components/organisms/'),
+      _templates: path.resolve(__dirname, 'client/components/templates/'),
       _pages: path.resolve(__dirname, 'client/components/pages/'),
-      _layouts: path.resolve(__dirname, 'client/components/layouts/'),
+      _environment: path.resolve(__dirname, 'client/components/environment/'),
       _store: path.resolve(__dirname, 'client/store/'),
       _assets: path.resolve(__dirname, 'client/assets/'),
       _styles: path.resolve(__dirname, 'client/styles/'),

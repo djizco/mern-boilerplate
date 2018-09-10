@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import classNames from 'classnames';
 
-export default function Menu(props) {
+export default function SettingsMenu(props) {
   const { pathname, logout } = props;
 
   const profileClasses = classNames({
@@ -43,7 +43,7 @@ export default function Menu(props) {
   );
 }
 
-Menu.propTypes = {
+SettingsMenu.propTypes = {
   pathname: PropTypes.string.isRequired,
   logout: PropTypes.func.isRequired,
 };

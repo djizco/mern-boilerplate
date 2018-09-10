@@ -2,13 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 
+import Box from '_molecules/Box';
 import FormInput from '_molecules/FormInput';
 
 export default function Login(props) {
   const { remember, username, password, updateUsername, updatePassword, rememberMe, login } = props;
 
   return (
-    <div className="box">
+    <Box className="login">
       <h3 className="title is-3">
         Login
       </h3>
@@ -48,7 +49,7 @@ export default function Login(props) {
         <input type="checkbox" onChange={rememberMe} checked={remember} />
         &nbsp; Remember me
       </p>
-    </div>
+    </Box>
   );
 }
 

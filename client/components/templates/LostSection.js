@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Lost() {
   return (
-    <div className="lost section">
+    <div className="lost-section section">
       <div className="container">
         <h1 className="title is-1">
           404

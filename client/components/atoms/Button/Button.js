@@ -4,8 +4,8 @@ import classNames from 'classnames';
 
 export default function Button(props) {
   const {
-    handleClick, label, style, type, size, outlined, inverted,
-    rounded, hovered, focused, active, loading, disabled,
+    className, onClick, label, style, type, size, outlined,
+    inverted, rounded, hovered, focused, active, loading, disabled,
   } = props;
 
   const typeMap = {
@@ -27,6 +27,7 @@ export default function Button(props) {
   const isSize = sizeMap[size] || '';
 
   const buttonClasses = classNames({
+    [className]: !!className,
     button: true,
     [isType]: true,
     [isSize]: true,
@@ -45,7 +46,7 @@ export default function Button(props) {
       style={style}
       type="button"
       className={buttonClasses}
-      onClick={handleClick}
+      onClick={onClick}
       disabled={disabled}
     >
       {label}
@@ -54,8 +55,9 @@ export default function Button(props) {
 }
 
 Button.propTypes = {
+  className: PropTypes.string,
   style: PropTypes.object,
-  handleClick: PropTypes.func,
+  onClick: PropTypes.func,
   label: PropTypes.string,
   type: PropTypes.string,
   size: PropTypes.string,
@@ -71,11 +73,12 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
+  className: '',
   style: {},
   label: '',
   type: 'info',
   size: 'normal',
-  handleClick: () => {},
+  onClick: () => {},
   outlined: false,
   inverted: false,
   rounded: false,

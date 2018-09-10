@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import classNames from 'classnames';
 
+import Box from '_molecules/Box';
+import Button from '_atoms/Button';
+
 export default function Register(props) {
   const {
     username, usernameMessage, handleUsernameChange,
@@ -51,7 +54,7 @@ export default function Register(props) {
   });
 
   return (
-    <div className="box has-space-below">
+    <Box className="register">
       <h3 className="title is-3">
         Sign Up
       </h3>
@@ -114,16 +117,14 @@ export default function Register(props) {
       <hr className="separator" />
 
       <div className="has-text-right">
-        <button
-          type="button"
-          className="button is-success"
+        <Button
+          type="success"
           disabled={!passwordValid || !usernameAvailable}
           onClick={register}
-        >
-          Create Account
-        </button>
+          label="Create Account"
+        />
       </div>
-    </div>
+    </Box>
   );
 }
 

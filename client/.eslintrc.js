@@ -38,9 +38,9 @@ module.exports = {
     "import/no-extraneous-dependencies": 0,
     "import/no-named-as-default": 0, // causes error with redux testing
     "jsx-a11y/anchor-is-valid": 0,
+    "jsx-a11y/label-has-associated-control": 0,
     "jsx-a11y/label-has-for": 0,
     "jsx-a11y/no-static-element-interactions": 0,
-    "label-has-associated-control": 0,
     "no-confusing-arrow": 0,
     "no-nested-ternary": 0,
     "no-plusplus": 0,

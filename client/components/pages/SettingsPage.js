@@ -7,7 +7,7 @@ export default function SettingsPage(props) {
   const { location, children } = props;
 
   return (
-    <div className="settings-page">
+    <div className="settings-page page">
       <div className="section">
         <div className="container">
           <div className="columns">

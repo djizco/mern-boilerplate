@@ -1,12 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 export default function FormInput(props) {
-  const { onChange, value, placeholder, type, leftIcon } = props;
+  const { className, onChange, value, placeholder, type, leftIcon } = props;
+
+  const fieldClasses = classNames({
+    field: true,
+    [className]: true,
+  });
+
+  const controlClasses = classNames({
+    control: true,
+    'has-icons-left': !!leftIcon,
+  });
+
 
   return (
-    <div className="field">
-      <p className="control has-icons-left">
+    <div className={fieldClasses}>
+      <p className={controlClasses}>
         <input
           className="input"
           type={type}
@@ -25,11 +37,13 @@ export default function FormInput(props) {
 }
 
 FormInput.defaultProps = {
+  className: '',
   leftIcon: undefined,
   type: 'text',
 };
 
 FormInput.propTypes = {
+  className: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,

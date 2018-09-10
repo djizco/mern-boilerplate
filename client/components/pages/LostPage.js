@@ -3,7 +3,7 @@ import LostSection from '_templates/LostSection';
 
 export default function LostPage() {
   return (
-    <div className="lost-page">
+    <div className="lost-page page">
       <LostSection />
     </div>
   );

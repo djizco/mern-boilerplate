@@ -2,9 +2,8 @@ import { browserHistory } from 'react-router';
 import { snakeToCamelCase } from 'json-style-converter/es5';
 import Notifications from 'react-notification-system-redux';
 
-import {
-  postRegister, postLogin, postLogout, getUser, putUser, putUserPassword,
-} from '../../utils/api';
+import { postRegister, postLogin, postLogout } from '_api/auth';
+import { getUser, putUser, putUserPassword } from '_api/user';
 
 export const LOGIN_USER = 'LOGIN_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';

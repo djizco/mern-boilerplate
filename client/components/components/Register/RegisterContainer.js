@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as R from 'ramda';
-import { postCheckUsername } from '_utils/api';
+import { postCheckUsername } from '_api/users';
 import { validatePassword, validateUsername } from '_utils/validation';
 import Register from './Register';
 

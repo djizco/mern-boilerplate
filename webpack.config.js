@@ -39,6 +39,7 @@ module.exports = {
       _assets: path.resolve(__dirname, 'client/assets/'),
       _styles: path.resolve(__dirname, 'client/styles/'),
       _utils: path.resolve(__dirname, 'client/utils/'),
+      _api: path.resolve(__dirname, 'client/api/'),
     },
   },
   module: {

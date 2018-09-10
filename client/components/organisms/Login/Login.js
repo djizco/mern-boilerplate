@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 
-import Input from '_molecules/Input';
+import FormInput from '_molecules/FormInput';
 
 export default function Login(props) {
   const { remember, username, password, updateUsername, updatePassword, rememberMe, login } = props;
@@ -20,14 +20,14 @@ export default function Login(props) {
         </Link>
       </p>
 
-      <Input
+      <FormInput
         onChange={e => updateUsername(e.target.value)}
         placeholder="Username"
         value={username}
         leftIcon="user"
       />
 
-      <Input
+      <FormInput
         onChange={e => updatePassword(e.target.value)}
         placeholder="Password"
         value={password}

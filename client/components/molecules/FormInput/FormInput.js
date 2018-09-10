@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Input(props) {
+export default function FormInput(props) {
   const { onChange, value, placeholder, type, leftIcon } = props;
 
   return (
@@ -24,12 +24,12 @@ export default function Input(props) {
   );
 }
 
-Input.defaultProps = {
+FormInput.defaultProps = {
   leftIcon: undefined,
   type: 'text',
 };
 
-Input.propTypes = {
+FormInput.propTypes = {
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Notifications from 'react-notification-system-redux';
-import Navigation from '_templates/Navigation';
-import Footer from '_templates/Footer';
+import Navigation from '_organisms/Navigation';
+import Footer from '_organisms/Footer';
 
 export default function Main(props) {
   const { location, children, alerts } = props;

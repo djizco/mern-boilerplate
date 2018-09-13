@@ -57,7 +57,7 @@
     "express-session": "^1.15.6",
     "immutability-helper": "^2.8.0",
     "json-style-converter": "^1.0.3",
-    "lab": "^15.5.0",
+    "lab": "^16.1.0",
     "lab-babel": "^1.1.1",
     "mongoose": "4.11.14",
     "mongoose-auto-increment-2": "^1.0.3",

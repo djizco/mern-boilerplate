@@ -56,6 +56,8 @@ module.exports = {
       _pages: path.resolve(__dirname, 'client/components/pages/'),
       _environment: path.resolve(__dirname, 'client/components/environment/'),
       _store: path.resolve(__dirname, 'client/store/'),
+      _actions: path.resolve(__dirname, 'client/store/actions'),
+      _reducers: path.resolve(__dirname, 'client/store/reducers'),
       _assets: path.resolve(__dirname, 'client/assets/'),
       _styles: path.resolve(__dirname, 'client/styles/'),
       _utils: path.resolve(__dirname, 'client/utils/'),

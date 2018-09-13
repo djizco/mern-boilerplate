@@ -1,6 +1,6 @@
 import * as R from 'ramda';
 import { connect } from 'react-redux';
-import { attemptLogin } from '_store/actions/user';
+import { attemptLogin } from '_actions/user';
 import LoginContainer from './LoginContainer';
 
 const mapStateToProps = R.pick([]);

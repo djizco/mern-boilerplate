@@ -5,6 +5,8 @@ import Notifications from 'react-notification-system-redux';
 import { postRegister, postLogin, postLogout } from '_api/auth';
 import { getUser, putUser, putUserPassword } from '_api/user';
 
+import { handleError, handleLoginError } from './helpers';
+
 export const LOGIN_USER = 'LOGIN_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
 export const UPDATE_USER = 'UPDATE_USER';
@@ -28,33 +30,6 @@ export function updateUser(user) {
     user: snakeToCamelCase(user),
   };
 }
-
-const handleError = dispatch => res => {
-  if (res.status === 401) {
-    dispatch(logout());
-    browserHistory.push('/login');
-  }
-
-  dispatch(Notifications.error({
-    title: `Error: ${res.status}`,
-    message: res.body.message,
-    position: 'tr',
-    autoDismiss: 5,
-  }));
-
-  throw res;
-};
-
-const handleLoginError = dispatch => res => {
-  dispatch(Notifications.error({
-    title: `Error: ${res.status}`,
-    message: res.body.message,
-    position: 'tr',
-    autoDismiss: 5,
-  }));
-
-  throw res;
-};
 
 export const attemptLogin = user => dispatch =>
   postLogin(user)

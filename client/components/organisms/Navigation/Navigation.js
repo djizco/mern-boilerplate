@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import classNames from 'classnames';
 import * as R from 'ramda';
-import UserDropdown from './UserDropdown';
+import UserDropdown from '_molecules/UserDropdown';
+import Button from '_atoms/Button';
 
 export default function Navigation(props) {
   const {
@@ -76,9 +77,7 @@ export default function Navigation(props) {
               </h6>
             </Link>
             <Link to="/register" className="nav-item">
-              <button type="button" className="button is-success">
-                Sign Up
-              </button>
+              <Button label="Sign Up" success />
             </Link>
           </div>
         )}

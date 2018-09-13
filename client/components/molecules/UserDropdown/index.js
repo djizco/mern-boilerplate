@@ -1,6 +1,6 @@
 import * as R from 'ramda';
 import { connect } from 'react-redux';
-import { attemptLogout } from '_store/actions/user';
+import { attemptLogout } from '_actions/user';
 import UserDropdown from './UserDropdown';
 
 const mapStateToProps = R.pick(['user']);

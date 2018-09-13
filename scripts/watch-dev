@@ -1,0 +1,2 @@
+rm -rf dist
+webpack --mode development --config webpack.dev.config.js --watch

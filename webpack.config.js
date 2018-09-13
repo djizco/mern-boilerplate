@@ -1,18 +1,17 @@
-const webpack           = require('webpack');
 const path              = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
+const resolve = dir => path.join(__dirname, dir);
+
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: path.join(__dirname, 'client/index.html'),
+  template: resolve('client/index.html'),
   filename: 'index.html',
   inject: 'body',
 });
 
-const ExtractTextPluginConfig = new ExtractTextPlugin('bundle.css');
 const FaviconsWebpackPluginConfig = new FaviconsWebpackPlugin({
-  logo: path.join(__dirname, 'client/assets/icons/favicon.ico'),
+  logo: resolve('client/assets/icons/favicon.ico'),
   prefix: 'assets/icons/',
   emitStats: false,
   statsFilename: 'iconstats.json',
@@ -31,7 +30,7 @@ const FaviconsWebpackPluginConfig = new FaviconsWebpackPlugin({
     windows: false
   },
 });
-const ModuleConcatenationConfig = new webpack.optimize.ModuleConcatenationPlugin();
+
 
 module.exports = {
   devServer: {
@@ -39,29 +38,27 @@ module.exports = {
     historyApiFallback: true,
     inline: true,
   },
-  entry: [
-    './client/index.js',
-  ],
+  entry: './client/index.js',
   output: {
     filename: 'bundle.js',
-    path: path.join(__dirname, 'dist'),
+    path: resolve('dist'),
     publicPath: '/',
   },
   resolve: {
     alias: {
-      _atoms: path.resolve(__dirname, 'client/components/atoms/'),
-      _molecules: path.resolve(__dirname, 'client/components/molecules/'),
-      _organisms: path.resolve(__dirname, 'client/components/organisms/'),
-      _templates: path.resolve(__dirname, 'client/components/templates/'),
-      _pages: path.resolve(__dirname, 'client/components/pages/'),
-      _environment: path.resolve(__dirname, 'client/components/environment/'),
-      _store: path.resolve(__dirname, 'client/store/'),
-      _actions: path.resolve(__dirname, 'client/store/actions'),
-      _reducers: path.resolve(__dirname, 'client/store/reducers'),
-      _assets: path.resolve(__dirname, 'client/assets/'),
-      _styles: path.resolve(__dirname, 'client/styles/'),
-      _utils: path.resolve(__dirname, 'client/utils/'),
-      _api: path.resolve(__dirname, 'client/api/'),
+      _atoms: resolve('client/components/atoms/'),
+      _molecules: resolve('client/components/molecules/'),
+      _organisms: resolve('client/components/organisms/'),
+      _templates: resolve('client/components/templates/'),
+      _pages: resolve('client/components/pages/'),
+      _environment: resolve('client/components/environment/'),
+      _store: resolve('client/store/'),
+      _actions: resolve('client/store/actions'),
+      _reducers: resolve('client/store/reducers'),
+      _assets: resolve('client/assets/'),
+      _styles: resolve('client/styles/'),
+      _utils: resolve('client/utils/'),
+      _api: resolve('client/api/'),
     },
   },
   module: {
@@ -69,19 +66,19 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [path.join(__dirname, 'client')],
+        include: [resolve('client')],
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract(['style-loader', 'css-loader']),
+        loaders: ['style-loader', 'css-loader'],
       },
       {
         test: /\.scss$/i,
-        loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader']),
+        loaders: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
         test: /\.less$/i,
-        loader: ExtractTextPlugin.extract(['css-loader', 'less-loader']),
+        loaders: ['style-loader', 'css-loader', 'less-loader'],
       },
       {
         test: /\.(jpe?g|png|gif)$/i,
@@ -132,8 +129,6 @@ module.exports = {
   },
   plugins: [
     HtmlWebpackPluginConfig,
-    ExtractTextPluginConfig,
     FaviconsWebpackPluginConfig,
-    ModuleConcatenationConfig,
   ],
 };

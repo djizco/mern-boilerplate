@@ -2,15 +2,35 @@ const webpack           = require('webpack');
 const path              = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: path.join(__dirname, 'client/index.html'),
   filename: 'index.html',
   inject: 'body',
-  favicon: path.join(__dirname, 'client/assets/icons/favicon.ico'),
 });
 
 const ExtractTextPluginConfig = new ExtractTextPlugin('bundle.css');
+const FaviconsWebpackPluginConfig = new FaviconsWebpackPlugin({
+  logo: path.join(__dirname, 'client/assets/icons/favicon.ico'),
+  prefix: 'assets/icons/',
+  emitStats: false,
+  statsFilename: 'iconstats.json',
+  persistentCache: false,
+  inject: true,
+  icons: {
+    android: false,
+    appleIcon: false,
+    appleStartup: false,
+    coast: false,
+    favicons: true,
+    firefox: false,
+    opengraph: false,
+    twitter: false,
+    yandex: false,
+    windows: false
+  },
+});
 const ModuleConcatenationConfig = new webpack.optimize.ModuleConcatenationPlugin();
 
 module.exports = {
@@ -62,12 +82,12 @@ module.exports = {
         loader: ExtractTextPlugin.extract(['css-loader', 'less-loader']),
       },
       {
-        test: /\.(jpe?g|png|gif|svg|ico)$/i,
+        test: /\.(jpe?g|png|gif)$/i,
         use: [
           {
             loader: 'file-loader',
             options: {
-              name: '[name].[ext]',
+              name: 'assets/images/[name].[ext]',
             },
           },
           {
@@ -92,17 +112,26 @@ module.exports = {
       },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url-loader?limit=10000&mimetype=application/font-woff',
+        loader: 'url-loader',
+        options: {
+          name: 'assets/fonts/[name].[ext]',
+          limit: 8192,
+          mimetype: 'application/font-woff',
+        },
       },
       {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'file-loader',
+        options: {
+          name: 'assets/icons/[name].[ext]',
+        },
       },
     ]
   },
   plugins: [
     HtmlWebpackPluginConfig,
     ExtractTextPluginConfig,
+    FaviconsWebpackPluginConfig,
     ModuleConcatenationConfig,
   ],
 };

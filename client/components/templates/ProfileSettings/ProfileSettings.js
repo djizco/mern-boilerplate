@@ -24,7 +24,11 @@ export default function ProfileSettings(props) {
             {usernameCase}
           </h3>
           <figure className="image">
-            <img className="profile-img" src={profilePic || '/default-profile.png'} alt="Profile" />
+            <img
+              className="profile-img"
+              src={profilePic || '/assets/images/default-profile.png'}
+              alt="Profile"
+            />
           </figure>
           <div className="field">
             <label htmlFor="profile-pic-url" className="label">

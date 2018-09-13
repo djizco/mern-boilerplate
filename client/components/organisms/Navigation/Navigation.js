@@ -77,7 +77,7 @@ export default function Navigation(props) {
               </h6>
             </Link>
             <Link to="/register" className="nav-item">
-              <Button label="Sign Up" success />
+              <Button label="Sign Up" type="success" />
             </Link>
           </div>
         )}

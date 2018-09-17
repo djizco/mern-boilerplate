@@ -63,7 +63,7 @@ export default function Navigation(props) {
           <div className="nav-right">
             <a className="nav-item is-hoverable" onClick={toggleUserDropdown} onKeyPress={toggleUserDropdown}>
               <figure className="image nav-image is-32x32">
-                <img className="profile-img" src={user.profilePic || '/assets/images/default-profile.png'} alt="" />
+                <img className="profile-img" src={user.profilePic || '/images/default-profile.png'} alt="" />
               </figure>
               <span className="dropdown-caret" />
             </a>

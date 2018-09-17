@@ -12,7 +12,7 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 
 const FaviconsWebpackPluginConfig = new FaviconsWebpackPlugin({
   logo: resolve('client/assets/icons/favicon.ico'),
-  prefix: 'assets/icons/',
+  prefix: 'icons/',
   emitStats: false,
   statsFilename: 'iconstats.json',
   persistentCache: false,
@@ -86,7 +86,7 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: 'assets/images/[name].[ext]',
+              name: 'images/[name].[ext]',
             },
           },
           {
@@ -113,7 +113,7 @@ module.exports = {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'url-loader',
         options: {
-          name: 'assets/fonts/[name].[ext]',
+          name: 'fonts/[name].[ext]',
           limit: 8192,
           mimetype: 'application/font-woff',
         },
@@ -122,7 +122,7 @@ module.exports = {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'file-loader',
         options: {
-          name: 'assets/icons/[name].[ext]',
+          name: 'icons/[name].[ext]',
         },
       },
     ]

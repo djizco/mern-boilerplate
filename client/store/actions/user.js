@@ -11,6 +11,8 @@ export const LOGIN_USER = 'LOGIN_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
 export const UPDATE_USER = 'UPDATE_USER';
 
+// Syncronous Actions
+
 export function login(user) {
   return {
     type: LOGIN_USER,
@@ -30,6 +32,8 @@ export function updateUser(user) {
     user: snakeToCamelCase(user),
   };
 }
+
+// Asyncronous Actions
 
 export const attemptLogin = user => dispatch =>
   postLogin(user)

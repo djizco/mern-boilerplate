@@ -125,6 +125,6 @@ This is based on atomic design. Learn more about [atomic design](http://bradfros
 
 [ESLint](http://eslint.org/) - Code Linter
 
-[Code](https://github.com/hapijs/code) / [Lab](https://github.com/hapijs/lab) - JS Testing Framework
+[Jest](https://jestjs.io/) - JavaScript Testing Framework
 
 [Enzyme](https://github.com/airbnb/enzyme) - React View Testing

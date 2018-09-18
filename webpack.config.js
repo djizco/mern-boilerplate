@@ -27,7 +27,7 @@ const FaviconsWebpackPluginConfig = new FaviconsWebpackPlugin({
     opengraph: false,
     twitter: false,
     yandex: false,
-    windows: false
+    windows: false,
   },
 });
 
@@ -125,7 +125,7 @@ module.exports = {
           name: 'icons/[name].[ext]',
         },
       },
-    ]
+    ],
   },
   plugins: [
     HtmlWebpackPluginConfig,

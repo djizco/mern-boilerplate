@@ -1,4 +1,4 @@
-import { browserHistory } from 'react-router';
+import { push } from 'connected-react-router';
 import { snakeToCamelCase } from 'json-style-converter/es5';
 import Notifications from 'react-notification-system-redux';
 
@@ -45,7 +45,7 @@ export const attemptLogin = user => dispatch =>
         position: 'tr',
         autoDismiss: 3,
       }));
-      browserHistory.push('/home');
+      dispatch(push('/home'));
       return data;
     })
     .catch(handleLoginError(dispatch));
@@ -61,7 +61,7 @@ export const attemptRegister = newUser => dispatch =>
       }));
       return dispatch(attemptLogin(newUser));
     })
-    .then(() => browserHistory.push('/settings'))
+    .then(() => dispatch(push('/settings')))
     .catch(handleError(dispatch));
 
 export const attemptLogout = () => dispatch =>
@@ -74,7 +74,7 @@ export const attemptLogout = () => dispatch =>
         position: 'tr',
         autoDismiss: 3,
       }));
-      browserHistory.push('/login');
+      dispatch(push('/login'));
       return data;
     })
     .catch(handleError(dispatch));

@@ -7,7 +7,6 @@ export default class RootContainer extends Component {
   static propTypes = {
     store: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
-    routes: PropTypes.object.isRequired,
     attemptGetUser: PropTypes.func.isRequired,
   };
 
@@ -23,12 +22,10 @@ export default class RootContainer extends Component {
       .catch(R.identity);
   }
 
-  scrollToTop = () => window.scrollTo(0, 0)
-
   render() {
-    const { store, history, routes } = this.props;
+    const { store, history } = this.props;
     return !this.state.loading && (
-      <Root store={store} history={history} scrollToTop={this.scrollToTop} routes={routes} />
+      <Root store={store} history={history} />
     );
   }
 }

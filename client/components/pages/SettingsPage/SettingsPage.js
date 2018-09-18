@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Switch, Route } from 'react-router';
 
+import ProfileSettings from '_templates/ProfileSettings';
+import AccountSettings from '_templates/AccountSettings';
 import SettingsMenu from '_organisms/SettingsMenu';
 
 export default function SettingsPage(props) {
-  const { location, children } = props;
+  const { location } = props;
 
   return (
     <div className="settings-page page">
@@ -15,7 +18,11 @@ export default function SettingsPage(props) {
               <SettingsMenu pathname={location.pathname} />
             </div>
             <div className="column">
-              {children}
+              <Switch>
+                <Route path="/settings/profile/" component={ProfileSettings} />
+                <Route path="/settings/account/" component={AccountSettings} />
+                <Route path="*" component={ProfileSettings} />
+              </Switch>
             </div>
           </div>
         </div>
@@ -25,7 +32,6 @@ export default function SettingsPage(props) {
 }
 
 SettingsPage.propTypes = {
-  children: PropTypes.element.isRequired,
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired,
   }).isRequired,

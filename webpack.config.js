@@ -31,7 +31,6 @@ const FaviconsWebpackPluginConfig = new FaviconsWebpackPlugin({
   },
 });
 
-
 module.exports = {
   devServer: {
     contentBase: './dist',

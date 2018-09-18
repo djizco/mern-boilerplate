@@ -1,19 +1,18 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { browserHistory } from 'react-router';
-import { syncHistoryWithStore } from 'react-router-redux';
+import { createBrowserHistory } from 'history';
 
 import 'font-awesome-webpack';
 import '_styles/index.scss';
 import '_assets';
 
 import Root from '_environment/Root';
-import routes from './routes';
-import store from './store';
+import configureStore from '_store/configureStore';
 
-const history = syncHistoryWithStore(browserHistory, store);
+const history = createBrowserHistory();
+const store = configureStore(history, {});
 
 render(
-  <Root store={store} history={history} routes={routes} />,
+  <Root store={store} history={history} />,
   document.getElementById('app'),
 );

@@ -60,7 +60,7 @@
     "lab": "^16.1.0",
     "lab-babel": "^1.1.1",
     "mongoose": "4.11.14",
-    "mongoose-auto-increment-2": "^1.0.3",
+    "mongoose-auto-increment-reworked": "^1.2.1",
     "mongoose-immutable": "0.0.2",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",

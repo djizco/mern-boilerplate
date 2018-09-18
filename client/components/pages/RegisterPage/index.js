@@ -1,3 +1,12 @@
-import RegisterPage from './RegisterPage';
+import * as R from 'ramda';
+import { connect } from 'react-redux';
+import { push } from 'connected-react-router';
+import RegisterPageContainer from './RegisterPageContainer';
 
-export default RegisterPage;
+const mapStateToProps = R.pick(['user']);
+
+const mapDispatchToProps = dispatch => ({
+  pushToHome: () => dispatch(push('/home')),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterPageContainer);

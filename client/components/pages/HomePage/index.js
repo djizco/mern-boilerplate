@@ -1,3 +1,12 @@
-import HomePage from './HomePage';
+import * as R from 'ramda';
+import { connect } from 'react-redux';
+import { push } from 'connected-react-router';
+import HomePageContainer from './HomePageContainer';
 
-export default HomePage;
+const mapStateToProps = R.pick(['user']);
+
+const mapDispatchToProps = dispatch => ({
+  pushToLogin: () => dispatch(push('/login')),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePageContainer);

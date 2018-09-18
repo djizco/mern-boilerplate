@@ -1,16 +1,18 @@
 module.exports = {
-  "env": {
-    "browser": true,
-    "jest": true,
-  },
+  "root": true,
   settings: {
     'import/resolver': 'webpack',
   },
   "extends": "airbnb",
   "parser": "babel-eslint",
   "parserOptions": {
+    "ecmaVersion": 2018,
     "sourceType": "module",
     "allowImportExportEverywhere": false,
+  },
+  "env": {
+    "browser": true,
+    "jest": true,
   },
   "plugins": ["react"],
   "rules": {

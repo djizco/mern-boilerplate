@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
+mongoose.set('useCreateIndex', true);
+mongoose.set('useFindAndModify', false);
 
-const options = { useMongoClient: true };
+const options = { useNewUrlParser: true };
 
 const database = mongoose.connect(process.env.DATABASE_URL, options)
   .then(() => console.log('Connected to database.'))

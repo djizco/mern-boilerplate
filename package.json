@@ -45,7 +45,7 @@
   ],
   "homepage": "https://github.com/djizco/boilerplate-mern#readme",
   "engines": {
-    "node": ">=8.11.0"
+    "node": ">=8.0.0"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

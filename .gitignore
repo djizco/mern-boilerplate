@@ -3,9 +3,10 @@ node_modules
 
 # App packaged
 dist/
+.zip
 
-# Secrets
-secrets.js
+# Environment
+.env*
 
 # OSX
 .DS_Store
@@ -17,6 +18,7 @@ npm-debug.log*
 
 # NPM
 package-lock.json
+yarn-lock.json
 
 # Runtime data
 pids

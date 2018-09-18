@@ -69,6 +69,7 @@ You can now start updating files in your client to begin working on your own pro
 
 ```
 - client
+  - api
   - assets
     - images
     - icons
@@ -86,10 +87,8 @@ You can now start updating files in your client to begin working on your own pro
   - utils
 - server
   - config
+  - database
   - routes
-- test
-  - client
-  - server
 - scripts
 ```
 

@@ -27,7 +27,7 @@ export default function GeneralProfile(props) {
           <figure className="image">
             <img
               className="profile-img"
-              src={profilePic || '/assets/images/default-profile.png'}
+              src={profilePic || '/images/default-profile.png'}
               alt="Profile"
             />
           </figure>

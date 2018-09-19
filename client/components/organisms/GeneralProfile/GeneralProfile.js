@@ -13,7 +13,7 @@ export default function GeneralProfile(props) {
   return (
     <Box className="general-profile">
       <span className="icon is-medium is-pulled-right" onClick={refresh} onKeyPress={refresh}>
-        <i className="fa fa-2x fa-refresh is-info" />
+        <i className="fa fa-lg fa-sync is-info" />
       </span>
       <h3 className="title is-3">
         General

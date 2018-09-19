@@ -49,6 +49,7 @@ module.exports = {
     inline: true,
   },
   entry: [
+    './node_modules/@fortawesome/fontawesome-free/css/all.css',
     './client/assets/index.js',
     './client/styles/index.scss',
     './client/index.js',

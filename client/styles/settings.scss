@@ -41,16 +41,8 @@
   .icon {
     margin-left: .5rem;
 
-    .fa-refresh {
+    .fa-sync {
       color: $info;
-    }
-
-    .fa-floppy-o {
-      color: $light-grey;
-
-      &.is-success {
-        color: $success;
-      }
     }
 
     &:hover {

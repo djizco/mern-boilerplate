@@ -48,7 +48,11 @@ module.exports = {
     historyApiFallback: true,
     inline: true,
   },
-  entry: './client/index.js',
+  entry: [
+    './client/assets/index.js',
+    './client/styles/index.scss',
+    './client/index.js',
+  ],
   output: {
     filename: isDev ? '[name].js' : '[name].[hash].js',
     path: resolve('dist'),

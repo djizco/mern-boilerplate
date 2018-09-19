@@ -3,8 +3,6 @@ import { render } from 'react-dom';
 import { createBrowserHistory } from 'history';
 
 import 'font-awesome-webpack';
-import '_styles/index.scss';
-import '_assets';
 
 import Root from '_environment/Root';
 import configureStore from '_store/configureStore';

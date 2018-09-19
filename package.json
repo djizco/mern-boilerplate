@@ -115,7 +115,7 @@
     "nodemon": "^1.18.4",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.0",
-    "superagent": "^3.8.3",
+    "superagent": "^4.0.0-beta.5",
     "supertest": "^3.3.0",
     "url-loader": "^1.1.1"
   }

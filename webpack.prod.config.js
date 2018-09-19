@@ -1,6 +1,9 @@
 const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const config = require('./webpack.config.js');
+
+config.plugins.push(new BundleAnalyzerPlugin());
 
 config.plugins.push(new webpack.DefinePlugin({
   'process.env': {

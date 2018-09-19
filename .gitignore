@@ -3,7 +3,7 @@ node_modules
 
 # App packaged
 dist/
-.zip
+*.zip
 
 # Environment
 .env*

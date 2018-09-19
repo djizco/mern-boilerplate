@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
+
 import Box from '_molecules/Box';
 import FormInput from '_molecules/FormInput';
 
@@ -25,14 +27,14 @@ export default function Login(props) {
         onChange={e => updateUsername(e.target.value)}
         placeholder="Username"
         value={username}
-        leftIcon="user"
+        leftIcon={faUser}
       />
 
       <FormInput
         onChange={e => updatePassword(e.target.value)}
         placeholder="Password"
         value={password}
-        leftIcon="lock"
+        leftIcon={faLock}
         type="password"
       />
 

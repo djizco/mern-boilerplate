@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Box from '_molecules/Box';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSync } from '@fortawesome/free-solid-svg-icons';
+
 export default function GeneralProfile(props) {
   const {
     edited, save, refresh, usernameCase, firstName, lastName, bio, profilePic,
@@ -13,7 +16,7 @@ export default function GeneralProfile(props) {
   return (
     <Box className="general-profile">
       <span className="icon is-medium is-pulled-right" onClick={refresh} onKeyPress={refresh}>
-        <i className="fa fa-lg fa-sync is-info" />
+        <FontAwesomeIcon icon={faSync} size="lg" />
       </span>
       <h3 className="title is-3">
         General

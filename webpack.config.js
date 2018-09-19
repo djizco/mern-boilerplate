@@ -49,9 +49,11 @@ module.exports = {
     inline: true,
   },
   entry: [
-    './node_modules/@fortawesome/fontawesome-free/css/all.css',
-    './client/assets/index.js',
+    './node_modules/@fortawesome/fontawesome-free/scss/regular.scss',
+    './node_modules/@fortawesome/fontawesome-free/scss/solid.scss',
+    './node_modules/@fortawesome/fontawesome-free/scss/brands.scss',
     './client/styles/index.scss',
+    './client/assets/index.js',
     './client/index.js',
   ],
   output: {

@@ -1,2 +1,1 @@
-rm -rf dist
 NODE_ENV=development webpack --mode development --config webpack.dev.config.js --watch

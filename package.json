@@ -50,6 +50,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
+    "clean-webpack-plugin": "^0.1.19",
     "connect-mongo": "^2.0.1",
     "connected-react-router": "^4.4.1",
     "enzyme": "^3.6.0",

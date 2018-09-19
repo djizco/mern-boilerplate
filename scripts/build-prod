@@ -1,2 +1,2 @@
 rm -rf dist
-webpack --mode production --config webpack.prod.config.js
+NODE_ENV=production webpack --mode production --config webpack.prod.config.js

@@ -1,13 +1,21 @@
 const path              = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 const resolve = dir => path.join(__dirname, dir);
+
+const isDev = process.env.NODE_ENV !== 'production';
 
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: resolve('client/index.html'),
   filename: 'index.html',
   inject: 'body',
+});
+
+const MiniCssExtractPluginConfig = new MiniCssExtractPlugin({
+  filename: isDev ? '[name].css' : '[name].[hash].css',
+  chunkFilename: isDev ? '[id].css' : '[id].[hash].css',
 });
 
 const FaviconsWebpackPluginConfig = new FaviconsWebpackPlugin({
@@ -39,7 +47,7 @@ module.exports = {
   },
   entry: './client/index.js',
   output: {
-    filename: 'bundle.js',
+    filename: isDev ? '[name].js' : '[name].[hash].js',
     path: resolve('dist'),
     publicPath: '/',
   },
@@ -69,15 +77,15 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loaders: ['style-loader', 'css-loader'],
+        use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
         test: /\.scss$/i,
-        loaders: ['style-loader', 'css-loader', 'sass-loader'],
+        use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
         test: /\.less$/i,
-        loaders: ['style-loader', 'css-loader', 'less-loader'],
+        use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'less-loader'],
       },
       {
         test: /\.(jpe?g|png|gif)$/i,
@@ -91,19 +99,10 @@ module.exports = {
           {
             loader: 'image-webpack-loader',
             query: {
-              optipng: {
-                optimizationLevel: 7,
-              },
-              mozjpeg: {
-                progressive: true,
-              },
-              gifsicle: {
-                interlaced: false,
-              },
-              pngquant: {
-                quality: '75-90',
-                speed: 3,
-              },
+              optipng: { optimizationLevel: 7 },
+              mozjpeg: { progressive: true },
+              gifsicle: { interlaced: false },
+              pngquant: { quality: '75-90', speed: 3 },
             },
           },
         ],
@@ -128,6 +127,7 @@ module.exports = {
   },
   plugins: [
     HtmlWebpackPluginConfig,
+    MiniCssExtractPluginConfig,
     FaviconsWebpackPluginConfig,
   ],
 };

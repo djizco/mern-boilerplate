@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import * as R from 'ramda';
+import R from '_utils/ramda';
 import { eventPath } from '_utils/polyfill';
 
 eventPath();

@@ -1,4 +1,4 @@
-import * as R from 'ramda';
+import R from '_utils/ramda';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import MainContainer from './MainContainer';

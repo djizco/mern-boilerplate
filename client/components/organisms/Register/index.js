@@ -1,4 +1,4 @@
-import * as R from 'ramda';
+import R from '_utils/ramda';
 import { connect } from 'react-redux';
 import { attemptRegister } from '_actions/user';
 import RegisterContainer from './RegisterContainer';

@@ -1,4 +1,4 @@
-import * as R from 'ramda';
+import R from '_utils/ramda';
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
 import SettingsPageContainer from './SettingsPageContainer';

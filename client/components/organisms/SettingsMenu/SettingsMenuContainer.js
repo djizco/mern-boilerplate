@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import * as R from 'ramda';
+import R from '_utils/ramda';
 
 import SettingsMenu from './SettingsMenu';
 

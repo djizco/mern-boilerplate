@@ -1,13 +1,13 @@
-import concat from 'ramda/es/concat';
-import equals from 'ramda/es/equals';
-import head from 'ramda/es/head';
-import identity from 'ramda/es/identity';
-import isEmpty from 'ramda/es/isEmpty';
-import match from 'ramda/es/match';
-import pick from 'ramda/es/pick';
-import slice from 'ramda/es/slice';
-import tail from 'ramda/es/tail';
-import toUpper from 'ramda/es/toUpper';
+import concat from 'ramda/src/concat';
+import equals from 'ramda/src/equals';
+import head from 'ramda/src/head';
+import identity from 'ramda/src/identity';
+import isEmpty from 'ramda/src/isEmpty';
+import match from 'ramda/src/match';
+import pick from 'ramda/src/pick';
+import slice from 'ramda/src/slice';
+import tail from 'ramda/src/tail';
+import toUpper from 'ramda/src/toUpper';
 
 export default {
   concat,

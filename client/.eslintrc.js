@@ -1,7 +1,11 @@
 module.exports = {
   "root": true,
-  settings: {
-    'import/resolver': 'webpack',
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": './config/webpack.config.js',
+      }
+    },
   },
   "extends": "airbnb",
   "parser": "babel-eslint",

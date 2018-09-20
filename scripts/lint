@@ -1,1 +1,1 @@
-./node_modules/eslint/bin/eslint.js client server webpack.*
+./node_modules/eslint/bin/eslint.js client server config

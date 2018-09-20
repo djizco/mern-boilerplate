@@ -40,7 +40,9 @@ const FaviconsWebpackPluginConfig = new FaviconsWebpackPlugin({
   },
 });
 
-const CleanWebpackPluginConfig =  new CleanWebpackPlugin(['dist']);
+const CleanWebpackPluginConfig =  new CleanWebpackPlugin(['dist'], {
+  root: resolve('.'),
+});
 
 module.exports = {
   devServer: {
@@ -138,4 +140,7 @@ module.exports = {
     FaviconsWebpackPluginConfig,
     CleanWebpackPluginConfig,
   ],
+  performance: {
+    hints: false,
+  },
 };

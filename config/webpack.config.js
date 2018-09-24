@@ -23,7 +23,7 @@ const FaviconsWebpackPluginConfig = new FaviconsWebpackPlugin({
   logo: resolve('client/assets/icons/favicon.ico'),
   prefix: 'icons/',
   emitStats: false,
-  statsFilename: 'iconstats.json',
+  statsFilename: 'faviconstats.json',
   persistentCache: false,
   inject: true,
   icons: {
@@ -101,9 +101,7 @@ module.exports = {
         use: [
           {
             loader: 'file-loader',
-            options: {
-              name: 'images/[name].[ext]',
-            },
+            options: { name: 'images/[name].[ext]' },
           },
           {
             loader: 'image-webpack-loader',
@@ -126,11 +124,14 @@ module.exports = {
         },
       },
       {
-        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        test: /\.svg(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'file-loader',
-        options: {
-          name: 'icons/[name].[ext]',
-        },
+        options: { name: 'icons/[name].[ext]' },
+      },
+      {
+        test: /\.(ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'file-loader',
+        options: { name: 'fonts/[name].[ext]' },
       },
     ],
   },

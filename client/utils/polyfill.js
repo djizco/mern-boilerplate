@@ -1,4 +1,4 @@
-export function eventPath() {
+(function eventPath() {
   if (!('path' in Event.prototype)) {
     Object.defineProperty(Event.prototype, 'path', {
       get() {
@@ -18,6 +18,4 @@ export function eventPath() {
       },
     });
   }
-}
-
-export const placeholder = () => {};
+}());

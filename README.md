@@ -55,7 +55,7 @@ npm run lint:fix
 To setup your own project, you will need to copy the contents of this project into a new repo.
 You will need to update the content in these files to names of your project and yourself:
 
-* package.json: name, version, description, repository, author, bugs, homepage,
+* package.json: name, version, description, repository, author, bugs, homepage
 * LICENSE: (update to your preferred license)
 * client/index.html: description and title
 * this README.md

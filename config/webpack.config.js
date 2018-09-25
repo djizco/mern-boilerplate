@@ -17,7 +17,7 @@ const ExtractTextPluginConfig = new ExtractTextPlugin('bundle.css');
 
 const FaviconsWebpackPluginConfig = new FaviconsWebpackPlugin({
   logo: resolve('client/assets/icons/favicon.ico'),
-  prefix: 'icons/favicons',
+  prefix: 'icons/',
   emitStats: false,
   statsFilename: 'iconstats.json',
   persistentCache: false,

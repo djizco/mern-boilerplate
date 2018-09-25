@@ -1,15 +1,8 @@
-import { expect } from 'code';
-import Lab from 'lab';
 import express from 'express';
 import request from 'supertest';
-import routes from '../../../server/routes/index';
+import routes from '.';
 
-const lab = Lab.script();
-const { experiment, test } = lab;
-
-exports.lab = lab;
-
-experiment('The Server', () => {
+describe('The Server', () => {
   const app = express();
   app.use('/', routes);
 

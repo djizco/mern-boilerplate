@@ -14,7 +14,7 @@ router.use('/api/users', users);
 router.get('/api/tags', (req, res) => {
   res.send([
     'MERN', 'Node', 'Express', 'Webpack', 'React', 'Redux', 'Mongoose',
-    'Bulma', 'Fontawesome', 'Ramda', 'ESLint', 'Code', 'Lab', 'Enzyme',
+    'Bulma', 'Fontawesome', 'Ramda', 'ESLint', 'Jest', 'Enzyme',
   ]);
 });
 

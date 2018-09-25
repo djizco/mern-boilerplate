@@ -1,18 +1,22 @@
-const path = require('path');
-
 module.exports = {
-  "env": {
-    "browser": true,
-    "node": true,
-  },
-  settings: {
-    'import/resolver': 'webpack',
+  "root": true,
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": './config/webpack.config.js',
+      }
+    },
   },
   "extends": "airbnb",
   "parser": "babel-eslint",
   "parserOptions": {
+    "ecmaVersion": 2018,
     "sourceType": "module",
     "allowImportExportEverywhere": false,
+  },
+  "env": {
+    "browser": true,
+    "jest": true,
   },
   "plugins": ["react"],
   "rules": {

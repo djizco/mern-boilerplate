@@ -1,8 +1,4 @@
 module.exports = {
-  "env": {
-    "browser": true,
-    "node": true,
-  },
   "root": true,
   "extends": "airbnb",
   "parserOptions": {
@@ -10,9 +6,12 @@ module.exports = {
     "sourceType": "module",
     "allowImportExportEverywhere": false,
   },
+  "env": {
+    "node": true,
+    "jest": true
+  },
   "rules": {
     // override defaults
-    "comma-dangle": [2, "only-multiline"],
     "eqeqeq": [2, "smart"],
     "max-len": [2, {
       "code": 120, "tabWidth": 2, "ignoreUrls": true, "ignoreComments": false,

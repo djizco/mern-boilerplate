@@ -49,6 +49,8 @@ module.exports = {
     inline: true,
   },
   entry: [
+    './client/styles/index.scss',
+    './client/assets/index.js',
     './client/index.js',
   ],
   output: {

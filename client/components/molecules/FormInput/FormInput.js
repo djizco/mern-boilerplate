@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 export default function FormInput(props) {
   const { className, onChange, value, placeholder, type, leftIcon } = props;
 
@@ -28,7 +30,7 @@ export default function FormInput(props) {
         />
         {leftIcon && (
           <span className="icon is-small is-left">
-            <i className={`fa fa-${leftIcon}`} />
+            <FontAwesomeIcon icon={leftIcon} />
           </span>
         )}
       </p>
@@ -47,6 +49,6 @@ FormInput.propTypes = {
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
-  leftIcon: PropTypes.string,
+  leftIcon: PropTypes.object,
   type: PropTypes.string,
 };

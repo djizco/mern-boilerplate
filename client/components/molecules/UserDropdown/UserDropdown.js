@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import * as R from 'ramda';
-import { eventPath } from '_utils/polyfill';
-
-eventPath();
 
 export default class UserDropdown extends Component {
   static propTypes = {

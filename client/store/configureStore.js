@@ -4,7 +4,7 @@ import { connectRouter, routerMiddleware } from 'connected-react-router';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 
-export default function configureStore(history, initialState) {
+export default function configureStore(history, initialState = {}) {
   const middlewares = [routerMiddleware(history), thunk];
 
   if (process.env.NODE_ENV !== 'production') {

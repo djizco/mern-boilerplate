@@ -8,7 +8,7 @@ import Root from '_environment/Root';
 import configureStore from '_store/configureStore';
 
 const history = createBrowserHistory();
-const store = configureStore(history, {});
+const store = configureStore(history);
 
 render(
   <Root store={store} history={history} />,

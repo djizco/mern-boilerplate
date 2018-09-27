@@ -43,7 +43,7 @@ export default function Navigation(props) {
               MERN Boilerplate
             </h3>
           </Link>
-          <div className="navbar-item navbar-brand-right">
+          <div className="navbar-brand-right">
             {!auth && (
               <Link to="/login" className="navbar-item is-hidden-desktop">
                 <h6 className="title is-6">

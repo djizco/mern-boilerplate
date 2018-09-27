@@ -3,10 +3,15 @@
 
   .navbar-brand-right {
     margin-left: auto;
+    display: flex;
   }
 
   .navbar-end .navbar-item:hover {
     background: $mern-hover;
+  }
+
+  .navbar-item {
+    min-height: 44px;
   }
 
   .navbar-item.is-hoverable:hover {

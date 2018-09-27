@@ -1,36 +1,36 @@
-.nav {
+.navbar {
   background-color: $mern-primary;
 
-  &.is-fixed {
-    left: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
-    z-index: 1030;
+  .navbar-brand-right {
+    margin-left: auto;
   }
 
-  .nav-item.is-hoverable:hover {
+  .navbar-end .navbar-item:hover {
+    background: $mern-hover;
+  }
+
+  .navbar-item.is-hoverable:hover {
     background-color: $mern-hover;
   }
 
-  .nav-item .dropdown-caret {
+  .navbar-item .dropdown-caret {
     border-top-color: $lightest-grey;
   }
 
-  .nav-item:not(.button).is-tab:hover {
+  .navbar-item:not(.button).is-tab:hover {
     border-bottom: 1px solid $white;
   }
 
-  .nav-item:not(.button).is-tab.is-active {
+  .navbar-item:not(.button).is-tab.is-active {
     border-bottom: 3px solid $white;
     color: $white;
   }
 
-  .nav-item img {
+  .navbar-item img {
     max-height: none;
   }
 
-  .nav-image.is-32x32 {
+  .navbar-image.is-32x32 {
     img {
       border: 1px solid $mern-hover;
       border-radius: 3px;

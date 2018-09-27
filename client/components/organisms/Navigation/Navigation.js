@@ -20,67 +20,95 @@ export default function Navigation(props) {
     : R.slice(0, 10, pathname) === '/settings/';
 
   const homeItemClasses = classNames({
-    'nav-item': true,
+    'navbar-item': true,
     'is-tab': true,
     'is-hidden-mobile': true,
     'is-active': isHome,
   });
 
   const settingsItemClasses = classNames({
-    'nav-item': true,
+    'navbar-item': true,
     'is-tab': true,
     'is-hidden-mobile': true,
     'is-active': isSettings,
   });
 
   return (
-    <nav className="nav has-shadow is-fixed">
+    <nav className="navbar is-fixed-top" role="navigation">
       <div className="container">
 
-        <div className="nav-left">
-          <Link to={auth ? '/home' : '/'} className="nav-item">
+        <div className="navbar-brand">
+          <Link to={auth ? '/home' : '/'} className="navbar-item" aria-label="main navigation">
             <h3 className="title is-3 logo">
               MERN Boilerplate
             </h3>
           </Link>
-          {auth && (
-            <Link to="/home" className={homeItemClasses}>
-              <h6 className="title is-6">
-                Home
-              </h6>
-            </Link>
-          )}
-          {auth && (
-            <Link to="/settings" className={settingsItemClasses}>
-              <h6 className="title is-6">
-                Settings
-              </h6>
-            </Link>
-          )}
+          <div className="navbar-item navbar-brand-right">
+            {!auth && (
+              <Link to="/login" className="navbar-item is-hidden-desktop">
+                <h6 className="title is-6">
+                  Login
+                </h6>
+              </Link>
+            )}
+            {!auth && (
+              <Link to="/register" className="navbar-item is-hidden-desktop">
+                <Button label="Sign Up" type="success" />
+              </Link>
+            )}
+            {auth && (
+              <a
+                className="navbar-item is-hoverable is-hidden-desktop"
+                onClick={toggleUserDropdown}
+                onKeyPress={toggleUserDropdown}
+              >
+                <figure className="image navbar-image is-32x32">
+                  <img className="profile-img" src={user.profilePic || '/images/default-profile.png'} alt="" />
+                </figure>
+                <span className="dropdown-caret" />
+              </a>
+            )}
+          </div>
         </div>
 
         {auth ? (
-          <div className="nav-right">
-            <a className="nav-item is-hoverable" onClick={toggleUserDropdown} onKeyPress={toggleUserDropdown}>
-              <figure className="image nav-image is-32x32">
-                <img className="profile-img" src={user.profilePic || '/images/default-profile.png'} alt="" />
-              </figure>
-              <span className="dropdown-caret" />
-            </a>
-            <UserDropdown open={userDropdownOpen} closeDropdown={closeUserDropdown} />
+          <div className="navbar-menu">
+            <div className="navbar-start">
+              <Link to="/home" className={homeItemClasses}>
+                <h6 className="title is-6">
+                  Home
+                </h6>
+              </Link>
+              <Link to="/settings" className={settingsItemClasses}>
+                <h6 className="title is-6">
+                  Settings
+                </h6>
+              </Link>
+            </div>
+            <div className="navbar-end">
+              <a className="navbar-item is-hoverable" onClick={toggleUserDropdown} onKeyPress={toggleUserDropdown}>
+                <figure className="image navbar-image is-32x32">
+                  <img className="profile-img" src={user.profilePic || '/images/default-profile.png'} alt="" />
+                </figure>
+                <span className="dropdown-caret" />
+              </a>
+            </div>
           </div>
         ) : (
-          <div className="nav-right">
-            <Link to="/login" className="nav-item">
-              <h6 className="title is-6">
-                Login
-              </h6>
-            </Link>
-            <Link to="/register" className="nav-item">
-              <Button label="Sign Up" type="success" />
-            </Link>
+          <div className="navbar-menu">
+            <div className="navbar-end">
+              <Link to="/login" className="navbar-item">
+                <h6 className="title is-6">
+                  Login
+                </h6>
+              </Link>
+              <Link to="/register" className="navbar-item">
+                <Button label="Sign Up" type="success" />
+              </Link>
+            </div>
           </div>
         )}
+        <UserDropdown open={userDropdownOpen} closeDropdown={closeUserDropdown} />
       </div>
     </nav>
   );

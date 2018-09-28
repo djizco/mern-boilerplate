@@ -105,6 +105,7 @@
     "history": "^4.7.2",
     "immutability-helper": "^2.8.1",
     "json-style-converter": "^1.0.3",
+    "moment": "^2.22.2",
     "mongoose": "^5.2.16",
     "mongoose-auto-increment-reworked": "^1.2.1",
     "mongoose-immutable": "0.0.2",

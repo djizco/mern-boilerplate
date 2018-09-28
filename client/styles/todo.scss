@@ -1,0 +1,43 @@
+.todo-page {
+  .todo-section {
+    background-color: $whitesmoke;
+  }
+
+  .space-right {
+    margin-right: .75rem;
+  }
+
+  .title.is-1 {
+    color: $dark-grey;
+    margin: 20px;
+  }
+
+  .icon {
+    vertical-align: middle;
+
+    .fa {
+      text-align: left;
+      width: 21px;
+    }
+
+    .fa-edit,
+    .fa-save {
+      color: $green;
+    }
+
+    .fa-ban,
+    .fa-trash {
+      color: $red;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .confirm-modal {
+    .modal-content {
+      max-width: 400px;
+    }
+  }
+}

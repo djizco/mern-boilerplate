@@ -4,9 +4,10 @@ import { Switch, Route } from 'react-router';
 import Notifications from 'react-notification-system-redux';
 
 import WelcomePage from '_pages/WelcomePage';
-import HomePage from '_pages/HomePage';
 import LoginPage from '_pages/LoginPage';
 import RegisterPage from '_pages/RegisterPage';
+import HomePage from '_pages/HomePage';
+import TodoPage from '_pages/TodoPage';
 import SettingsPage from '_pages/SettingsPage';
 import LostPage from '_pages/LostPage';
 
@@ -22,9 +23,10 @@ export default function Main(props) {
       <div className="main">
         <Switch>
           <Route exact path="/" component={WelcomePage} />
-          <Route path="/home" component={HomePage} />
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegisterPage} />
+          <Route path="/home" component={HomePage} />
+          <Route path="/todo" component={TodoPage} />
           <Route path="/settings" component={SettingsPage} />
           <Route path="*" component={LostPage} />
         </Switch>

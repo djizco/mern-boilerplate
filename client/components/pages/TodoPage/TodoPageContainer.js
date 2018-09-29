@@ -15,7 +15,6 @@ export default class TodoPageContainer extends Component {
     if (R.isEmpty(user)) {
       pushToLogin();
     } else {
-      // Add loading state
       getTodos();
     }
   }

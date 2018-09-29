@@ -45,7 +45,7 @@ export default function Navigation(props) {
   });
 
   return (
-    <nav className="navbar is-fixed-top" role="navigation">
+    <nav className="navbar is-fixed-top has-shadow" role="navigation">
       <div className="container">
 
         <div className="navbar-brand">

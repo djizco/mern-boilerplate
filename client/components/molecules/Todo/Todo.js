@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ConfirmModal from '_organisms/ConfirmModal';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash, faBan, faEdit, faSave } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt, faBan, faPencilAlt, faSave } from '@fortawesome/free-solid-svg-icons';
 import { faSquare, faCheckSquare } from '@fortawesome/free-regular-svg-icons';
 
 export default function Todo(props) {
@@ -59,7 +59,7 @@ export default function Todo(props) {
                 </span>
               ) : (
                 <span className="icon space-right" onClick={editTodo} onKeyPress={editTodo}>
-                  <FontAwesomeIcon icon={faEdit} size="lg" />
+                  <FontAwesomeIcon icon={faPencilAlt} size="lg" />
                 </span>
               )}
               {edit ? (
@@ -68,7 +68,7 @@ export default function Todo(props) {
                 </span>
               ) : (
                 <span className="icon" onClick={openModal} onKeyPress={cancelEdit}>
-                  <FontAwesomeIcon icon={faTrash} size="lg" />
+                  <FontAwesomeIcon icon={faTrashAlt} size="lg" />
                 </span>
               )}
             </div>

@@ -61,11 +61,10 @@ export default class TodoContainer extends Component {
 
   updateTodo = () => {
     if (this.state.text) {
-      this.setState({ edit: false });
       this.props.updateTodo({
         id: this.props.id,
         text: this.state.text,
-      });
+      }).then(() => this.setState({ edit: false }));
     }
   }
 

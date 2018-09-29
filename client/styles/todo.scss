@@ -9,7 +9,7 @@
 
   .title.is-1 {
     color: $dark-grey;
-    margin: 20px;
+    margin-bottom: 20px;
   }
 
   .icon {
@@ -20,13 +20,13 @@
       width: 21px;
     }
 
-    .fa-edit,
+    .fa-pencil-alt,
     .fa-save {
       color: $green;
     }
 
     .fa-ban,
-    .fa-trash {
+    .fa-trash-alt {
       color: $red;
     }
 

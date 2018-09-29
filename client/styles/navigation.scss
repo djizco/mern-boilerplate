@@ -1,6 +1,10 @@
 .navbar {
   background-color: $mern-primary;
 
+  &.has-shadow {
+    box-shadow: 0 2px 3px rgba(10, 10, 10, 0.3);
+  }
+
   .navbar-brand-right {
     margin-left: auto;
     display: flex;

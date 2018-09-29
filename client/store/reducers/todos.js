@@ -1,7 +1,9 @@
 import update from 'immutability-helper';
 import * as R from 'ramda';
 
-import { ADD_TODO, TOGGLE_COMPLETE_TODO, UPDATE_TODO, HIDE_TODO, DELETE_TODO } from '../actions/todos';
+import {
+  SET_TODOS, ADD_TODO, TOGGLE_COMPLETE_TODO, UPDATE_TODO, HIDE_TODO, DELETE_TODO,
+} from '../actions/todos';
 
 export function todo(state = {
   completed: false,
@@ -37,6 +39,8 @@ export default function todos(state = [], action) {
   const updatedAtIndex = { $splice: [[index, 1, todo(state[index], action)]] };
 
   switch (action.type) {
+    case SET_TODOS:
+      return update(state, { $set: action.todos });
     case ADD_TODO:
       return update(state, { $push: [todo(undefined, action)] });
     case TOGGLE_COMPLETE_TODO:

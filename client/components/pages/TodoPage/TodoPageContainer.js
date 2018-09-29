@@ -7,21 +7,21 @@ export default class TodoPageContainer extends Component {
   static propTypes = {
     user: PropTypes.shape({}).isRequired,
     pushToLogin: PropTypes.func.isRequired,
-    location: PropTypes.shape({
-      pathname: PropTypes.string.isRequired,
-    }).isRequired,
+    getTodos: PropTypes.func.isRequired,
   }
 
   componentDidMount() {
-    const { user, pushToLogin } = this.props;
+    const { user, pushToLogin, getTodos } = this.props;
     if (R.isEmpty(user)) {
       pushToLogin();
     }
+    // Add loading state
+    getTodos();
   }
 
   render() {
     return (
-      <TodoPage location={this.props.location} />
+      <TodoPage />
     );
   }
 }

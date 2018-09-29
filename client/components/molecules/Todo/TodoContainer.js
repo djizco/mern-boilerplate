@@ -5,11 +5,11 @@ import Todo from './Todo';
 
 export default class TodoContainer extends Component {
   static propTypes = {
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
     completed: PropTypes.bool.isRequired,
     hidden: PropTypes.bool.isRequired,
-    createdAt: PropTypes.number.isRequired,
+    createdAt: PropTypes.string.isRequired,
     updatedAt: PropTypes.number,
     toggleCompleteTodo: PropTypes.func.isRequired,
     updateTodo: PropTypes.func.isRequired,

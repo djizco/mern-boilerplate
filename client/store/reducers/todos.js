@@ -2,12 +2,11 @@ import update from 'immutability-helper';
 import * as R from 'ramda';
 
 import {
-  SET_TODOS, ADD_TODO, TOGGLE_COMPLETE_TODO, UPDATE_TODO, HIDE_TODO, DELETE_TODO,
+  SET_TODOS, ADD_TODO, TOGGLE_COMPLETE_TODO, UPDATE_TODO, REMOVE_TODO,
 } from '../actions/todos';
 
 export function todo(state = {
   completed: false,
-  hidden: false,
 }, action) {
   switch (action.type) {
     case ADD_TODO:
@@ -24,10 +23,6 @@ export function todo(state = {
       return update(state, {
         text: { $set: action.text },
         updatedAt: { $set: action.updatedAt },
-      });
-    case HIDE_TODO:
-      return update(state, {
-        hidden: { $set: true },
       });
     default:
       return state;
@@ -47,9 +42,7 @@ export default function todos(state = [], action) {
       return update(state, updatedAtIndex);
     case UPDATE_TODO:
       return update(state, updatedAtIndex);
-    case HIDE_TODO:
-      return update(state, updatedAtIndex);
-    case DELETE_TODO:
+    case REMOVE_TODO:
       return update(state, { $splice: [[index, 1]] });
     default:
       return state;

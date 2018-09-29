@@ -8,12 +8,12 @@ import { faSquare, faCheckSquare } from '@fortawesome/free-regular-svg-icons';
 
 export default function Todo(props) {
   const {
-    completed, hidden, edit, confirm, text, currentText, updated, createdMessage, updatedMessage,
+    completed, edit, confirm, text, currentText, updated, createdMessage, updatedMessage,
     toggleCompleteTodo, updateText, updateTodo, editTodo, cancelEdit, deleteTodo,
     openModal, closeModal,
   } = props;
 
-  return !hidden && (
+  return (
     <li className="todo box">
       <article className="media">
         <figure className="media-left">
@@ -86,7 +86,6 @@ export default function Todo(props) {
 
 Todo.propTypes = {
   completed: PropTypes.bool.isRequired,
-  hidden: PropTypes.bool.isRequired,
   confirm: PropTypes.bool.isRequired,
   edit: PropTypes.bool.isRequired,
   updated: PropTypes.bool.isRequired,

@@ -8,12 +8,10 @@ export default class TodoContainer extends Component {
     id: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
     completed: PropTypes.bool.isRequired,
-    hidden: PropTypes.bool.isRequired,
     createdAt: PropTypes.string.isRequired,
-    updatedAt: PropTypes.number,
+    updatedAt: PropTypes.string,
     toggleCompleteTodo: PropTypes.func.isRequired,
     updateTodo: PropTypes.func.isRequired,
-    hideTodo: PropTypes.func.isRequired,
     deleteTodo: PropTypes.func.isRequired,
   };
 
@@ -55,8 +53,6 @@ export default class TodoContainer extends Component {
 
   cancelEdit = () => this.setState({ text: this.props.text, edit: false })
 
-  hideTodo = () => this.props.hideTodo(this.props.id)
-
   deleteTodo = () => this.props.deleteTodo(this.props.id)
 
   openModal = () => this.setState({ confirm: true })
@@ -66,17 +62,19 @@ export default class TodoContainer extends Component {
   updateTodo = () => {
     if (this.state.text) {
       this.setState({ edit: false });
-      this.props.updateTodo(this.props.id, this.state.text);
+      this.props.updateTodo({
+        id: this.props.id,
+        text: this.state.text,
+      });
     }
   }
 
   render() {
-    const { updatedAt, hidden, completed } = this.props;
+    const { updatedAt, completed } = this.props;
     const { edit, confirm, createdMessage, updatedMessage } = this.state;
 
     return (
       <Todo
-        hidden={hidden}
         completed={completed}
         confirm={confirm}
         edit={edit}

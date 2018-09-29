@@ -14,9 +14,10 @@ export default class TodoPageContainer extends Component {
     const { user, pushToLogin, getTodos } = this.props;
     if (R.isEmpty(user)) {
       pushToLogin();
+    } else {
+      // Add loading state
+      getTodos();
     }
-    // Add loading state
-    getTodos();
   }
 
   render() {

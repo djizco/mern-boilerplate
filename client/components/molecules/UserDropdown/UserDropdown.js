@@ -46,6 +46,11 @@ export default class UserDropdown extends Component {
           </li>
           <hr className="dropdown-separator" />
           <li className="dropdown-item">
+            <Link to="/todo" onClick={closeDropdown}>
+              Todo
+            </Link>
+          </li>
+          <li className="dropdown-item">
             <Link to="/settings" onClick={closeDropdown}>
               Settings
             </Link>

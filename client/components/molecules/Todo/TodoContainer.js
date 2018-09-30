@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
+import { distanceInWordsToNow } from 'date-fns';
 import Todo from './Todo';
 
 export default class TodoContainer extends Component {
@@ -33,7 +33,7 @@ export default class TodoContainer extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ updatedMessage: moment(nextProps.updatedAt).fromNow() });
+    this.setState({ updatedMessage: this.fromNow(nextProps.updatedAt) });
   }
 
   componentWillUnmount() {
@@ -41,9 +41,11 @@ export default class TodoContainer extends Component {
   }
 
   updateMessages = () => this.setState({
-    updatedMessage: this.props.updatedAt ? moment(this.props.updatedAt).fromNow() : '',
-    createdMessage: moment(this.props.createdAt).fromNow(),
+    updatedMessage: this.props.updatedAt ? this.fromNow(this.props.updatedAt) : '',
+    createdMessage: this.fromNow(this.props.createdAt),
   })
+
+  fromNow = date => distanceInWordsToNow(date, { addSuffix: true })
 
   toggleCompleteTodo = () => this.props.toggleCompleteTodo(this.props.id)
 

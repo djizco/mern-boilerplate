@@ -1,5 +1,5 @@
 import update from 'immutability-helper';
-import { LOGIN_USER, LOGOUT_USER, UPDATE_USER } from '../actions/user';
+import { LOGIN_USER, LOGOUT_USER, UPDATE_USER } from '_actions/user';
 
 export default function user(state = {}, action) {
   switch (action.type) {

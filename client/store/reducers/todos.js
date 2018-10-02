@@ -3,7 +3,9 @@ import * as R from 'ramda';
 
 import {
   SET_TODOS, ADD_TODO, TOGGLE_COMPLETE_TODO, UPDATE_TODO, REMOVE_TODO,
-} from '../actions/todos';
+} from '_actions/todos';
+
+import { LOGOUT_USER } from '_actions/user';
 
 export function todo(state = {
   completed: false,
@@ -44,6 +46,8 @@ export default function todos(state = [], action) {
       return update(state, updatedAtIndex);
     case REMOVE_TODO:
       return update(state, { $splice: [[index, 1]] });
+    case LOGOUT_USER:
+      return [];
     default:
       return state;
   }

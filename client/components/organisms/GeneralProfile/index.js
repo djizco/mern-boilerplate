@@ -1,6 +1,6 @@
 import R from '_utils/ramda';
 import { connect } from 'react-redux';
-import { attemptGetUser, attemptUpdateUser } from '_actions/user';
+import { attemptGetUser, attemptUpdateUser } from '_thunks/user';
 import GeneralProfileContainer from './GeneralProfileContainer';
 
 const mapStateToProps = R.pick(['user', 'locations']);

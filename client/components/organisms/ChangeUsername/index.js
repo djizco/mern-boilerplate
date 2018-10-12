@@ -1,6 +1,6 @@
 import R from '_utils/ramda';
 import { connect } from 'react-redux';
-import { attemptUpdateUser } from '_actions/user';
+import { attemptUpdateUser } from '_thunks/user';
 import ChangeUsernameContainer from './ChangeUsernameContainer';
 
 const mapStateToProps = R.pick(['user']);

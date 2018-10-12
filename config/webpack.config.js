@@ -70,6 +70,7 @@ module.exports = {
       _environment: resolve('client/components/environment/'),
       _store: resolve('client/store/'),
       _actions: resolve('client/store/actions'),
+      _thunks: resolve('client/store/thunks'),
       _reducers: resolve('client/store/reducers'),
       _assets: resolve('client/assets/'),
       _styles: resolve('client/styles/'),

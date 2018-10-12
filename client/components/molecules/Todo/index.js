@@ -1,6 +1,6 @@
 import * as R from 'ramda';
 import { connect } from 'react-redux';
-import { attemptToggleCompleteTodo, attemptUpdateTodo, attemptDeleteTodo } from '_store/actions/todos';
+import { attemptToggleCompleteTodo, attemptUpdateTodo, attemptDeleteTodo } from '_thunks/todos';
 import TodoContainer from './TodoContainer';
 
 const mapStateToProps = R.pick([]);

@@ -1,6 +1,6 @@
 import * as R from 'ramda';
 import { connect } from 'react-redux';
-import { attemptAddTodo } from '_actions/todos';
+import { attemptAddTodo } from '_thunks/todos';
 import AddTodoContainer from './AddTodoContainer';
 
 const mapStateToProps = R.pick([]);

@@ -1,6 +1,6 @@
 import R from '_utils/ramda';
 import { connect } from 'react-redux';
-import { attemptUpdatePassword } from '_actions/user';
+import { attemptUpdatePassword } from '_thunks/user';
 import ChangePasswordContainer from './ChangePasswordContainer';
 
 

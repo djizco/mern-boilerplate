@@ -1,7 +1,7 @@
 import R from '_utils/ramda';
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
-import { attemptGetTodos } from '_actions/todos';
+import { attemptGetTodos } from '_thunks/todos';
 import TodoPageContainer from './TodoPageContainer';
 
 const mapStateToProps = R.pick(['user']);

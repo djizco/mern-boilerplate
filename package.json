@@ -68,6 +68,7 @@
       "^_environment(.*)$": "<rootDir>/client/components/environment/$1",
       "^_store(.*)$": "<rootDir>/client/store/$1",
       "^_actions(.*)$": "<rootDir>/client/store/actions/$1",
+      "^_thunks(.*)$": "<rootDir>/client/store/thunks/$1",
       "^_reducers(.*)$": "<rootDir>/client/store/reducers/$1",
       "^_assets(.*)$": "<rootDir>/client/assets/$1",
       "^_styles(.*)$": "<rootDir>/client/styles/$1",

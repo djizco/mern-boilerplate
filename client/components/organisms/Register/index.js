@@ -1,6 +1,6 @@
 import R from '_utils/ramda';
 import { connect } from 'react-redux';
-import { attemptRegister } from '_actions/user';
+import { attemptRegister } from '_thunks/auth';
 import RegisterContainer from './RegisterContainer';
 
 const mapStateToProps = R.pick([]);

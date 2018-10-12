@@ -1,4 +1,5 @@
 import { push } from 'connected-react-router';
+import { snakeToCamelCase } from 'json-style-converter/es5';
 import Notifications from 'react-notification-system-redux';
 
 import { postRegister, postLogin, postLogout } from '_api/auth';
@@ -9,7 +10,7 @@ import { dispatchError } from '_utils/api';
 export const attemptLogin = user => dispatch =>
   postLogin(user)
     .then(data => {
-      dispatch(login(data.user));
+      dispatch(login(snakeToCamelCase(data.user)));
       dispatch(Notifications.success({
         title: 'Success!',
         message: data.message,

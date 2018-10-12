@@ -10,17 +10,22 @@ export default class TodoPageContainer extends Component {
     getTodos: PropTypes.func.isRequired,
   }
 
+  state = {
+    loading: true,
+  }
+
   componentDidMount() {
     const { user, pushToLogin, getTodos } = this.props;
     if (R.isEmpty(user)) {
       pushToLogin();
     } else {
-      getTodos();
+      getTodos()
+        .then(() => this.setState({ loading: false }));
     }
   }
 
   render() {
-    return (
+    return !this.state.loading && (
       <TodoPage />
     );
   }

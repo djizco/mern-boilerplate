@@ -75,6 +75,7 @@ module.exports = {
       _assets: resolve('client/assets/'),
       _styles: resolve('client/styles/'),
       _utils: resolve('client/utils/'),
+      _hooks: resolve('client/hooks/'),
       _api: resolve('client/api/'),
     },
   },

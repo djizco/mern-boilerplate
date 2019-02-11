@@ -2,9 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
+import R from '_utils/ramda';
 
-export default function SettingsMenu(props) {
-  const { pathname, logout } = props;
+export default function SettingsMenu({ pathname, attemptLogout }) {
+  const logout = () =>
+    attemptLogout()
+      .catch(R.identity);
 
   const profileClasses = classNames({
     'is-active': pathname.includes('profile') || pathname === '/settings' || pathname === '/settings/',
@@ -45,5 +48,5 @@ export default function SettingsMenu(props) {
 
 SettingsMenu.propTypes = {
   pathname: PropTypes.string.isRequired,
-  logout: PropTypes.func.isRequired,
+  attemptLogout: PropTypes.func.isRequired,
 };

@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from '_atoms/Button';
 
-export default function AddTodo({ text, updateText, addTodo }) {
+import useKeypress from '_hooks/useKeypress';
+
+export default function AddTodo({ addTodo }) {
+  const [text, setText] = useState('');
+
+  const onAddTodo = () => {
+    if (text) {
+      addTodo(text);
+      setText('');
+    }
+  };
+
+  useKeypress('Enter', onAddTodo);
+
+  const updateText = e => setText(e.target.value);
+
+
   return (
     <div className="add-todo columns is-gapless">
       <div className="column is-10">
@@ -11,7 +27,7 @@ export default function AddTodo({ text, updateText, addTodo }) {
       <div className="column is-2">
         <Button
           style={{ width: '100%' }}
-          onClick={addTodo}
+          onClick={onAddTodo}
           label="Add"
           type="success"
         />
@@ -21,7 +37,5 @@ export default function AddTodo({ text, updateText, addTodo }) {
 }
 
 AddTodo.propTypes = {
-  text: PropTypes.string.isRequired,
-  updateText: PropTypes.func.isRequired,
   addTodo: PropTypes.func.isRequired,
 };

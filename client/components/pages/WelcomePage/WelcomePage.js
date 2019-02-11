@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import R from '_utils/ramda';
 
-export default function WelcomePage() {
+export default function WelcomePage({ user, pushToHome }) {
+  useEffect(() => {
+    if (!R.isEmpty(user)) {
+      pushToHome();
+    }
+  }, []);
+
   return (
     <div className="welcome-page page">
       <div className="section">
@@ -13,3 +21,8 @@ export default function WelcomePage() {
     </div>
   );
 }
+
+WelcomePage.propTypes = {
+  user: PropTypes.shape({}).isRequired,
+  pushToHome: PropTypes.func.isRequired,
+};

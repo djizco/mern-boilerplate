@@ -1,12 +1,3 @@
-import R from '_utils/ramda';
-import { connect } from 'react-redux';
-import { attemptGetUser } from '_thunks/user';
-import RootContainer from './RootContainer';
+import Root from './Root';
 
-const mapStateToProps = R.pick([]);
-
-const mapDispatchToProps = dispatch => ({
-  attemptGetUser: () => dispatch(attemptGetUser()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(RootContainer);
+export default Root;

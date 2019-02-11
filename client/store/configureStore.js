@@ -1,8 +1,8 @@
 import { createStore, applyMiddleware } from 'redux';
+import { routerMiddleware } from 'connected-react-router';
 import { createLogger } from 'redux-logger';
-import { connectRouter, routerMiddleware } from 'connected-react-router';
 import thunk from 'redux-thunk';
-import rootReducer from './reducers';
+import createRootReducer from './reducers';
 
 export default function configureStore(history, initialState = {}) {
   const middlewares = [routerMiddleware(history), thunk];
@@ -13,7 +13,7 @@ export default function configureStore(history, initialState = {}) {
   }
 
   return createStore(
-    connectRouter(history)(rootReducer),
+    createRootReducer(history),
     initialState,
     applyMiddleware(...middlewares),
   );

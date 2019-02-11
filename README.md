@@ -83,6 +83,8 @@ You can now start updating files in your client to begin working on your own pro
   - store
     - actions
     - reducers
+    - thunks
+    - tests
   - styles
   - utils
 - server
@@ -119,6 +121,8 @@ This is based on atomic design. Learn more about [atomic design](http://bradfros
 [FontAwesome](http://fontawesome.io/) - Icons
 
 [Ramda](http://ramdajs.com/) - Functional Library
+
+[date-fns](https://date-fns.org/) - Date Functions Library
 
 [SuperAgent](https://github.com/visionmedia/superagent) - HTTP Request Library
 

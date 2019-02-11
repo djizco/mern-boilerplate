@@ -1,17 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Switch } from 'react-router';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
-import { createBrowserHistory } from 'history';
 
 import Main from '_environment/Main';
 
-import configureStore from '_store/configureStore';
-
-const history = createBrowserHistory();
-const store = configureStore(history);
-
-export default function Root() {
+export default function Root({ history, store }) {
   return (
     <Provider store={store}>
       <ConnectedRouter history={history}>
@@ -22,3 +17,8 @@ export default function Root() {
     </Provider>
   );
 }
+
+Root.propTypes = {
+  store: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+};

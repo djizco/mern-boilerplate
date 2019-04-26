@@ -16,6 +16,8 @@ npm install
 Start the database
 ```
 mongod
+// or
+brew services start mongodb
 ```
 
 Start the client
@@ -33,6 +35,8 @@ npm start
 Start the database
 ```
 mongod
+// or
+brew services start mongodb
 ```
 
 Start the Server

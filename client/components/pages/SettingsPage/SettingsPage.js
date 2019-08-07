@@ -1,16 +1,21 @@
 import React, { useEffect } from 'react';
-import R from '_utils/ramda';
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { push } from 'connected-react-router';
 import { Switch, Route } from 'react-router';
+import R from '_utils/ramda';
 
 import ProfileSettings from '_templates/ProfileSettings';
 import AccountSettings from '_templates/AccountSettings';
 import SettingsMenu from '_organisms/SettingsMenu';
 
-export default function SettingsPage({ user, pushToLogin, location }) {
+export default function SettingsPage({ location }) {
+  const dispatch = useDispatch();
+  const { user } = useSelector(R.pick(['user']));
+
   useEffect(() => {
     if (R.isEmpty(user)) {
-      pushToLogin();
+      dispatch(push('/login'));
     }
   }, []);
 
@@ -37,8 +42,6 @@ export default function SettingsPage({ user, pushToLogin, location }) {
 }
 
 SettingsPage.propTypes = {
-  user: PropTypes.shape({}).isRequired,
-  pushToLogin: PropTypes.func.isRequired,
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired,
   }).isRequired,

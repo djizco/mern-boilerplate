@@ -65,6 +65,7 @@
       "^_templates(.*)$": "<rootDir>/client/components/templates/$1",
       "^_pages(.*)$": "<rootDir>/client/components/pages/$1",
       "^_environment(.*)$": "<rootDir>/client/components/environment/$1",
+      "^_hooks(.*)$": "<rootDir>/client/hooks/$1",
       "^_store(.*)$": "<rootDir>/client/store/$1",
       "^_actions(.*)$": "<rootDir>/client/store/actions/$1",
       "^_thunks(.*)$": "<rootDir>/client/store/thunks/$1",
@@ -72,7 +73,6 @@
       "^_assets(.*)$": "<rootDir>/client/assets/$1",
       "^_styles(.*)$": "<rootDir>/client/styles/$1",
       "^_utils(.*)$": "<rootDir>/client/utils/$1",
-      "^_hooks(.*)$": "<rootDir>/client/hooks/$1",
       "^_api(.*)$": "<rootDir>/client/api/$1"
     },
     "setupFiles": [

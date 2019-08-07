@@ -1,7 +1,3 @@
-import R from '_utils/ramda';
-import { connect } from 'react-redux';
-import NavigationContainer from './NavigationContainer';
+import Navigation from './Navigation';
 
-const mapStateToProps = R.pick(['user']);
-
-export default connect(mapStateToProps)(NavigationContainer);
+export default Navigation;

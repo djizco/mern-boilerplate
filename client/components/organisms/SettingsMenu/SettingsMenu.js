@@ -2,11 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
+import { useDispatch } from 'react-redux';
 import R from '_utils/ramda';
 
-export default function SettingsMenu({ pathname, attemptLogout }) {
+import { attemptLogout } from '_thunks/auth';
+
+export default function SettingsMenu({ pathname }) {
+  const dispatch = useDispatch();
+
   const logout = () =>
-    attemptLogout()
+    dispatch(attemptLogout())
       .catch(R.identity);
 
   const profileClasses = classNames({
@@ -48,5 +53,4 @@ export default function SettingsMenu({ pathname, attemptLogout }) {
 
 SettingsMenu.propTypes = {
   pathname: PropTypes.string.isRequired,
-  attemptLogout: PropTypes.func.isRequired,
 };

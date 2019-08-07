@@ -1,16 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { push } from 'connected-react-router';
 import R from '_utils/ramda';
+
+import { attemptGetTodos } from '_thunks/todos';
 import TodoSection from '_templates/TodoSection';
 
-export default function TodoPage({ user, pushToLogin, getTodos }) {
+export default function TodoPage() {
+  const dispatch = useDispatch();
+  const { user } = useSelector(R.pick(['user']));
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (R.isEmpty(user)) {
-      pushToLogin();
+      dispatch(push('/login'));
     } else {
-      getTodos()
+      dispatch(attemptGetTodos())
         .then(() => setLoading(false));
     }
   }, []);
@@ -21,9 +27,3 @@ export default function TodoPage({ user, pushToLogin, getTodos }) {
     </div>
   );
 }
-
-TodoPage.propTypes = {
-  user: PropTypes.shape({}).isRequired,
-  pushToLogin: PropTypes.func.isRequired,
-  getTodos: PropTypes.func.isRequired,
-};

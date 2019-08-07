@@ -1,17 +1,58 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import ConfirmModal from '_organisms/ConfirmModal';
+import { useDispatch } from 'react-redux';
+import { distanceInWordsToNow } from 'date-fns';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt, faBan, faPencilAlt, faSave } from '@fortawesome/free-solid-svg-icons';
 import { faSquare, faCheckSquare } from '@fortawesome/free-regular-svg-icons';
 
-export default function Todo(props) {
-  const {
-    completed, edit, confirm, text, currentText, updated, createdMessage, updatedMessage,
-    toggleCompleteTodo, updateText, updateTodo, editTodo, cancelEdit, deleteTodo,
-    openModal, closeModal,
-  } = props;
+import { attemptToggleCompleteTodo, attemptUpdateTodo, attemptDeleteTodo } from '_thunks/todos';
+import ConfirmModal from '_organisms/ConfirmModal';
+
+const fromNow = date => distanceInWordsToNow(date, { addSuffix: true });
+
+export default function Todo({ id, text, completed, createdAt, updatedAt }) {
+  const dispatch = useDispatch();
+
+  const [currentText, setCurrentText] = useState(text);
+  const [edit, setEdit] = useState(false);
+  const [confirm, setConfirm] = useState(false);
+  const [updatedMessage, setUpdatedMessage] = useState('');
+  const [createdMessage, setCreatedMessage] = useState('');
+
+  const updateMessages = () => {
+    setUpdatedMessage(updatedAt ? fromNow(updatedAt) : '');
+    setCreatedMessage(fromNow(createdAt));
+  };
+
+  useEffect(() => {
+    updateMessages();
+    const interval = window.setInterval(updateMessages, 1000);
+
+    return () => clearInterval(interval);
+  }, [updatedAt]);
+
+  const openModal = () => setConfirm(true);
+  const closeModal = () => setConfirm(false);
+  const updateText = e => setCurrentText(e.target.value);
+  const editTodo = () => setEdit(true);
+
+  const cancelEdit = () => {
+    setEdit(false);
+    setCurrentText(text);
+  };
+
+  const handleUpdateTodo = () => {
+    if (currentText) {
+      dispatch(attemptUpdateTodo(id, currentText))
+        .then(() => setEdit(false));
+    }
+  };
+
+  const toggleCompleteTodo = () => dispatch(attemptToggleCompleteTodo(id));
+
+  const deleteTodo = () => dispatch(attemptDeleteTodo(id));
 
   return (
     <li className="todo box">
@@ -46,7 +87,7 @@ export default function Todo(props) {
 
           <nav className="level is-mobile">
             <div className="level-left">
-              {updated && (
+              {!!updatedAt && (
                 <small>
                   {`edited ${updatedMessage}`}
                 </small>
@@ -54,7 +95,7 @@ export default function Todo(props) {
             </div>
             <div className="level-right">
               {edit ? (
-                <span className="icon space-right" onClick={updateTodo} onKeyPress={updateTodo}>
+                <span className="icon space-right" onClick={handleUpdateTodo} onKeyPress={handleUpdateTodo}>
                   <FontAwesomeIcon icon={faSave} size="lg" />
                 </span>
               ) : (
@@ -85,22 +126,13 @@ export default function Todo(props) {
 }
 
 Todo.propTypes = {
-  completed: PropTypes.bool.isRequired,
-  confirm: PropTypes.bool.isRequired,
-  edit: PropTypes.bool.isRequired,
-  updated: PropTypes.bool.isRequired,
-
+  id: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
-  currentText: PropTypes.string.isRequired,
-  createdMessage: PropTypes.string.isRequired,
-  updatedMessage: PropTypes.string.isRequired,
+  completed: PropTypes.bool.isRequired,
+  createdAt: PropTypes.string.isRequired,
+  updatedAt: PropTypes.string,
+};
 
-  toggleCompleteTodo: PropTypes.func.isRequired,
-  updateText: PropTypes.func.isRequired,
-  updateTodo: PropTypes.func.isRequired,
-  editTodo: PropTypes.func.isRequired,
-  cancelEdit: PropTypes.func.isRequired,
-  deleteTodo: PropTypes.func.isRequired,
-  openModal: PropTypes.func.isRequired,
-  closeModal: PropTypes.func.isRequired,
+Todo.defaultProps = {
+  updatedAt: null,
 };

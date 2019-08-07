@@ -4,9 +4,15 @@ import classNames from 'classnames';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export default function FormInput(props) {
-  const { className, onChange, value, placeholder, type, leftIcon, rightIcon } = props;
-
+export default function FormInput({
+  className,
+  onChange,
+  value,
+  placeholder,
+  type,
+  leftIcon,
+  rightIcon,
+}) {
   const fieldClasses = classNames({
     field: true,
     [className]: true,

@@ -1,12 +1,16 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { push } from 'connected-react-router';
 import R from '_utils/ramda';
 import Register from '_templates/RegisterSection';
 
-export default function RegisterPage({ user, pushToHome }) {
+export default function RegisterPage() {
+  const dispatch = useDispatch();
+  const { user } = useSelector(R.pick(['user']));
+
   useEffect(() => {
     if (!R.isEmpty(user)) {
-      pushToHome();
+      dispatch(push('/home'));
     }
   }, []);
 
@@ -16,8 +20,3 @@ export default function RegisterPage({ user, pushToHome }) {
     </div>
   );
 }
-
-RegisterPage.propTypes = {
-  user: PropTypes.shape({}).isRequired,
-  pushToHome: PropTypes.func.isRequired,
-};

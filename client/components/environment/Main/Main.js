@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Switch, Route } from 'react-router';
 import Notifications from 'react-notification-system-redux';
-
+import { useDispatch, useSelector } from 'react-redux';
 import R from '_utils/ramda';
+
+import { attemptGetUser } from '_thunks/user';
 
 import WelcomePage from '_pages/WelcomePage';
 import LoginPage from '_pages/LoginPage';
@@ -16,18 +18,20 @@ import LostPage from '_pages/LostPage';
 import Navigation from '_organisms/Navigation';
 import Footer from '_organisms/Footer';
 
-export default function Main({ location, alerts, attemptGetUser }) {
+export default function Main({ location }) {
+  const dispatch = useDispatch();
+  const { alerts } = useSelector(R.pick(['alerts']));
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    attemptGetUser()
+    dispatch(attemptGetUser())
       .then(() => setLoading(false))
       .catch(R.identity);
   }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  });
+  }, [location.pathname]);
 
   return !loading && (
     <div className="has-navbar-fixed-top">
@@ -53,6 +57,4 @@ Main.propTypes = {
   location: PropTypes.shape({
     pathname: PropTypes.string,
   }).isRequired,
-  alerts: PropTypes.array.isRequired,
-  attemptGetUser: PropTypes.func.isRequired,
 };

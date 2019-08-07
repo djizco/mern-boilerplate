@@ -1,14 +1,50 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import R from '_utils/ramda';
 
 import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 
+import useKeyPress from '_hooks/useKeyPress';
+import { attemptLogin } from '_thunks/auth';
 import Box from '_molecules/Box';
 import FormInput from '_molecules/FormInput';
 
-export default function Login(props) {
-  const { remember, username, password, updateUsername, updatePassword, rememberMe, login } = props;
+export default function Login() {
+  const dispatch = useDispatch();
+
+  const [remember, setRemember] = useState(false);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  useEffect(() => {
+    const username = localStorage.getItem('username');
+    if (username) {
+      setRemember(true);
+      setUsername(username);
+    }
+  }, []);
+
+  const login = () => {
+    const userCredentials = { username, password };
+
+    if (remember) {
+      localStorage.setItem('username', username);
+    }
+
+    dispatch(attemptLogin(userCredentials))
+      .catch(R.identity);
+  };
+
+  useKeyPress('Enter', login);
+
+  const rememberMe = () => {
+    localStorage.removeItem('username');
+    setRemember(!remember);
+  };
+
+  const updateUsername = e => setUsername(e.target.value);
+  const updatePassword = e => setPassword(e.target.value);
 
   return (
     <Box className="login">
@@ -24,14 +60,14 @@ export default function Login(props) {
       </p>
 
       <FormInput
-        onChange={e => updateUsername(e.target.value)}
+        onChange={updateUsername}
         placeholder="Username"
         value={username}
         leftIcon={faUser}
       />
 
       <FormInput
-        onChange={e => updatePassword(e.target.value)}
+        onChange={updatePassword}
         placeholder="Password"
         value={password}
         leftIcon={faLock}
@@ -54,13 +90,3 @@ export default function Login(props) {
     </Box>
   );
 }
-
-Login.propTypes = {
-  remember: PropTypes.bool.isRequired,
-  username: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
-  updateUsername: PropTypes.func.isRequired,
-  updatePassword: PropTypes.func.isRequired,
-  rememberMe: PropTypes.func.isRequired,
-  login: PropTypes.func.isRequired,
-};

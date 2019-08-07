@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-export default function Box(props) {
-  const { children, className } = props;
-
+export default function Box({ children, className }) {
   const boxClasses = classNames({
     [className]: !!className,
     box: true,

@@ -1,15 +1,26 @@
-import React  from 'react';
+import React, { useState, useEffect }  from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
+import { useSelector } from 'react-redux';
 import R from '_utils/ramda';
+
 import UserDropdown from '_molecules/UserDropdown';
 import Button from '_atoms/Button';
 
-export default function Navigation(props) {
-  const {
-    user, auth, pathname, toggleUserDropdown, closeUserDropdown, userDropdownOpen,
-  } = props;
+export default function Navigation({ pathname }) {
+  const { user } = useSelector(R.pick(['user']));
+
+  const [auth, setAuth] = useState(!R.isEmpty(user));
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setAuth(!R.isEmpty(user));
+  }, [user.username]);
+
+  const toggleDropdown = () => setOpen(!open);
+
+  const closeDropdown = () => setOpen(false);
 
   const isHome = (pathname.length === 5)
     ? pathname === '/home'
@@ -70,8 +81,8 @@ export default function Navigation(props) {
             {auth && (
               <a
                 className="navbar-item is-hoverable is-hidden-desktop"
-                onClick={toggleUserDropdown}
-                onKeyPress={toggleUserDropdown}
+                onClick={toggleDropdown}
+                onKeyPress={toggleDropdown}
               >
                 <figure className="image navbar-image is-32x32">
                   <img className="profile-img" src={user.profilePic || '/images/default-profile.png'} alt="" />
@@ -102,7 +113,7 @@ export default function Navigation(props) {
               </Link>
             </div>
             <div className="navbar-end">
-              <a className="navbar-item is-hoverable" onClick={toggleUserDropdown} onKeyPress={toggleUserDropdown}>
+              <a className="navbar-item is-hoverable" onClick={toggleDropdown} onKeyPress={toggleDropdown}>
                 <figure className="image navbar-image is-32x32">
                   <img className="profile-img" src={user.profilePic || '/images/default-profile.png'} alt="" />
                 </figure>
@@ -124,23 +135,12 @@ export default function Navigation(props) {
             </div>
           </div>
         )}
-        <UserDropdown open={userDropdownOpen} closeDropdown={closeUserDropdown} />
+        <UserDropdown open={open} closeDropdown={closeDropdown} />
       </div>
     </nav>
   );
 }
 
 Navigation.propTypes = {
-  auth: PropTypes.bool.isRequired,
   pathname: PropTypes.string.isRequired,
-  userDropdownOpen: PropTypes.bool.isRequired,
-  toggleUserDropdown: PropTypes.func.isRequired,
-  closeUserDropdown: PropTypes.func.isRequired,
-  user: PropTypes.shape({
-    username: PropTypes.string,
-    firstName: PropTypes.string,
-    lastName: PropTypes.string,
-    usernameCase: PropTypes.string,
-    profilePic: PropTypes.string,
-  }).isRequired,
 };

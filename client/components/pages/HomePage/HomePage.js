@@ -1,11 +1,15 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { push } from 'connected-react-router';
 import R from '_utils/ramda';
 
-export default function HomePage({ user, pushToLogin }) {
+export default function HomePage() {
+  const dispatch = useDispatch();
+  const { user } = useSelector(R.pick(['user']));
+
   useEffect(() => {
     if (R.isEmpty(user)) {
-      pushToLogin();
+      dispatch(push('/login'));
     }
   }, []);
 
@@ -21,8 +25,3 @@ export default function HomePage({ user, pushToLogin }) {
     </div>
   );
 }
-
-HomePage.propTypes = {
-  user: PropTypes.shape({}).isRequired,
-  pushToLogin: PropTypes.func.isRequired,
-};

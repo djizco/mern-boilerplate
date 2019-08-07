@@ -35,7 +35,7 @@ export const attemptToggleCompleteTodo = id => dispatch =>
     })
     .catch(dispatchError(dispatch));
 
-export const attemptUpdateTodo = ({ id, text }) => dispatch =>
+export const attemptUpdateTodo = (id, text) => dispatch =>
   putTodo({ id, text })
     .then(data => {
       dispatch(updateTodo({ id, text, updatedAt: data.todo.updated_at }));

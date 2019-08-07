@@ -1,11 +1,21 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
+import { useDispatch, useSelector } from 'react-redux';
+import R from '_utils/ramda';
 
-export default function ChangePassword(props) {
-  const { oldPassword, newPassword, confirmPassword, message, valid,
-    updateOldPassword, updateNewPassword, updateConfirmPassword, save } = props;
+import { validatePassword } from '_utils/validation';
+import { attemptUpdatePassword } from '_thunks/user';
+
+export default function ChangePassword() {
+  const dispatch = useDispatch();
+  const { user } = useSelector(R.pick(['user']));
+
+  const [oldPassword, setOldPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [message, setMessage] = useState('');
+  const [valid, setValid] = useState(false);
 
   const match = newPassword === confirmPassword;
 
@@ -48,6 +58,34 @@ export default function ChangePassword(props) {
     'is-success': match,
     'is-danger': !match,
   });
+
+  const updateOldPassword = e => setOldPassword(e.target.value);
+  const updateConfirmPassword = e => setConfirmPassword(e.target.value);
+
+  const handleValidatePassword = (username, password) => {
+    const { valid, message } = validatePassword(username, password);
+    setValid(valid);
+    setMessage(message);
+  };
+
+  const updateNewPassword = e => {
+    setNewPassword(e.target.value);
+    handleValidatePassword(user.username, e.target.value);
+  };
+
+  const save = () => {
+    if (valid && newPassword === confirmPassword && oldPassword) {
+      dispatch(attemptUpdatePassword({ oldPassword, newPassword }))
+        .then(() => {
+          setOldPassword('');
+          setNewPassword('');
+          setConfirmPassword('');
+          setMessage('');
+          setValid(false);
+        })
+        .catch(R.identity);
+    }
+  };
 
   return (
     <div className="change-password box">
@@ -138,15 +176,3 @@ export default function ChangePassword(props) {
     </div>
   );
 }
-
-ChangePassword.propTypes = {
-  oldPassword: PropTypes.string.isRequired,
-  newPassword: PropTypes.string.isRequired,
-  confirmPassword: PropTypes.string.isRequired,
-  message: PropTypes.string.isRequired,
-  valid: PropTypes.bool.isRequired,
-  updateOldPassword: PropTypes.func.isRequired,
-  updateNewPassword: PropTypes.func.isRequired,
-  updateConfirmPassword: PropTypes.func.isRequired,
-  save: PropTypes.func.isRequired,
-};

@@ -1,17 +1,87 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Box from '_molecules/Box';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import R from '_utils/ramda';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSync } from '@fortawesome/free-solid-svg-icons';
 
-export default function GeneralProfile(props) {
-  const {
-    edited, save, refresh, usernameCase, firstName, lastName, bio, profilePic,
-    updateFirstName, updateLastName, updateBio, updateProfilePic,
-  } = props;
+import { validateName } from '_utils/validation';
+import { attemptGetUser, attemptUpdateUser } from '_thunks/user';
+import Box from '_molecules/Box';
+
+export default function GeneralProfile() {
+  const dispatch = useDispatch();
+  const { user } = useSelector(R.pick(['user']));
+
+  const [firstName, setFirstName] = useState(user.firstName || '');
+  const [lastName, setLastName] = useState(user.lastName || '');
+  const [bio, setBio] = useState(user.bio || '');
+  const [profilePic, setProfilePic] = useState(user.profilePic || '');
+  const [firstNameEdited, setFirstNameEdited] = useState(false);
+  const [lastNameEdited, setLastNameEdited] = useState(false);
+  const [bioEdited, setBioEdited] = useState(false);
+  const [profilePicEdited, setProfilePicEdited] = useState(false);
+
+
+  const resetState = () => {
+    setFirstName(user.firstName || '');
+    setLastName(user.lastName || '');
+    setBio(user.bio || '');
+    setProfilePic(user.profilePic || '');
+    setFirstNameEdited(false);
+    setLastNameEdited(false);
+    setBioEdited(false);
+    setProfilePicEdited(false);
+  };
+
+  useEffect(() => {
+    resetState();
+  }, [user.firstName, user.lastName, user.bio, user.profilePic]);
+
+  const updateFirstName = e => {
+    if (validateName(e.target.value)) {
+      setFirstName(e.target.value);
+      setFirstNameEdited(true);
+    }
+  };
+
+  const updateLastName = e => {
+    if (validateName(e.target.value)) {
+      setLastName(e.target.value);
+      setLastNameEdited(true);
+    }
+  };
+
+  const updateBio = e => {
+    setBio(e.target.value);
+    setBioEdited(true);
+  };
+
+  const updateProfilePic = e => {
+    setProfilePic(e.target.value);
+    setProfilePicEdited(true);
+  };
+
+  const refresh = () => dispatch(attemptGetUser())
+    .then(resetState)
+    .catch(R.identity);
+
+  const save = () => {
+    const updatedUser = {};
+
+    if (firstNameEdited) { updatedUser.first_name = firstName; }
+    if (lastNameEdited) { updatedUser.last_name = lastName; }
+    if (profilePicEdited) { updatedUser.profile_pic = profilePic; }
+    if (bioEdited) { updatedUser.bio = bio; }
+
+    if (!R.isEmpty(updatedUser)) {
+      dispatch(attemptUpdateUser(updatedUser))
+        .catch(R.identity);
+    }
+  };
 
   const charactersRemaining = 240 - bio.length;
+  const edited = firstNameEdited || lastNameEdited || bioEdited || profilePicEdited;
 
   return (
     <Box className="general-profile">
@@ -25,7 +95,7 @@ export default function GeneralProfile(props) {
       <div className="columns">
         <div className="column is-4">
           <h3 className="title is-3 has-text-centered">
-            {usernameCase}
+            {user.usernameCase}
           </h3>
           <figure className="image">
             <img
@@ -117,22 +187,3 @@ export default function GeneralProfile(props) {
     </Box>
   );
 }
-
-GeneralProfile.propTypes = {
-  edited: PropTypes.bool.isRequired,
-  usernameCase: PropTypes.string,
-  firstName: PropTypes.string.isRequired,
-  lastName: PropTypes.string.isRequired,
-  bio: PropTypes.string.isRequired,
-  profilePic: PropTypes.string.isRequired,
-  updateFirstName: PropTypes.func.isRequired,
-  updateLastName: PropTypes.func.isRequired,
-  updateBio: PropTypes.func.isRequired,
-  updateProfilePic: PropTypes.func.isRequired,
-  refresh: PropTypes.func.isRequired,
-  save: PropTypes.func.isRequired,
-};
-
-GeneralProfile.defaultProps = {
-  usernameCase: '',
-};

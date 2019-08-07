@@ -1,11 +1,35 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
+import { useDispatch, useSelector } from 'react-redux';
+import R from '_utils/ramda';
 
-export default function ChangeUsername(props) {
-  const {
-    disabled, username, usernameCase, currentUsernameCase, updateUsernameCase, saveUsernameCase,
-  } = props;
+import { attemptUpdateUser } from '_thunks/user';
+
+export default function ChangeUsername() {
+  const dispatch = useDispatch();
+  const { user } = useSelector(R.pick(['user']));
+
+  const [usernameCase, setUsernameCase] = useState(user.usernameCase);
+
+  useEffect(() => {
+    if (!R.isEmpty(user)) {
+      setUsernameCase(user.usernameCase);
+    }
+  }, [user.username]);
+
+  const updateUsernameCase = e => setUsernameCase(e.target.value);
+
+  const disabled = (user.usernameCase === usernameCase)
+    || usernameCase.toLowerCase() !== user.username;
+
+  const saveUsernameCase = () => {
+    if (usernameCase.toLowerCase() === user.username) {
+      const updatedUser = { username_case: usernameCase };
+
+      dispatch(attemptUpdateUser(updatedUser))
+        .catch(() => setUsernameCase(user.usernameCase));
+    }
+  };
 
   const helpClasses = classNames({
     help: true,
@@ -16,18 +40,18 @@ export default function ChangeUsername(props) {
   const inputClasses = classNames({
     input: true,
     'is-success': !disabled,
-    'is-danger': disabled && usernameCase !== currentUsernameCase,
+    'is-danger': disabled && usernameCase !== user.usernameCase,
   });
 
   const iconClasses = classNames({
     fa: true,
     'fa-check': !disabled,
     'is-success': !disabled,
-    'fa-warning': disabled && usernameCase !== currentUsernameCase,
-    'is-danger': disabled && usernameCase !== currentUsernameCase,
+    'fa-warning': disabled && usernameCase !== user.usernameCase,
+    'is-danger': disabled && usernameCase !== user.usernameCase,
   });
 
-  const helpMessage = disabled ? `Username case must match: ${username}` : 'Username case valid.';
+  const helpMessage = disabled ? `Username case must match: ${user.username}` : 'Username case valid.';
 
   return (
     <div className="change-username box">
@@ -41,7 +65,7 @@ export default function ChangeUsername(props) {
           Current Username
         </label>
         <p className="control">
-          {currentUsernameCase}
+          {user.usernameCase}
         </p>
       </div>
 
@@ -62,7 +86,7 @@ export default function ChangeUsername(props) {
             <i className={iconClasses} />
           </span>
         </p>
-        {usernameCase !== currentUsernameCase && (
+        {usernameCase !== user.usernameCase && (
           <p className={helpClasses}>
             {helpMessage}
           </p>
@@ -80,17 +104,3 @@ export default function ChangeUsername(props) {
     </div>
   );
 }
-
-ChangeUsername.propTypes = {
-  disabled: PropTypes.bool.isRequired,
-  username: PropTypes.string,
-  usernameCase: PropTypes.string.isRequired,
-  currentUsernameCase: PropTypes.string,
-  updateUsernameCase: PropTypes.func.isRequired,
-  saveUsernameCase: PropTypes.func.isRequired,
-};
-
-ChangeUsername.defaultProps = {
-  username: '',
-  currentUsernameCase: '',
-};

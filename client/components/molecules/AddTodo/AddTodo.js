@@ -1,23 +1,24 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+
+import { attemptAddTodo } from '_thunks/todos';
+import useKeyPress from '_hooks/useKeyPress';
 import Button from '_atoms/Button';
 
-import useKeypress from '_hooks/useKeypress';
-
-export default function AddTodo({ addTodo }) {
+export default function AddTodo() {
+  const dispatch = useDispatch();
   const [text, setText] = useState('');
 
-  const onAddTodo = () => {
+  const handleAddTodo = () => {
     if (text) {
-      addTodo(text);
+      dispatch(attemptAddTodo(text));
       setText('');
     }
   };
 
-  useKeypress('Enter', onAddTodo);
+  useKeyPress('Enter', handleAddTodo);
 
   const updateText = e => setText(e.target.value);
-
 
   return (
     <div className="add-todo columns is-gapless">
@@ -27,7 +28,7 @@ export default function AddTodo({ addTodo }) {
       <div className="column is-2">
         <Button
           style={{ width: '100%' }}
-          onClick={onAddTodo}
+          onClick={handleAddTodo}
           label="Add"
           type="success"
         />
@@ -35,7 +36,3 @@ export default function AddTodo({ addTodo }) {
     </div>
   );
 }
-
-AddTodo.propTypes = {
-  addTodo: PropTypes.func.isRequired,
-};

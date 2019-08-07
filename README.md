@@ -6,7 +6,7 @@ A Full MERN Stack Boilerplate for Web Apps. Includes a local authentication syst
 ## Quick Start
 
 #### Setup
-```
+```bash
 brew install mongodb
 npm install
 ```
@@ -14,39 +14,39 @@ npm install
 #### for Development
 
 Start the database
-```
+```bash
 mongod
-// or
+# or
 brew services start mongodb
 ```
 
 Start the client
-```
+```bash
 npm run dev
 ```
 
 Start the server
-```
+```bash
 npm start
 ```
 
 #### for Production
 
 Start the database
-```
+```bash
 mongod
-// or
+# or
 brew services start mongodb
 ```
 
 Start the Server
-```
+```bash
 npm run prod
 ```
 
 #### Other Commands
 
-```
+```bash
 npm run build
 npm test
 npm run test:verbose
@@ -84,6 +84,7 @@ You can now start updating files in your client to begin working on your own pro
     - templates
     - pages
     - environment
+  - hooks
   - store
     - actions
     - reducers

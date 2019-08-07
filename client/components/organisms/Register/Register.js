@@ -1,17 +1,81 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
+import { useDispatch } from 'react-redux';
+import R from '_utils/ramda';
+
+import useKeyPress from '_hooks/useKeyPress';
+import { postCheckUsername } from '_api/users';
+import { validateUsername, validatePassword } from '_utils/validation';
+import { attemptRegister } from '_thunks/auth';
 
 import Box from '_molecules/Box';
 import Button from '_atoms/Button';
 
-export default function Register(props) {
-  const {
-    username, usernameMessage, handleUsernameChange,
-    password, passwordMessage, handlePasswordChange,
-    usernameAvailable, passwordValid, register,
-  } = props;
+export default function Register() {
+  const dispatch = useDispatch();
+
+  const [username, setUsername] = useState('');
+  const [usernameMessage, setUsernameMessage] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordMessage, setPasswordMessage] = useState('');
+  const [usernameAvailable, setUsernameAvailable] = useState(false);
+  const [passwordValid, setPasswordValid] = useState(false);
+
+  const checkPassword = (newUsername, newPassword) => {
+    const { valid, message } = validatePassword(newUsername, newPassword);
+
+    setPasswordValid(valid);
+    setPasswordMessage(message);
+  };
+
+  const checkUsername = newUsername => {
+    const { valid, message } = validateUsername(newUsername);
+
+    if (valid) {
+      setUsernameMessage('Checking username...');
+      setUsernameAvailable(false);
+
+      postCheckUsername(newUsername)
+        .then(res => {
+          setUsernameAvailable(res.available);
+          setUsernameMessage(res.message);
+        })
+        .catch(R.identity);
+    } else {
+      setUsernameAvailable(valid);
+      setUsernameMessage(message);
+    }
+  };
+
+  const updateUsername = newUserName => {
+    setUsername(newUserName);
+    checkPassword(newUserName, password);
+  };
+
+  const handleUsernameChange = e => {
+    updateUsername(e.target.value);
+    checkUsername(e.target.value);
+  };
+
+  const handlePasswordChange = e => {
+    setPassword(e.target.value);
+    checkPassword(username, e.target.value);
+  };
+
+  const register = () => {
+    if (usernameAvailable && passwordValid) {
+      const newUser = {
+        username,
+        password,
+      };
+
+      dispatch(attemptRegister(newUser))
+        .catch(R.identity);
+    }
+  };
+
+  useKeyPress('Enter', register);
 
   const usernameIconClasses = classNames({
     fa: true,
@@ -127,15 +191,3 @@ export default function Register(props) {
     </Box>
   );
 }
-
-Register.propTypes = {
-  username: PropTypes.string.isRequired,
-  usernameMessage: PropTypes.string.isRequired,
-  handleUsernameChange: PropTypes.func.isRequired,
-  password: PropTypes.string.isRequired,
-  passwordMessage: PropTypes.string.isRequired,
-  handlePasswordChange: PropTypes.func.isRequired,
-  usernameAvailable: PropTypes.bool.isRequired,
-  passwordValid: PropTypes.bool.isRequired,
-  register: PropTypes.func.isRequired,
-};

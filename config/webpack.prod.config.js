@@ -15,7 +15,9 @@ config.optimization = {
   minimizer: [
     new UglifyJsPlugin({
       uglifyOptions: {
-        compress: { drop_console: true },
+        compress: {
+          drop_console: true,
+        },
       },
       sourceMap: true,
     }),

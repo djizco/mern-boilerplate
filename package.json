@@ -1,6 +1,6 @@
 {
   "name": "boilerplate-mern",
-  "version": "0.4.6",
+  "version": "0.4.7",
   "description": "A full MERN stack boilerplate",
   "main": "server/index.js",
   "scripts": {

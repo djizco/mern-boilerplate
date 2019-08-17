@@ -61,8 +61,7 @@ export default function Todo({ id, text, completed, createdAt, updatedAt }) {
           <span className="icon" onClick={toggleCompleteTodo} onKeyPress={toggleCompleteTodo}>
             {completed
               ? <FontAwesomeIcon icon={faCheckSquare} size="lg" />
-              : <FontAwesomeIcon icon={faSquare} size="lg" />
-            }
+              : <FontAwesomeIcon icon={faSquare} size="lg" />}
           </span>
         </figure>
         <div className="media-content">

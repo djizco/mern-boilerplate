@@ -34,13 +34,16 @@ module.exports = {
       "VariableDeclarator": true
     }}],
     "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-fragments": [2, 'element'],
 
     // disable rules
     "arrow-parens": 0,
     "function-paren-newline": 0,
     "implicit-arrow-linebreak": 0,
+    "import/no-cycle": 0,
     "import/no-extraneous-dependencies": 0,
-    "import/no-named-as-default": 0, // causes error with redux testing
+    "import/no-named-as-default": 0,
+    "import/prefer-default-export": 0,
     "jsx-a11y/anchor-is-valid": 0,
     "jsx-a11y/label-has-associated-control": 0,
     "jsx-a11y/label-has-for": 0,
@@ -54,5 +57,8 @@ module.exports = {
     "react/destructuring-assignment": 0,
     "react/forbid-prop-types": 0,
     "react/jsx-boolean-value": 0,
+    "react/jsx-props-no-spreading": 0,
+    "react/state-in-constructor": 0,
+    "react/static-property-placement": 0,
   },
 };

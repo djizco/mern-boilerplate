@@ -45,11 +45,6 @@ const CleanWebpackPluginConfig =  new CleanWebpackPlugin({
 });
 
 module.exports = {
-  devServer: {
-    contentBase: './dist',
-    historyApiFallback: true,
-    inline: true,
-  },
   entry: [
     './client/styles/index.scss',
     './client/assets/index.js',

@@ -3,6 +3,8 @@ MongoDB Express.js React.js Node.js
 
 A Full MERN Stack Boilerplate for Web Apps. Includes a local authentication system using passport. User is given a simple profile with Full Name and Profile Picture. User is also able to reset password and username case.
 
+Note: This project name has changed (8/17/19).
+
 ## Quick Start
 
 #### Setup
@@ -55,6 +57,9 @@ npm run lint:fix
 ```
 
 ## Setup Instructions
+
+Note: This is now a github template project. This makes copying the contents of the project
+into a new repo very simple.
 
 To setup your own project, you will need to copy the contents of this project into a new repo.
 You will need to update the content in these files to names of your project and yourself:

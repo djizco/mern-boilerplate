@@ -1,1 +1,1 @@
-./node_modules/eslint/bin/eslint.js client server config --fix
+./node_modules/eslint/bin/eslint.js client server --fix

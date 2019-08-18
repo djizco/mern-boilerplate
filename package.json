@@ -12,9 +12,11 @@
     "prod": "npm run build && npm run start",
     "lint": "./scripts/lint",
     "lint:fix": "./scripts/lint-fix",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:verbose": "jest --verbose"
+    "test": "./scripts/test",
+    "test:verbose": "./scripts/test-verbose",
+    "test:coverage": "./scripts/test-coverage",
+    "test:watch-client": "./scripts/test-watch-client",
+    "test:watch-server": "./scripts/test-watch-server"
   },
   "repository": {
     "type": "git",
@@ -45,48 +47,6 @@
   "homepage": "https://github.com/djizco/mern-boilerplate#readme",
   "engines": {
     "node": ">=10.0.0"
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "client/**/*.{js,jsx}",
-      "server/**/*.{js}"
-    ],
-    "moduleFileExtensions": [
-      "js",
-      "jsx"
-    ],
-    "moduleDirectories": [
-      "node_modules"
-    ],
-    "moduleNameMapper": {
-      "^_atoms(.*)$": "<rootDir>/client/components/atoms/$1",
-      "^_molecules(.*)$": "<rootDir>/client/components/molecules/$1",
-      "^_organisms(.*)$": "<rootDir>/client/components/organisms/$1",
-      "^_templates(.*)$": "<rootDir>/client/components/templates/$1",
-      "^_pages(.*)$": "<rootDir>/client/components/pages/$1",
-      "^_environment(.*)$": "<rootDir>/client/components/environment/$1",
-      "^_hooks(.*)$": "<rootDir>/client/hooks/$1",
-      "^_store(.*)$": "<rootDir>/client/store/$1",
-      "^_actions(.*)$": "<rootDir>/client/store/actions/$1",
-      "^_thunks(.*)$": "<rootDir>/client/store/thunks/$1",
-      "^_reducers(.*)$": "<rootDir>/client/store/reducers/$1",
-      "^_assets(.*)$": "<rootDir>/client/assets/$1",
-      "^_styles(.*)$": "<rootDir>/client/styles/$1",
-      "^_utils(.*)$": "<rootDir>/client/utils/$1",
-      "^_api(.*)$": "<rootDir>/client/api/$1"
-    },
-    "setupFiles": [
-      "<rootDir>/config/jest-setup.js",
-      "<rootDir>/config/enzyme-setup.js"
-    ],
-    "testEnvironment": "node",
-    "testURL": "http://localhost",
-    "transform": {
-      "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest"
-    },
-    "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
-    ]
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.21",
@@ -157,7 +117,7 @@
     "jest": "^24.9.0",
     "jest-environment-jsdom": "^24.9.0",
     "jest-environment-jsdom-global": "^1.2.0",
-    "less": "3.9.0",
+    "less": "^3.10.1",
     "less-loader": "^5.0.0",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.12.0",

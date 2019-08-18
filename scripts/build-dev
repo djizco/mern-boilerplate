@@ -1,1 +1,1 @@
-NODE_ENV=development webpack --mode=development --config ./config/webpack.dev.config.js
+NODE_ENV=development webpack --mode=development --config ./client/config/webpack.dev.config.js

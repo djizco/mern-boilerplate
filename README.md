@@ -116,7 +116,7 @@ This is based on atomic design. Learn more about [atomic design](http://bradfros
 
 [Redux](http://redux.js.org/) - State Manager
 
-[Webpack](https://webpack.github.io/) - Code Packager for React
+[Webpack](https://webpack.github.io/) - Module Bundler
 
 [Express](http://expressjs.com/) - Node Application Framework
 
@@ -124,7 +124,7 @@ This is based on atomic design. Learn more about [atomic design](http://bradfros
 
 [Passport](http://www.passportjs.org/) - Authentication Framework
 
-[React Notification System](https://github.com/igorprado/react-notification-system) - Notification System
+[React Notification System](http://igorprado.com/react-notification-system/) - Notification System
 
 [Bulma](http://bulma.io/) - CSS Framework
 
@@ -138,6 +138,6 @@ This is based on atomic design. Learn more about [atomic design](http://bradfros
 
 [ESLint](http://eslint.org/) - Code Linter
 
-[Jest](https://jestjs.io/) - JavaScript Testing Framework
+[Jest](https://jestjs.io/) - Testing Framework
 
-[Enzyme](https://github.com/airbnb/enzyme) - React View Testing
+[Enzyme](https://airbnb.io/enzyme/) - React View Testing

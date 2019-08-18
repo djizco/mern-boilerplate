@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-const resolve = dir => path.join(__dirname, '../', dir);
+const resolve = dir => path.join(__dirname, '../../', dir);
 
 const isDev = process.env.NODE_ENV !== 'production';
 

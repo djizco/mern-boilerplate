@@ -17,7 +17,7 @@ describe('The Server', () => {
   test('returns HTML on an unknown endpoint', done => {
     request(app)
       .get('/*')
-      .expect(response => expect(response.header['content-type']).toBe('text/html; charset=utf-8'))
+      .expect(response => expect(response.header['content-type']).toContain('text/html'))
       .then(() => done());
   });
 });

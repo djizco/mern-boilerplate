@@ -90,7 +90,7 @@
     "uuid": "^3.3.2",
     "webpack": "^4.39.2",
     "webpack-bundle-analyzer": "^3.4.1",
-    "webpack-cli": "^3.3.6"
+    "webpack-cli": "^3.3.7"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",

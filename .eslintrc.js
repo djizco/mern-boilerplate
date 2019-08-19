@@ -2,7 +2,7 @@ module.exports = {
   "root": true,
   "extends": "airbnb",
   "parserOptions": {
-    "ecmaVersion": 2018,
+    "ecmaVersion": 7,
     "sourceType": "module",
     "allowImportExportEverywhere": false,
   },
@@ -13,10 +13,7 @@ module.exports = {
   "rules": {
     // override defaults
     "eqeqeq": [2, "smart"],
-    "max-len": [2, {
-      "code": 120, "tabWidth": 2, "ignoreUrls": true, "ignoreComments": false,
-      "ignoreRegExpLiterals": true, "ignoreStrings": true, "ignoreTemplateLiterals": true,
-    }],
+    "max-len": [2, {"code": 120, "tabWidth": 2, "ignoreUrls": true}],
     "newline-per-chained-call": [2, {"ignoreChainWithDepth": 4}],
     "no-cond-assign": [2, "except-parens"],
     "no-multi-spaces": [2, {"exceptions": {

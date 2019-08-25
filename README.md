@@ -74,6 +74,14 @@ This is also a good time to go through the included libraries to add or remove f
 After this you can commit the files into a new repository and push up to your github.
 You can now start updating files in your client to begin working on your own project!
 
+## Features
+
+* Webpack conveniently bundles your code for you.
+* Babel lets you use ES6/7 features.
+* CSS pre-processor setup for LESS and SASS lets you keep your styles clean and organized.
+* ESLint helps you maintain a high level of code quality.
+* Jest and Enzyme give you a robust testing frame work to make sure your code works.
+
 ## Code Structure
 
 ```

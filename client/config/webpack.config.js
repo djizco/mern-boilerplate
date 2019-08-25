@@ -6,7 +6,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const resolve = dir => path.join(__dirname, '../../', dir);
 
-const isDev = process.env.NODE_ENV !== 'production';
+const isDev = process.env.NODE_ENV === 'development';
 
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: resolve('client/index.html'),
@@ -40,7 +40,7 @@ const FaviconsWebpackPluginConfig = new FaviconsWebpackPlugin({
   },
 });
 
-const CleanWebpackPluginConfig =  new CleanWebpackPlugin({
+const CleanWebpackPluginConfig = new CleanWebpackPlugin({
   verbose: true,
 });
 

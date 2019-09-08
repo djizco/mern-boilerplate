@@ -9,17 +9,19 @@ Note: This project name has changed (8/17/19).
 
 #### Setup
 ```bash
-brew install mongodb
 npm install
+
+brew tap mongodb/brew
+brew install mongodb-community
 ```
 
 #### for Development
 
 Start the database
 ```bash
-mongod
+brew services start mongodb-community
 # or
-brew services start mongodb
+mongod
 ```
 
 Start the client
@@ -127,6 +129,8 @@ This is based on atomic design. Learn more about [atomic design](http://bradfros
 [Webpack](https://webpack.github.io/) - Module Bundler
 
 [Express](http://expressjs.com/) - Node Application Framework
+
+[MongoDB](https://www.mongodb.com/) - Document Database
 
 [Mongoose](http://mongoosejs.com/) - MongoDB Framework
 

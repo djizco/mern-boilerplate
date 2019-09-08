@@ -102,11 +102,11 @@ module.exports = {
           },
           {
             loader: 'image-webpack-loader',
-            query: {
+            options: {
               optipng: { optimizationLevel: 7 },
+              pngquant: { quality: [0.75, 0.90], speed: 3 },
               mozjpeg: { progressive: true },
               gifsicle: { interlaced: false },
-              pngquant: { quality: '75-90', speed: 3 },
             },
           },
         ],

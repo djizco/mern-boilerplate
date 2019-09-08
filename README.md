@@ -8,6 +8,7 @@ Note: This project name has changed (8/17/19).
 ## Quick Start
 
 #### Setup
+
 ```bash
 npm install
 
@@ -15,14 +16,14 @@ brew tap mongodb/brew
 brew install mongodb-community
 ```
 
-#### for Development
-
 Start the database
 ```bash
 brew services start mongodb-community
 # or
 mongod
 ```
+
+#### for Development
 
 Start the client
 ```bash
@@ -36,14 +37,6 @@ npm start
 
 #### for Production
 
-Start the database
-```bash
-mongod
-# or
-brew services start mongodb
-```
-
-Start the Server
 ```bash
 npm run prod
 ```

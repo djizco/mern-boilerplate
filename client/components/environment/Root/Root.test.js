@@ -1,12 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createBrowserHistory } from 'history';
-import configureStore from '_store/configureStore';
+
+import history from '_client/history';
+import store from '_client/store';
 
 import Root from './Root';
-
-const history = createBrowserHistory();
-const store = configureStore(history);
 
 describe('Root Component', () => {
   it('renders without crashing', () => {

@@ -1,7 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import '_utils/polyfill';
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 
 import history from '_client/history';
 import store from '_client/store';

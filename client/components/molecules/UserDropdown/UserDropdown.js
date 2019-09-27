@@ -13,7 +13,7 @@ export default function UserDropdown({ open, closeDropdown }) {
   const dropdown = useRef(null);
 
   const dropdownListener = e =>
-    !e.path.includes(dropdown) && open && closeDropdown();
+    !e.path.includes(dropdown.current) && open && closeDropdown();
 
   useEffect(() => {
     window.addEventListener('click', dropdownListener);
@@ -23,7 +23,7 @@ export default function UserDropdown({ open, closeDropdown }) {
       window.removeEventListener('click', dropdownListener);
       window.removeEventListener('touchend', dropdownListener);
     };
-  }, []);
+  }, [open]);
 
   const logout = () => {
     closeDropdown();

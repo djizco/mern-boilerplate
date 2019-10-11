@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import R from '_utils/ramda';
+import * as R from 'ramda';
 
 import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 
@@ -53,7 +53,7 @@ export default function Login() {
       </h3>
       <hr className="separator" />
       <p className="has-space-below">
-        {'Not Registered Yet? '}
+        Not Registered Yet?&nbsp;
         <Link to="/register">
           Create an account.
         </Link>

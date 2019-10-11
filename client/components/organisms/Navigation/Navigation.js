@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
-import R from '_utils/ramda';
+import * as R from 'ramda';
 
 import UserDropdown from '_molecules/UserDropdown';
 import Button from '_atoms/Button';

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { push } from 'connected-react-router';
-import R from '_utils/ramda';
+import * as R from 'ramda';
 
 import { attemptGetTodos } from '_thunks/todos';
 import TodoSection from '_templates/TodoSection';

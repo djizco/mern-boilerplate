@@ -1,5 +1,5 @@
 import update from 'immutability-helper';
-import R from '_utils/ramda';
+import * as R from 'ramda';
 
 import {
   SET_TODOS, ADD_TODO, TOGGLE_COMPLETE_TODO, UPDATE_TODO, REMOVE_TODO,

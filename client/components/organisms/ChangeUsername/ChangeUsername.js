@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
-import R from '_utils/ramda';
+import * as R from 'ramda';
 
 import { attemptUpdateUser } from '_thunks/user';
 

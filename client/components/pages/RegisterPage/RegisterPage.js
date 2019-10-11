@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { push } from 'connected-react-router';
-import R from '_utils/ramda';
+import * as R from 'ramda';
 import Register from '_templates/RegisterSection';
 
 export default function RegisterPage() {

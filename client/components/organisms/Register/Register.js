@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { useDispatch } from 'react-redux';
-import R from '_utils/ramda';
+import * as R from 'ramda';
 
 import useKeyPress from '_hooks/useKeyPress';
 import { postCheckUsername } from '_api/users';
@@ -124,7 +124,7 @@ export default function Register() {
       </h3>
       <hr className="separator" />
       <p className="has-space-below">
-        {'Already a member? '}
+        Already a member?&nbsp;
         <Link to="/login">
           Login
         </Link>

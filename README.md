@@ -38,17 +38,19 @@ npm start
 #### for Production
 
 ```bash
-npm run prod
+npm run build
+npm start
 ```
 
 #### Other Commands
 
 ```bash
-npm run build
 npm test
-npm run test:verbose
 npm run lint
 npm run lint:fix
+npm run test:verbose
+npm run test:watch-client
+npm run test:watch-server
 ```
 
 ## Setup Instructions

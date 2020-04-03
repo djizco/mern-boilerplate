@@ -44,12 +44,6 @@ a {
   }
 }
 
-// Override bulma defaults
-a.navbar-item:focus-within {
-  background-color: inherit;
-  color: inherit;
-}
-
 // Bug in production
 .select select {
   padding-right: 2.5em;

@@ -42,6 +42,7 @@ const FaviconsWebpackPluginConfig = new FaviconsWebpackPlugin({
 
 const CleanWebpackPluginConfig = new CleanWebpackPlugin({
   verbose: true,
+  cleanStaleWebpackAssets: false,
 });
 
 module.exports = {
@@ -134,10 +135,10 @@ module.exports = {
     ],
   },
   plugins: [
-    HtmlWebpackPluginConfig,
+    CleanWebpackPluginConfig,
     MiniCssExtractPluginConfig,
     FaviconsWebpackPluginConfig,
-    CleanWebpackPluginConfig,
+    HtmlWebpackPluginConfig,
   ],
   performance: {
     hints: false,

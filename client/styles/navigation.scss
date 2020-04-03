@@ -35,6 +35,11 @@
     color: $white;
   }
 
+  .navbar-item:focus-within {
+    background-color: inherit;
+    color: inherit;
+  }
+
   .navbar-item img {
     max-height: none;
   }

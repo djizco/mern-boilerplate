@@ -1,12 +1,19 @@
+const webpack = require('webpack');
 const path              = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const resolve = dir => path.join(__dirname, '../../', dir);
 
-const isDev = process.env.NODE_ENV === 'development';
+const env = process.env.NODE_ENV || 'development';
+const isDev = env === 'development';
+
+const WebpackDefinePluginConfig = new webpack.DefinePlugin({
+  'process.env': {
+    NODE_ENV: JSON.stringify(env),
+  },
+});
 
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: resolve('client/index.html'),
@@ -19,33 +26,13 @@ const MiniCssExtractPluginConfig = new MiniCssExtractPlugin({
   chunkFilename: isDev ? '[id].css' : '[id].[hash].css',
 });
 
-const FaviconsWebpackPluginConfig = new FaviconsWebpackPlugin({
-  logo: resolve('client/assets/icons/favicon.ico'),
-  prefix: 'icons/',
-  emitStats: false,
-  statsFilename: 'faviconstats.json',
-  persistentCache: false,
-  inject: true,
-  icons: {
-    android: false,
-    appleIcon: false,
-    appleStartup: false,
-    coast: false,
-    favicons: true,
-    firefox: false,
-    opengraph: false,
-    twitter: false,
-    yandex: false,
-    windows: false,
-  },
-});
-
 const CleanWebpackPluginConfig = new CleanWebpackPlugin({
   verbose: true,
   cleanStaleWebpackAssets: false,
 });
 
 module.exports = {
+  devtool: 'source-map',
   entry: [
     './client/styles/index.scss',
     './client/assets/index.js',
@@ -79,7 +66,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         loader: 'babel-loader',
         include: [resolve('client')],
       },
@@ -88,19 +75,21 @@ module.exports = {
         use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
-        test: /\.scss$/i,
+        test: /\.scss$/,
         use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
-        test: /\.less$/i,
+        test: /\.less$/,
         use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'less-loader'],
       },
       {
-        test: /\.(jpe?g|png|gif)$/i,
+        test: /\.(jpe?g|png|gif)$/,
         use: [
           {
             loader: 'file-loader',
-            options: { name: 'images/[name].[ext]' },
+            options: {
+              name: 'images/[name].[ext]',
+            },
           },
           {
             loader: 'image-webpack-loader',
@@ -135,10 +124,10 @@ module.exports = {
     ],
   },
   plugins: [
-    CleanWebpackPluginConfig,
-    MiniCssExtractPluginConfig,
-    FaviconsWebpackPluginConfig,
     HtmlWebpackPluginConfig,
+    WebpackDefinePluginConfig,
+    MiniCssExtractPluginConfig,
+    CleanWebpackPluginConfig,
   ],
   performance: {
     hints: false,

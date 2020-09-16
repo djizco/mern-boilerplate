@@ -21,7 +21,6 @@ router.post('/', requireAuth, (req, res) => {
 
   const newTodo = Todo(req.body);
 
-
   newTodo.save((err, savedTodo) => {
     if (err) {
       res.status(400).send({ message: 'Create todo failed', err });

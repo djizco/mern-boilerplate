@@ -1,22 +1,18 @@
-const webpack = require('webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+
 const config = require('./webpack.config.js');
 
-config.plugins.push(new BundleAnalyzerPlugin());
-
-config.plugins.push(new webpack.DefinePlugin({
-  'process.env': {
-    NODE_ENV: JSON.stringify('production'),
-  },
-}));
-
 config.optimization = {
+  minimize: true,
   minimizer: [
-    new UglifyJsPlugin({
-      uglifyOptions: {
+    new TerserPlugin({
+      terserOptions: {
         compress: {
           drop_console: true,
+        },
+        output: {
+          comments: false,
         },
       },
       sourceMap: true,
@@ -24,8 +20,8 @@ config.optimization = {
   ],
 };
 
-config.plugins.push(new webpack.LoaderOptionsPlugin({
-  minimize: true,
+config.plugins.push(new BundleAnalyzerPlugin({
+  analyzerMode: 'static',
 }));
 
 module.exports = config;

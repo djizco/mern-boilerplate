@@ -22,7 +22,6 @@ export default function GeneralProfile() {
   const [bioEdited, setBioEdited] = useState(false);
   const [profilePicEdited, setProfilePicEdited] = useState(false);
 
-
   const resetState = () => {
     setFirstName(user.firstName || '');
     setLastName(user.lastName || '');

@@ -1,10 +1,11 @@
+/* eslint-disable */
 module.exports = {
   root: true,
   settings: {
     'import/resolver': {
       webpack: {
         config: './client/config/webpack.config.js',
-      }
+      },
     },
   },
   extends: 'airbnb',

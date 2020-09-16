@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import * as R from 'ramda';
+import R from 'ramda';
 
-import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons/faUser';
+import { faLock } from '@fortawesome/free-solid-svg-icons/faLock';
 
 import useKeyPress from '_hooks/useKeyPress';
 import { attemptLogin } from '_thunks/auth';

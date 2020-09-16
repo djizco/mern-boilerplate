@@ -1,4 +1,4 @@
-import * as R from 'ramda';
+import R from 'ramda';
 
 export const validateUsername = username => {
   let valid = true;

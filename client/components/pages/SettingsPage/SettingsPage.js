@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { push } from 'connected-react-router';
 import { Switch, Route } from 'react-router';
-import * as R from 'ramda';
+import R from 'ramda';
 
 import ProfileSettings from '_templates/ProfileSettings';
 import AccountSettings from '_templates/AccountSettings';

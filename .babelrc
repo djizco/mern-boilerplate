@@ -1,7 +1,12 @@
 {
   "presets": ["@babel/env", "@babel/react"],
   "plugins": [
-    // Stage 3
     "@babel/plugin-proposal-class-properties",
-  ]
+    ["ramda", { "useES": true }]
+  ],
+  "env": {
+    "test": {
+      "plugins": ["ramda"]
+    }
+  }
 }

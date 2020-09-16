@@ -4,8 +4,12 @@ import { useDispatch } from 'react-redux';
 import { parseISO, formatDistanceToNow } from 'date-fns';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashAlt, faBan, faPencilAlt, faSave } from '@fortawesome/free-solid-svg-icons';
-import { faSquare, faCheckSquare } from '@fortawesome/free-regular-svg-icons';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons/faTrashAlt';
+import { faBan } from '@fortawesome/free-solid-svg-icons/faBan';
+import { faPencilAlt } from '@fortawesome/free-solid-svg-icons/faPencilAlt';
+import { faSave } from '@fortawesome/free-solid-svg-icons/faSave';
+import { faSquare } from '@fortawesome/free-regular-svg-icons/faSquare';
+import { faCheckSquare } from '@fortawesome/free-regular-svg-icons/faCheckSquare';
 
 import { attemptToggleCompleteTodo, attemptUpdateTodo, attemptDeleteTodo } from '_thunks/todos';
 import ConfirmModal from '_organisms/ConfirmModal';

@@ -1,4 +1,4 @@
-import * as R from 'ramda';
+import R from 'ramda';
 import { connect } from 'react-redux';
 import Footer from './Footer';
 

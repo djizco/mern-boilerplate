@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
-import * as R from 'ramda';
+import R from 'ramda';
 
 import { validatePassword } from '_utils/validation';
 import { attemptUpdatePassword } from '_thunks/user';

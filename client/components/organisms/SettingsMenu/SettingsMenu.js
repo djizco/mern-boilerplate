@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { useDispatch } from 'react-redux';
-import * as R from 'ramda';
+import R from 'ramda';
 
 import { attemptLogout } from '_thunks/auth';
 

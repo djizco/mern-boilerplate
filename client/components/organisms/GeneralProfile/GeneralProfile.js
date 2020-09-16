@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import * as R from 'ramda';
+import R from 'ramda';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSync } from '@fortawesome/free-solid-svg-icons';
+import { faSync } from '@fortawesome/free-solid-svg-icons/faSync';
 
 import { validateName } from '_utils/validation';
 import { attemptGetUser, attemptUpdateUser } from '_thunks/user';

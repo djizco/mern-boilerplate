@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { useDispatch } from 'react-redux';
-import * as R from 'ramda';
+import R from 'ramda';
 
 import useKeyPress from '_hooks/useKeyPress';
 import { postCheckUsername } from '_api/users';

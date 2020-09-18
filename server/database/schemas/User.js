@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const { MongooseAutoIncrementID } = require('mongoose-auto-increment-reworked');
-const immutablePlugin = require('mongoose-immutable');
 const bcrypt = require('bcryptjs');
 const R = require('ramda');
 
@@ -29,8 +28,6 @@ userSchema.plugin(MongooseAutoIncrementID.plugin, {
   nextCount: false,
   resetCount: false,
 });
-
-userSchema.plugin(immutablePlugin);
 
 userSchema.virtual('full_name').get(function() {
   if (this.first_name && this.last_name) {

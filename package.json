@@ -70,7 +70,6 @@
     "json-style-converter": "^1.0.3",
     "mongoose": "^5.10.5",
     "mongoose-auto-increment-reworked": "^1.2.1",
-    "mongoose-immutable": "0.0.2",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "prop-types": "^15.7.2",

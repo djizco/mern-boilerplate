@@ -1,6 +1,5 @@
 const R = require('ramda');
 const mongoose = require('mongoose');
-const immutablePlugin = require('mongoose-immutable');
 
 const { Schema } = mongoose;
 
@@ -11,8 +10,6 @@ const todoSchema = new Schema({
   created_at: { type: Date, default: Date.now, immutable: true },
   updated_at: { type: Date },
 });
-
-todoSchema.plugin(immutablePlugin);
 
 todoSchema.methods.hide = function() {
   return R.omit(['__v'], this.toObject());

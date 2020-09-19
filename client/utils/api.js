@@ -1,5 +1,5 @@
 import { push } from 'connected-react-router';
-import Notifications from 'react-notification-system-redux';
+import { store as RNC } from 'react-notifications-component';
 
 import { logout } from '_actions/user';
 
@@ -20,12 +20,17 @@ export const dispatchError = dispatch => res => {
     dispatch(push('/login'));
   }
 
-  dispatch(Notifications.error({
+  RNC.addNotification({
     title: `Error: ${res.status}`,
     message: res.body.message,
-    position: 'tr',
-    autoDismiss: 5,
-  }));
+    type: 'danger',
+    container: 'top-right',
+    animationIn: ['animated', 'fadeInRight'],
+    animationOut: ['animated', 'fadeOutRight'],
+    dismiss: {
+      duration: 5000,
+    },
+  });
 
   throw res;
 };

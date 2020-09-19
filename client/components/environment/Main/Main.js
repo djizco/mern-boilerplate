@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Switch, Route } from 'react-router';
-import Notifications from 'react-notification-system-redux';
-import { useDispatch, useSelector } from 'react-redux';
+import ReactNotification from 'react-notifications-component';
+import { useDispatch } from 'react-redux';
 import R from 'ramda';
 
 import { attemptGetUser } from '_thunks/user';
@@ -20,7 +20,6 @@ import Footer from '_organisms/Footer';
 
 export default function Main({ location }) {
   const dispatch = useDispatch();
-  const { alerts } = useSelector(R.pick(['alerts']));
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -35,7 +34,7 @@ export default function Main({ location }) {
 
   return !loading && (
     <div className="has-navbar-fixed-top">
-      <Notifications notifications={alerts} />
+      <ReactNotification />
       <Navigation pathname={location.pathname} />
       <div className="main">
         <Switch>

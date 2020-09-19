@@ -1,6 +1,6 @@
 import { push } from 'connected-react-router';
 import { snakeToCamelCase } from 'json-style-converter/es5';
-import Notifications from 'react-notification-system-redux';
+import { store as RNC } from 'react-notifications-component';
 
 import { postRegister, postLogin, postLogout } from '_api/auth';
 import { login, logout } from '_actions/user';
@@ -11,12 +11,19 @@ export const attemptLogin = user => dispatch =>
   postLogin(user)
     .then(data => {
       dispatch(login(snakeToCamelCase(data.user)));
-      dispatch(Notifications.success({
+
+      RNC.addNotification({
         title: 'Success!',
         message: data.message,
-        position: 'tr',
-        autoDismiss: 3,
-      }));
+        type: 'success',
+        container: 'top-right',
+        animationIn: ['animated', 'fadeInRight'],
+        animationOut: ['animated', 'fadeOutRight'],
+        dismiss: {
+          duration: 5000,
+        },
+      });
+
       dispatch(push('/home'));
       return data;
     })
@@ -25,12 +32,18 @@ export const attemptLogin = user => dispatch =>
 export const attemptRegister = newUser => dispatch =>
   postRegister(newUser)
     .then(data => {
-      dispatch(Notifications.success({
+      RNC.addNotification({
         title: 'Success!',
         message: data.message,
-        position: 'tr',
-        autoDismiss: 3,
-      }));
+        type: 'success',
+        container: 'top-right',
+        animationIn: ['animated', 'fadeInRight'],
+        animationOut: ['animated', 'fadeOutRight'],
+        dismiss: {
+          duration: 5000,
+        },
+      });
+
       return dispatch(attemptLogin(newUser));
     })
     .then(() => dispatch(push('/settings')))
@@ -40,12 +53,19 @@ export const attemptLogout = () => dispatch =>
   postLogout()
     .then(data => {
       dispatch(logout());
-      dispatch(Notifications.success({
+
+      RNC.addNotification({
         title: 'Success!',
         message: data.message,
-        position: 'tr',
-        autoDismiss: 3,
-      }));
+        type: 'success',
+        container: 'top-right',
+        animationIn: ['animated', 'fadeInRight'],
+        animationOut: ['animated', 'fadeOutRight'],
+        dismiss: {
+          duration: 5000,
+        },
+      });
+
       dispatch(push('/login'));
       return data;
     })

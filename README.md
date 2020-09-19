@@ -134,7 +134,7 @@ This is based on atomic design. Learn more about [atomic design](http://bradfros
 
 [Passport](http://www.passportjs.org/) - Authentication Framework
 
-[React Notification System](http://igorprado.com/react-notification-system/) - Notification System
+[React Notifications Component](https://teodosii.github.io/react-notifications-component/) - Notification System
 
 [Bulma](http://bulma.io/) - CSS Framework
 

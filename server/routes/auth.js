@@ -45,9 +45,6 @@ router.post('/login', (req, res, next) => {
     if (err) {
       return next(err);
     }
-    if (info && info.message === 'Missing credentials') {
-      return res.status(401).send({ message: 'Missing credentials' });
-    }
     if (!user) {
       return res.status(401).send(info);
     }

@@ -6,5 +6,3 @@ export const postCheckUsername = username =>
     .send({ username })
     .then(handleSuccess)
     .catch(handleError);
-
-export const placeholder = () => {};

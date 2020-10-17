@@ -138,6 +138,8 @@ This is based on atomic design. Learn more about [atomic design](http://bradfros
 
 [Bulma](http://bulma.io/) - CSS Framework
 
+[React Bulma Companion](https://github.com/djizco/react-bulma-companion) - Bulma Component Library
+
 [FontAwesome](http://fontawesome.io/) - Icons
 
 [Ramda](http://ramdajs.com/) - Functional Library

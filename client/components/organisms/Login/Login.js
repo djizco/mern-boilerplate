@@ -6,9 +6,15 @@ import R from 'ramda';
 import { faUser } from '@fortawesome/free-solid-svg-icons/faUser';
 import { faLock } from '@fortawesome/free-solid-svg-icons/faLock';
 
+import Box from 'react-bulma-companion/lib/Box';
+import Block from 'react-bulma-companion/lib/Block';
+import Title from 'react-bulma-companion/lib/Title';
+import Control from 'react-bulma-companion/lib/Control';
+import Button from 'react-bulma-companion/lib/Button';
+import Checkbox from 'react-bulma-companion/lib/Checkbox';
+
 import useKeyPress from '_hooks/useKeyPress';
 import { attemptLogin } from '_thunks/auth';
-import Box from '_molecules/Box';
 import FormInput from '_molecules/FormInput';
 
 export default function Login() {
@@ -49,24 +55,22 @@ export default function Login() {
 
   return (
     <Box className="login">
-      <h3 className="title is-3">
+      <Title size="3">
         Login
-      </h3>
+      </Title>
       <hr className="separator" />
-      <p className="has-space-below">
+      <Block>
         Not Registered Yet?&nbsp;
         <Link to="/register">
           Create an account.
         </Link>
-      </p>
-
+      </Block>
       <FormInput
         onChange={updateUsername}
         placeholder="Username"
         value={username}
         leftIcon={faUser}
       />
-
       <FormInput
         onChange={updatePassword}
         placeholder="Password"
@@ -74,20 +78,21 @@ export default function Login() {
         leftIcon={faLock}
         type="password"
       />
-
-      <p className="has-space-below">
+      <Block>
         <Link to="/recovery">
           Forgot your password?
         </Link>
-      </p>
+      </Block>
       <hr className="separator" />
-      <p className="control is-clearfix">
-        <button type="button" className="button is-success is-pulled-right" onClick={login}>
+      <Control className="is-clearfix">
+        <Button className="is-pulled-right" color="success" onClick={login}>
           Login
-        </button>
-        <input type="checkbox" onChange={rememberMe} checked={remember} />
-        &nbsp; Remember me
-      </p>
+        </Button>
+        <Checkbox>
+          <input type="checkbox" onChange={rememberMe} checked={remember} />
+          <span>&nbsp; Remember me</span>
+        </Checkbox>
+      </Control>
     </Box>
   );
 }

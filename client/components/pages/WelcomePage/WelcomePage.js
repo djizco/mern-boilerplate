@@ -3,6 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { push } from 'connected-react-router';
 import R from 'ramda';
 
+import Section from 'react-bulma-companion/lib/Section';
+import Container from 'react-bulma-companion/lib/Container';
+import Title from 'react-bulma-companion/lib/Title';
+
 export default function WelcomePage() {
   const dispatch = useDispatch();
   const { user } = useSelector(R.pick(['user']));
@@ -15,13 +19,13 @@ export default function WelcomePage() {
 
   return (
     <div className="welcome-page page">
-      <div className="section">
-        <div className="container">
-          <h1 className="title is-1">
+      <Section>
+        <Container>
+          <Title size="1">
             Welcome Page!
-          </h1>
-        </div>
-      </div>
+          </Title>
+        </Container>
+      </Section>
     </div>
   );
 }

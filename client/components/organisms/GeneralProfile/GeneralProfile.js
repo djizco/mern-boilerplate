@@ -5,9 +5,22 @@ import R from 'ramda';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSync } from '@fortawesome/free-solid-svg-icons/faSync';
 
+import Box from 'react-bulma-companion/lib/Box';
+import Icon from 'react-bulma-companion/lib/Icon';
+import Title from 'react-bulma-companion/lib/Title';
+import Columns from 'react-bulma-companion/lib/Columns';
+import Column from 'react-bulma-companion/lib/Column';
+import Button from 'react-bulma-companion/lib/Button';
+import Image from 'react-bulma-companion/lib/Image';
+import Field from 'react-bulma-companion/lib/Field';
+import Control from 'react-bulma-companion/lib/Control';
+import Textarea from 'react-bulma-companion/lib/Textarea';
+import Label from 'react-bulma-companion/lib/Label';
+import Help from 'react-bulma-companion/lib/Help';
+import Input from 'react-bulma-companion/lib/Input';
+
 import { validateName } from '_utils/validation';
 import { attemptGetUser, attemptUpdateUser } from '_thunks/user';
-import Box from '_molecules/Box';
 
 export default function GeneralProfile() {
   const dispatch = useDispatch();
@@ -84,105 +97,95 @@ export default function GeneralProfile() {
 
   return (
     <Box className="general-profile">
-      <span className="icon is-medium is-pulled-right" onClick={refresh} onKeyPress={refresh}>
+      <Icon size="medium" className="is-pulled-right" onClick={refresh} onKeyPress={refresh}>
         <FontAwesomeIcon icon={faSync} size="lg" />
-      </span>
-      <h3 className="title is-3">
+      </Icon>
+      <Title size="3">
         General
-      </h3>
+      </Title>
       <hr className="separator" />
-      <div className="columns">
-        <div className="column is-4">
-          <h3 className="title is-3 has-text-centered">
+      <Columns>
+        <Column size="4">
+          <Title size="3" className="has-text-centered">
             {user.usernameCase}
-          </h3>
-          <figure className="image">
-            <img
+          </Title>
+          <Image>
+            <Image.Content
               className="profile-img"
               src={profilePic || '/images/default-profile.png'}
               alt="Profile"
             />
-          </figure>
-          <div className="field">
-            <label htmlFor="profile-pic-url" className="label">
+          </Image>
+          <Field>
+            <Label htmlFor="profile-pic-url">
               Picture URL
-            </label>
-            <p className="control">
-              <input
+            </Label>
+            <Control>
+              <Input
                 id="profile-pic-url"
-                className="input"
-                type="text"
                 placeholder="Picture URL"
                 value={profilePic}
                 onChange={updateProfilePic}
               />
-            </p>
-          </div>
-        </div>
-
-        <div className="column is-8">
-          <div className="columns">
-            <div className="column is-6">
-              <div className="field">
-                <label htmlFor="first-name" className="label">
+            </Control>
+          </Field>
+        </Column>
+        <Column size="8">
+          <Columns>
+            <Column size="6">
+              <Field>
+                <Label htmlFor="first-name" className="Label">
                   First Name
-                </label>
-                <p className="control">
-                  <input
+                </Label>
+                <Control>
+                  <Input
                     id="first-name"
-                    className="input"
-                    type="text"
                     placeholder="First Name"
                     value={firstName}
                     onChange={updateFirstName}
                   />
-                </p>
-              </div>
-            </div>
-            <div className="column is-6">
-              <div className="field">
-                <label htmlFor="last-name" className="label">
+                </Control>
+              </Field>
+            </Column>
+            <Column size="6">
+              <Field>
+                <Label htmlFor="last-name">
                   Last Name
-                </label>
-                <p className="control">
-                  <input
+                </Label>
+                <Control>
+                  <Input
                     id="last-name"
-                    className="input"
-                    type="text"
                     placeholder="Last Name"
                     value={lastName}
                     onChange={updateLastName}
                   />
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="field">
-            <label htmlFor="bio" className="label">
+                </Control>
+              </Field>
+            </Column>
+          </Columns>
+          <Field>
+            <Label htmlFor="bio">
               Bio
-            </label>
-            <p className="control">
-              <textarea
+            </Label>
+            <Control>
+              <Textarea
                 id="bio"
-                className="textarea"
                 placeholder="Tell us about yourself."
                 value={bio}
                 maxLength={240}
                 onChange={updateBio}
               />
-            </p>
-            <p className="help">
+            </Control>
+            <Help>
               {`Characters remaining: ${charactersRemaining}`}
-            </p>
-          </div>
-
-        </div>
-      </div>
+            </Help>
+          </Field>
+        </Column>
+      </Columns>
       <hr className="separator" />
-      <button type="button" className="button is-success" disabled={!edited} onClick={save}>
+      <Button color="success" onClick={save} disabled={!edited}>
         Save
-      </button>
+      </Button>
     </Box>
   );
 }

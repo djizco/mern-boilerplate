@@ -1,16 +1,26 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import classNames from 'classnames';
 import { useDispatch } from 'react-redux';
 import R from 'ramda';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
+import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons/faExclamationTriangle';
+
+import Box from 'react-bulma-companion/lib/Box';
+import Button from 'react-bulma-companion/lib/Button';
+import Title from 'react-bulma-companion/lib/Title';
+import Field from 'react-bulma-companion/lib/Field';
+import Control from 'react-bulma-companion/lib/Control';
+import Icon from 'react-bulma-companion/lib/Icon';
+import Input from 'react-bulma-companion/lib/Input';
+import Label from 'react-bulma-companion/lib/Label';
+import Help from 'react-bulma-companion/lib/Help';
 
 import useKeyPress from '_hooks/useKeyPress';
 import { postCheckUsername } from '_api/users';
 import { validateUsername, validatePassword } from '_utils/validation';
 import { attemptRegister } from '_thunks/auth';
-
-import Box from '_molecules/Box';
-import Button from '_atoms/Button';
 
 export default function Register() {
   const dispatch = useDispatch();
@@ -77,51 +87,11 @@ export default function Register() {
 
   useKeyPress('Enter', register);
 
-  const usernameIconClasses = classNames({
-    fa: true,
-    'fa-check': usernameAvailable,
-    'fa-warning': username && !usernameAvailable,
-    'is-success': usernameAvailable,
-    'is-danger': username && !usernameAvailable,
-  });
-
-  const usernameInputClasses = classNames({
-    input: true,
-    'is-success': usernameAvailable,
-    'is-danger': username && !usernameAvailable,
-  });
-
-  const usernameHelpClasses = classNames({
-    help: true,
-    'is-success': usernameAvailable,
-    'is-danger': username && !usernameAvailable,
-  });
-
-  const passwordIconClasses = classNames({
-    fa: true,
-    'fa-check': passwordValid,
-    'fa-warning': password && !passwordValid,
-    'is-success': passwordValid,
-    'is-danger': password && !passwordValid,
-  });
-
-  const passwordInputClasses = classNames({
-    input: true,
-    'is-success': passwordValid,
-    'is-danger': password && !passwordValid,
-  });
-
-  const passwordHelpClasses = classNames({
-    help: true,
-    'is-success': passwordValid,
-    'is-danger': password && !passwordValid,
-  });
-
   return (
     <Box className="register">
-      <h3 className="title is-3">
+      <Title size="3">
         Sign Up
-      </h3>
+      </Title>
       <hr className="separator" />
       <p className="has-space-below">
         Already a member?&nbsp;
@@ -129,64 +99,72 @@ export default function Register() {
           Login
         </Link>
       </p>
-
-      <div className="field">
-        <label htmlFor="username" className="label">
+      <Field>
+        <Label htmlFor="username">
           Username
-        </label>
-        <p className="control has-icons-right">
-          <input
+        </Label>
+        <Control iconsRight>
+          <Input
             id="username"
-            className={usernameInputClasses}
             placeholder="Username"
-            type="username"
+            color={username ? (usernameAvailable ? 'success' : 'danger') : undefined}
             value={username}
             onChange={handleUsernameChange}
           />
-          <span className="icon is-small is-right">
-            <i className={usernameIconClasses} />
-          </span>
-        </p>
+          {username && (
+            <Icon
+              size="small"
+              align="right"
+              color={usernameAvailable ? 'success' : 'danger'}
+            >
+              <FontAwesomeIcon
+                icon={usernameAvailable ? faCheck : faExclamationTriangle}
+              />
+            </Icon>
+          )}
+        </Control>
         {username && (
-          <p className={usernameHelpClasses}>
+          <Help color={usernameAvailable ? 'success' : 'danger'}>
             {usernameMessage}
-          </p>
+          </Help>
         )}
-      </div>
-
-      <div className="field">
-        <label htmlFor="password" className="label">
+      </Field>
+      <Field>
+        <Label htmlFor="password">
           Password
-        </label>
-        <p className="control has-icons-right">
-          <input
+        </Label>
+        <Control iconsRight>
+          <Input
             id="password"
-            className={passwordInputClasses}
             placeholder="Password"
             type="password"
+            color={password ? (passwordValid ? 'success' : 'danger') : undefined}
             value={password}
             onChange={handlePasswordChange}
           />
-          <span className="icon is-small is-right">
-            <i className={passwordIconClasses} />
-          </span>
-        </p>
+          {password && (
+            <Icon
+              size="small"
+              align="right"
+              color={passwordValid ? 'success' : 'danger'}
+            >
+              <FontAwesomeIcon
+                icon={passwordValid ? faCheck : faExclamationTriangle}
+              />
+            </Icon>
+          )}
+        </Control>
         {password && (
-          <p className={passwordHelpClasses}>
+          <Help color={passwordValid ? 'success' : 'danger'}>
             {passwordMessage}
-          </p>
+          </Help>
         )}
-      </div>
-
+      </Field>
       <hr className="separator" />
-
       <div className="has-text-right">
-        <Button
-          type="success"
-          disabled={!passwordValid || !usernameAvailable}
-          onClick={register}
-          label="Create Account"
-        />
+        <Button color="success" onClick={register} disabled={!passwordValid || !usernameAvailable}>
+          Create Account
+        </Button>
       </div>
     </Box>
   );

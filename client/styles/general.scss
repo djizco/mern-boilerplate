@@ -23,16 +23,6 @@ a {
   border-color: $dark-grey;
 }
 
-.control .fa {
-  &.fa.is-success {
-    color: $success;
-  }
-
-  &.fa.is-danger {
-    color: $danger;
-  }
-}
-
 .field.has-help {
   height: 67px;
 }

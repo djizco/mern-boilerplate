@@ -1,23 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Card from 'react-bulma-companion/lib/Card';
+import Content from 'react-bulma-companion/lib/Content';
+
 export default function ConfirmDeleteTodo({ closeModal, deleteTodo }) {
   return (
-    <div className="card">
-      <div className="card-content">
-        <div className="content has-text-centered">
+    <Card>
+      <Card.Content>
+        <Content className="has-text-centered">
           Are you sure you wanted to delete this item?
-        </div>
-      </div>
-      <footer className="card-footer">
-        <a className="card-footer-item" onClick={closeModal} onKeyPress={closeModal}>
+        </Content>
+      </Card.Content>
+      <Card.Footer>
+        <Card.FooterItem onClick={closeModal} onKeyPress={closeModal}>
           Cancel
-        </a>
-        <a className="card-footer-item" onClick={deleteTodo} onKeyPress={deleteTodo}>
+        </Card.FooterItem>
+        <Card.FooterItem onClick={deleteTodo} onKeyPress={deleteTodo}>
           Delete
-        </a>
-      </footer>
-    </div>
+        </Card.FooterItem>
+      </Card.Footer>
+    </Card>
   );
 }
 

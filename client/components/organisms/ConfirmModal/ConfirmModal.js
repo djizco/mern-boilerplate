@@ -1,29 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
+
+import Modal from 'react-bulma-companion/lib/Modal';
 
 import ConfirmDeleteTodo from '_organisms/ConfirmDeleteTodo';
 
 export default function ConfirmModal({ confirm, closeModal, deleteTodo }) {
-  const modalClasses = classNames({
-    modal: true,
-    'confirm-modal': true,
-    'is-active': confirm,
-  });
-
   return (
-    <div className={modalClasses}>
-      <div className="modal-background" />
-      <div className="modal-content">
+    <Modal className="confirm-modal" active={confirm}>
+      <Modal.Background />
+      <Modal.Content>
         <ConfirmDeleteTodo closeModal={closeModal} deleteTodo={deleteTodo} />
-      </div>
-      <button
-        type="button"
-        className="modal-close is-large"
-        aria-label="close"
-        onClick={closeModal}
-      />
-    </div>
+      </Modal.Content>
+      <Modal.Close size="large" aria-label="close" onClick={closeModal} />
+    </Modal>
   );
 }
 

@@ -1,10 +1,12 @@
 import React from 'react';
 import Login from '_organisms/Login';
 
+import Section from 'react-bulma-companion/lib/Section';
+
 export default function LoginSection() {
   return (
-    <div className="login-section section">
+    <Section className="login-section">
       <Login />
-    </div>
+    </Section>
   );
 }

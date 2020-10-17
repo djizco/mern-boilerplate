@@ -1,7 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import classNames from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
 import R from 'ramda';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
+import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons/faExclamationTriangle';
+
+import Box from 'react-bulma-companion/lib/Box';
+import Title from 'react-bulma-companion/lib/Title';
+import Field from 'react-bulma-companion/lib/Field';
+import Control from 'react-bulma-companion/lib/Control';
+import Label from 'react-bulma-companion/lib/Label';
+import Input from 'react-bulma-companion/lib/Input';
+import Icon from 'react-bulma-companion/lib/Icon';
+import Help from 'react-bulma-companion/lib/Help';
+import Button from 'react-bulma-companion/lib/Button';
 
 import { attemptUpdateUser } from '_thunks/user';
 
@@ -31,76 +44,60 @@ export default function ChangeUsername() {
     }
   };
 
-  const helpClasses = classNames({
-    help: true,
-    'is-success': !disabled,
-    'is-danger': disabled,
-  });
-
-  const inputClasses = classNames({
-    input: true,
-    'is-success': !disabled,
-    'is-danger': disabled && usernameCase !== user.usernameCase,
-  });
-
-  const iconClasses = classNames({
-    fa: true,
-    'fa-check': !disabled,
-    'is-success': !disabled,
-    'fa-warning': disabled && usernameCase !== user.usernameCase,
-    'is-danger': disabled && usernameCase !== user.usernameCase,
-  });
-
   const helpMessage = disabled ? `Username case must match: ${user.username}` : 'Username case valid.';
 
   return (
-    <div className="change-username box">
-      <h3 className="title is-3">
+    <Box className="change-username">
+      <Title size="3">
         Username
-      </h3>
+      </Title>
       <hr className="separator" />
-
-      <div className="field">
-        <label htmlFor="username" className="label">
+      <Field>
+        <Label htmlFor="username">
           Current Username
-        </label>
-        <p className="control">
+        </Label>
+        <Control className="control">
           {user.usernameCase}
-        </p>
-      </div>
-
-      <div className="field has-help">
-        <label htmlFor="username-case" className="label">
+        </Control>
+      </Field>
+      <Field className="has-help">
+        <Label htmlFor="username-case">
           Username Case
-        </label>
-        <p className="control has-icons-right">
-          <input
+        </Label>
+        <Control iconsRight>
+          <Input
             id="username-case"
-            className={inputClasses}
-            type="text"
+            color={disabled ? (usernameCase !== user.usernameCase ? 'danger' : undefined) : 'success'}
             placeholder="Username Case"
             value={usernameCase}
             onChange={updateUsernameCase}
           />
-          <span className="icon is-small is-right">
-            <i className={iconClasses} />
-          </span>
-        </p>
+          {disabled && (usernameCase !== user.usernameCase) && (
+            <Icon
+              size="small"
+              align="right"
+              color={disabled ? (usernameCase !== user.usernameCase ? 'danger' : undefined) : 'success'}
+            >
+              <FontAwesomeIcon
+                icon={disabled ? (usernameCase !== user.usernameCase && faExclamationTriangle) : faCheck}
+              />
+            </Icon>
+          )}
+        </Control>
         {usernameCase !== user.usernameCase && (
-          <p className={helpClasses}>
+          <Help color={disabled ? 'danger' : 'success'}>
             {helpMessage}
-          </p>
+          </Help>
         )}
-      </div>
+      </Field>
       <hr className="separator" />
-      <button
-        type="button"
-        className="button is-success"
+      <Button
+        color="success"
         disabled={disabled}
         onClick={saveUsernameCase}
       >
         Save
-      </button>
-    </div>
+      </Button>
+    </Box>
   );
 }

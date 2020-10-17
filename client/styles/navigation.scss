@@ -44,17 +44,12 @@
     max-height: none;
   }
 
-  .navbar-image.is-32x32 {
-    img {
-      border: 1px solid $mern-hover;
-      border-radius: 3px;
-      max-height: none;
-    }
-  }
-
   .profile-img {
     height: 32px;
     width: 32px;
+    border: 1px solid $mern-hover;
+    border-radius: 3px;
+    max-height: none;
   }
 
   .button {

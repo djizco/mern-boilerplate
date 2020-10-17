@@ -1,8 +1,22 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import classNames from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
 import R from 'ramda';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
+import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons/faExclamationTriangle';
+
+import Box from 'react-bulma-companion/lib/Box';
+import Block from 'react-bulma-companion/lib/Block';
+import Title from 'react-bulma-companion/lib/Title';
+import Field from 'react-bulma-companion/lib/Field';
+import Control from 'react-bulma-companion/lib/Control';
+import Label from 'react-bulma-companion/lib/Label';
+import Input from 'react-bulma-companion/lib/Input';
+import Help from 'react-bulma-companion/lib/Help';
+import Icon from 'react-bulma-companion/lib/Icon';
+import Button from 'react-bulma-companion/lib/Button';
 
 import { validatePassword } from '_utils/validation';
 import { attemptUpdatePassword } from '_thunks/user';
@@ -18,46 +32,6 @@ export default function ChangePassword() {
   const [valid, setValid] = useState(false);
 
   const match = newPassword === confirmPassword;
-
-  const newPasswordHelpClasses = classNames({
-    help: true,
-    'is-danger': !valid,
-    'is-success': valid,
-  });
-
-  const newPasswordIconClasses = classNames({
-    fa: true,
-    'fa-check': valid,
-    'is-success': valid,
-    'fa-warning': newPassword && !valid,
-    'is-danger': newPassword && !valid,
-  });
-
-  const newPasswordInputClasses = classNames({
-    input: true,
-    'is-success': valid,
-    'is-danger': newPassword && !valid,
-  });
-
-  const confirmPasswordIconClasses = classNames({
-    fa: true,
-    'fa-check': confirmPassword && match,
-    'is-success': confirmPassword && match,
-    'fa-warning': confirmPassword && !match,
-    'is-danger': confirmPassword && !match,
-  });
-
-  const confirmPasswordInputClasses = classNames({
-    input: true,
-    'is-success': confirmPassword && match,
-    'is-danger': confirmPassword && !match,
-  });
-
-  const confirmPasswordHelpClasses = classNames({
-    help: true,
-    'is-success': match,
-    'is-danger': !match,
-  });
 
   const updateOldPassword = e => setOldPassword(e.target.value);
   const updateConfirmPassword = e => setConfirmPassword(e.target.value);
@@ -88,91 +62,88 @@ export default function ChangePassword() {
   };
 
   return (
-    <div className="change-password box">
-      <h3 className="title is-3">
+    <Box className="change-password">
+      <Title size="3">
         Change Password
-      </h3>
+      </Title>
       <hr className="separator" />
-
-      <div className="field">
-        <label htmlFor="old-password" className="label">
+      <Field>
+        <Label htmlFor="old-password">
           Old Password
-        </label>
-        <p className="control">
-          <input
+        </Label>
+        <Control>
+          <Input
             id="old-password"
-            className="input"
             type="password"
             placeholder="Old Password"
             value={oldPassword}
             onChange={updateOldPassword}
           />
-        </p>
-      </div>
-
-      <p className="has-space-below">
+        </Control>
+      </Field>
+      <Block>
         <Link to="/recovery">
           Forgot your password?
         </Link>
-      </p>
-
-      <div className="field has-help">
-        <label htmlFor="new-password" className="label">
+      </Block>
+      <Field className="has-help">
+        <Label htmlFor="new-password">
           New Password
-        </label>
-        <p className="control has-icons-right">
-          <input
+        </Label>
+        <Control iconsRight>
+          <Input
             id="new-password"
-            className={newPasswordInputClasses}
+            color={newPassword ? (valid ? 'success' : 'danger') : undefined}
             type="password"
             placeholder="New Password"
             value={newPassword}
             onChange={updateNewPassword}
           />
-          <span className="icon is-small is-right">
-            <i className={newPasswordIconClasses} />
-          </span>
-        </p>
+          {newPassword && (
+            <Icon size="small" align="right" color={valid ? 'success' : 'danger'}>
+              <FontAwesomeIcon icon={valid ? faCheck : faExclamationTriangle} />
+            </Icon>
+          )}
+        </Control>
         {newPassword && (
-          <p className={newPasswordHelpClasses}>
+          <Help color={valid ? 'success' : 'danger'}>
             {message}
-          </p>
+          </Help>
         )}
-      </div>
-
-      <div className="field has-help">
-        <label htmlFor="confirm-password" className="label">
+      </Field>
+      <Field className="has-help">
+        <Label htmlFor="confirm-password">
           Confirm Password
-        </label>
-        <p className="control has-icons-right">
-          <input
+        </Label>
+        <Control iconsRight>
+          <Input
             id="confirm-password"
-            className={confirmPasswordInputClasses}
+            color={confirmPassword ? (match ? 'success' : 'danger') : undefined}
             type="password"
             placeholder="Confirm Password"
             value={confirmPassword}
             onChange={updateConfirmPassword}
           />
-          <span className="icon is-small is-right">
-            <i className={confirmPasswordIconClasses} />
-          </span>
-        </p>
+          {confirmPassword && (
+            <Icon size="small" align="right" color={match ? 'success' : 'danger'}>
+              <FontAwesomeIcon icon={match ? faCheck : faExclamationTriangle} />
+            </Icon>
+          )}
+        </Control>
         {confirmPassword && (
-          <p className={confirmPasswordHelpClasses}>
+          <Help color={match ? 'success' : 'danger'}>
             {match ? 'Passwords match' : 'Passwords must match'}
-          </p>
+          </Help>
         )}
-      </div>
-
+      </Field>
       <hr className="separator" />
-      <button
-        type="button"
-        className="button is-success"
+      <Button
+        color="success"
         onClick={save}
         disabled={!match || !valid || !oldPassword}
       >
         Update Password
-      </button>
-    </div>
+      </Button>
+    </Box>
   );
 }

@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import Field from 'react-bulma-companion/lib/Field';
+import Control from 'react-bulma-companion/lib/Control';
+import Input from 'react-bulma-companion/lib/Input';
+import Icon from 'react-bulma-companion/lib/Icon';
 
 export default function FormInput({
   className,
@@ -13,39 +16,27 @@ export default function FormInput({
   leftIcon,
   rightIcon,
 }) {
-  const fieldClasses = classNames({
-    field: true,
-    [className]: true,
-  });
-
-  const controlClasses = classNames({
-    control: true,
-    'has-icons-left': !!leftIcon,
-    'has-icons-right': !!rightIcon,
-  });
-
   return (
-    <div className={fieldClasses}>
-      <p className={controlClasses}>
-        <input
-          className="input"
+    <Field className={className}>
+      <Control iconsLeft={!!leftIcon} iconsRight={!!rightIcon}>
+        <Input
           type={type}
           placeholder={placeholder}
           onChange={onChange}
           value={value}
         />
         {leftIcon && (
-          <span className="icon is-small is-left">
+          <Icon size="small" align="left">
             <FontAwesomeIcon icon={leftIcon} />
-          </span>
+          </Icon>
         )}
         {rightIcon && (
-          <span className="icon is-small is-right">
+          <Icon size="small" align="left">
             <FontAwesomeIcon icon={rightIcon} />
-          </span>
+          </Icon>
         )}
-      </p>
-    </div>
+      </Control>
+    </Field>
   );
 }
 

@@ -1,10 +1,12 @@
 import React from 'react';
 import Register from '_organisms/Register';
 
+import Section from 'react-bulma-companion/lib/Section';
+
 export default function RegisterSection() {
   return (
-    <div className="register-secction section">
+    <Section className="register-secction">
       <Register />
-    </div>
+    </Section>
   );
 }

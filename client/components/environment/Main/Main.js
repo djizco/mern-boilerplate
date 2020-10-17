@@ -33,7 +33,7 @@ export default function Main({ location }) {
   }, [location.pathname]);
 
   return !loading && (
-    <div className="has-navbar-fixed-top">
+    <div>
       <ReactNotification />
       <Navigation pathname={location.pathname} />
       <div className="main">

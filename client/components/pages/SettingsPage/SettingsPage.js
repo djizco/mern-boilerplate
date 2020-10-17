@@ -5,6 +5,11 @@ import { push } from 'connected-react-router';
 import { Switch, Route } from 'react-router';
 import R from 'ramda';
 
+import Section from 'react-bulma-companion/lib/Section';
+import Container from 'react-bulma-companion/lib/Container';
+import Columns from 'react-bulma-companion/lib/Columns';
+import Column from 'react-bulma-companion/lib/Column';
+
 import ProfileSettings from '_templates/ProfileSettings';
 import AccountSettings from '_templates/AccountSettings';
 import SettingsMenu from '_organisms/SettingsMenu';
@@ -21,22 +26,22 @@ export default function SettingsPage({ location }) {
 
   return (
     <div className="settings-page page">
-      <div className="section">
-        <div className="container">
-          <div className="columns">
-            <div className="column is-3">
+      <Section>
+        <Container>
+          <Columns>
+            <Column size="3">
               <SettingsMenu pathname={location.pathname} />
-            </div>
-            <div className="column">
+            </Column>
+            <Column>
               <Switch>
                 <Route path="/settings/profile/" component={ProfileSettings} />
                 <Route path="/settings/account/" component={AccountSettings} />
                 <Route path="*" component={ProfileSettings} />
               </Switch>
-            </div>
-          </div>
-        </div>
-      </div>
+            </Column>
+          </Columns>
+        </Container>
+      </Section>
     </div>
   );
 }

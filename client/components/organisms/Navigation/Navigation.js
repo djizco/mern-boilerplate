@@ -1,14 +1,19 @@
 import React, { useState, useEffect }  from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import classNames from 'classnames';
-import { useSelector } from 'react-redux';
+import { push } from 'connected-react-router';
+import { useSelector, useDispatch } from 'react-redux';
 import R from 'ramda';
 
+import Navbar from 'react-bulma-companion/lib/Navbar';
+import Container from 'react-bulma-companion/lib/Container';
+import Image from 'react-bulma-companion/lib/Image';
+import Title from 'react-bulma-companion/lib/Title';
+import Button from 'react-bulma-companion/lib/Button';
+
 import UserDropdown from '_molecules/UserDropdown';
-import Button from '_atoms/Button';
 
 export default function Navigation({ pathname }) {
+  const dispatch = useDispatch();
   const { user } = useSelector(R.pick(['user']));
 
   const [auth, setAuth] = useState(!R.isEmpty(user));
@@ -34,110 +39,124 @@ export default function Navigation({ pathname }) {
     ? pathname === '/settings'
     : R.slice(0, 10, pathname) === '/settings/';
 
-  const homeItemClasses = classNames({
-    'navbar-item': true,
-    'is-tab': true,
-    'is-hidden-mobile': true,
-    'is-active': isHome,
-  });
-
-  const todoItemClasses = classNames({
-    'navbar-item': true,
-    'is-tab': true,
-    'is-hidden-mobile': true,
-    'is-active': isTodo,
-  });
-
-  const settingsItemClasses = classNames({
-    'navbar-item': true,
-    'is-tab': true,
-    'is-hidden-mobile': true,
-    'is-active': isSettings,
-  });
-
   return (
-    <nav className="navbar is-fixed-top has-shadow" role="navigation">
-      <div className="container">
-
-        <div className="navbar-brand">
-          <Link to={auth ? '/home' : '/'} className="navbar-item" aria-label="main navigation">
-            <h3 className="title is-3 logo">
+    <Navbar fixed="top" shadow>
+      <Container>
+        <Navbar.Brand>
+          <Navbar.Item
+            onClick={() => dispatch(push(auth ? '/home' : '/'))}
+            aria-label="main navigation"
+            link
+          >
+            <Title className="logo" size="3">
               MERN Boilerplate
-            </h3>
-          </Link>
+            </Title>
+          </Navbar.Item>
           <div className="navbar-brand-right">
             {!auth && (
-              <Link to="/login" className="navbar-item is-hidden-desktop">
-                <h6 className="title is-6">
+              <Navbar.Item
+                className="is-hidden-desktop"
+                onClick={() => dispatch(push('/login'))}
+                link
+              >
+                <Title size="6">
                   Login
-                </h6>
-              </Link>
+                </Title>
+              </Navbar.Item>
             )}
             {!auth && (
-              <Link to="/register" className="navbar-item is-hidden-desktop">
-                <Button label="Sign Up" type="success" />
-              </Link>
+              <Navbar.Item
+                className="is-hidden-desktop"
+                onClick={() => dispatch(push('/register'))}
+                link
+              >
+                <Button color="success">Sign Up</Button>
+              </Navbar.Item>
             )}
             {auth && (
-              <a
-                className="navbar-item is-hoverable is-hidden-desktop"
+              <Navbar.Item
+                className="is-hidden-desktop"
                 onClick={toggleDropdown}
                 onKeyPress={toggleDropdown}
+                hoverable
+                link
               >
-                <figure className="image navbar-image is-32x32">
-                  <img className="profile-img" src={user.profilePic || '/images/default-profile.png'} alt="" />
-                </figure>
+                <Image size="32x32">
+                  <Image.Content
+                    className="profile-img"
+                    src={user.profilePic || '/images/default-profile.png'}
+                  />
+                </Image>
                 <span className="dropdown-caret" />
-              </a>
+              </Navbar.Item>
             )}
           </div>
-        </div>
+        </Navbar.Brand>
 
         {auth ? (
-          <div className="navbar-menu">
-            <div className="navbar-start">
-              <Link to="/home" className={homeItemClasses}>
-                <h6 className="title is-6">
-                  Home
-                </h6>
-              </Link>
-              <Link to="/todo" className={todoItemClasses}>
-                <h6 className="title is-6">
+          <Navbar.Menu>
+            <Navbar.Start>
+              <Navbar.Item
+                className="is-hidden-mobile"
+                onClick={() => dispatch(push('/home'))}
+                active={isHome}
+                tab
+                link
+              >
+                <Title size="6">Home</Title>
+              </Navbar.Item>
+              <Navbar.Item
+                className="is-hidden-mobile"
+                onClick={() => dispatch(push('/todo'))}
+                active={isTodo}
+                tab
+                link
+              >
+                <Title size="6">
                   Todo
-                </h6>
-              </Link>
-              <Link to="/settings" className={settingsItemClasses}>
-                <h6 className="title is-6">
+                </Title>
+              </Navbar.Item>
+              <Navbar.Item
+                className="is-hidden-mobile"
+                onClick={() => dispatch(push('/settings'))}
+                active={isSettings}
+                tab
+                link
+              >
+                <Title size="6">
                   Settings
-                </h6>
-              </Link>
-            </div>
-            <div className="navbar-end">
-              <a className="navbar-item is-hoverable" onClick={toggleDropdown} onKeyPress={toggleDropdown}>
-                <figure className="image navbar-image is-32x32">
-                  <img className="profile-img" src={user.profilePic || '/images/default-profile.png'} alt="" />
-                </figure>
+                </Title>
+              </Navbar.Item>
+            </Navbar.Start>
+            <Navbar.End>
+              <Navbar.Item onClick={toggleDropdown} onKeyPress={toggleDropdown} hoverable link>
+                <Image size="32x32">
+                  <Image.Content
+                    className="profile-img"
+                    src={user.profilePic || '/images/default-profile.png'}
+                  />
+                </Image>
                 <span className="dropdown-caret" />
-              </a>
-            </div>
-          </div>
+              </Navbar.Item>
+            </Navbar.End>
+          </Navbar.Menu>
         ) : (
-          <div className="navbar-menu">
-            <div className="navbar-end">
-              <Link to="/login" className="navbar-item">
-                <h6 className="title is-6">
+          <Navbar.Menu>
+            <Navbar.End>
+              <Navbar.Item onClick={() => dispatch(push('/login'))} link>
+                <Title size="6">
                   Login
-                </h6>
-              </Link>
-              <Link to="/register" className="navbar-item">
-                <Button label="Sign Up" type="success" />
-              </Link>
-            </div>
-          </div>
+                </Title>
+              </Navbar.Item>
+              <Navbar.Item onClick={() => dispatch(push('/register'))} link>
+                <Button color="success">Sign Up</Button>
+              </Navbar.Item>
+            </Navbar.End>
+          </Navbar.Menu>
         )}
         <UserDropdown open={open} closeDropdown={closeDropdown} />
-      </div>
-    </nav>
+      </Container>
+    </Navbar>
   );
 }
 

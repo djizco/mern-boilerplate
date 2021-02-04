@@ -21,11 +21,6 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   inject: 'body',
 });
 
-const MiniCssExtractPluginConfig = new MiniCssExtractPlugin({
-  filename: isDev ? '[name].css' : '[name].[hash].css',
-  chunkFilename: isDev ? '[id].css' : '[id].[hash].css',
-});
-
 const CleanWebpackPluginConfig = new CleanWebpackPlugin({
   verbose: true,
   cleanStaleWebpackAssets: false,
@@ -72,15 +67,15 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader'],
+        use: [isDev ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
         test: /\.scss$/,
-        use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        use: [isDev ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
         test: /\.less$/,
-        use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'less-loader'],
+        use: [isDev ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'less-loader'],
       },
       {
         test: /\.(jpe?g|png|gif)$/,
@@ -126,7 +121,6 @@ module.exports = {
   plugins: [
     HtmlWebpackPluginConfig,
     WebpackDefinePluginConfig,
-    MiniCssExtractPluginConfig,
     CleanWebpackPluginConfig,
   ],
   performance: {

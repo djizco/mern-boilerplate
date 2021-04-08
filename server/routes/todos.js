@@ -25,7 +25,7 @@ router.post('/', requireAuth, (req, res) => {
     if (err) {
       res.status(400).send({ message: 'Create todo failed', err });
     } else {
-      res.send({ message: 'Todo created successfully', todo: savedTodo.hide() });
+      res.send({ message: 'Todo created successfully', todo: savedTodo });
     }
   });
 });
@@ -40,7 +40,7 @@ router.put('/complete', requireAuth, (req, res) => {
         if (err) {
           res.status(400).send({ message: 'Toggle todo failed', err });
         } else {
-          res.send({ message: 'Toggled complete todo successfully', todo: savedTodo.hide() });
+          res.send({ message: 'Toggled complete todo successfully', todo: savedTodo });
         }
       });
     }
@@ -58,7 +58,7 @@ router.put('/', requireAuth, (req, res) => {
         if (err) {
           res.status(400).send({ message: 'Update todo failed', err });
         } else {
-          res.send({ message: 'Updated todo successfully', todo: savedTodo.hide() });
+          res.send({ message: 'Updated todo successfully', todo: savedTodo });
         }
       });
     }

@@ -29,9 +29,9 @@ const CleanWebpackPluginConfig = new CleanWebpackPlugin({
 module.exports = {
   devtool: 'source-map',
   entry: [
-    './client/styles/index.scss',
-    './client/assets/index.js',
-    './client/index.js',
+    resolve('client/styles/index.scss'),
+    resolve('client/assets/index.js'),
+    resolve('client/index.js'),
   ],
   output: {
     filename: isDev ? '[name].js' : '[name].[hash].js',
@@ -93,6 +93,17 @@ module.exports = {
               pngquant: { quality: [0.75, 0.90], speed: 3 },
               mozjpeg: { progressive: true },
               gifsicle: { interlaced: false },
+            },
+          },
+        ],
+      },
+      {
+        test: /favicon.ico$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
             },
           },
         ],

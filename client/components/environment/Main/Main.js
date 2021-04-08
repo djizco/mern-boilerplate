@@ -24,8 +24,8 @@ export default function Main({ location }) {
 
   useEffect(() => {
     dispatch(attemptGetUser())
-      .then(() => setLoading(false))
-      .catch(R.identity);
+      .catch(R.identity)
+      .then(() => setLoading(false));
   }, []);
 
   useEffect(() => {

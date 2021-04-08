@@ -15,7 +15,7 @@ const userSchema = new Schema({
   bio: { type: String, maxlength: 240 },
   created_at: { type: Date, default: Date.now, immutable: true },
   updated_at: { type: Date },
-});
+}, { versionKey: false });
 
 if (process.env.NODE_ENV !== 'test') {
   MongooseAutoIncrementID.initialise('counters');
@@ -66,7 +66,7 @@ userSchema.methods.hashPassword = function() {
 };
 
 userSchema.methods.hidePassword = function() {
-  return R.omit(['password', '__v', '_id'], this.toObject({ virtuals: true }));
+  return R.omit(['password', '_id'], this.toObject({ virtuals: true }));
 };
 
 const User = mongoose.model('User', userSchema);

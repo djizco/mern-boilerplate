@@ -6,7 +6,7 @@ require('./config/environment');
 require('./database');
 
 const routes          = require('./routes/index');
-const configPassport  = require('./config/passport');
+const configPassport  = require('./passport/passport-config');
 
 const assetFolder  = path.resolve(__dirname, '../dist/');
 const port         = process.env.PORT;

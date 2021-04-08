@@ -1,7 +1,7 @@
 /* eslint-disable */
 module.exports = {
   root: true,
-  extends: 'airbnb',
+  extends: 'airbnb-base',
   parserOptions: {
     ecmaVersion: 7,
     sourceType: "module",

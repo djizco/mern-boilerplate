@@ -14,8 +14,7 @@ module.exports = app => {
       collection: 'sessions',
     }),
     genid: () => uuid.v4(),
-    cookie: { secure: false },
-    secret: 'mern',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
   };

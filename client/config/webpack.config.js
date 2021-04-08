@@ -17,6 +17,7 @@ const WebpackDefinePluginConfig = new webpack.DefinePlugin({
 
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: resolve('client/index.html'),
+  favicon: resolve('client/assets/icons/favicon.ico'),
   filename: 'index.html',
   inject: 'body',
 });
@@ -93,17 +94,6 @@ module.exports = {
               pngquant: { quality: [0.75, 0.90], speed: 3 },
               mozjpeg: { progressive: true },
               gifsicle: { interlaced: false },
-            },
-          },
-        ],
-      },
-      {
-        test: /favicon.ico$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
             },
           },
         ],

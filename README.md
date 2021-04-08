@@ -3,7 +3,7 @@ MongoDB Express.js React.js Node.js
 
 A Full MERN Stack Boilerplate for Web Apps. Includes a local authentication system using passport. User is given a simple profile with Full Name and Profile Picture. User is also able to reset password and username case.
 
-NEW: For those of you who wish separate the client and server into separate projects, I have created two repos that do just that! Check out [MERN Client](https://github.com/djizco/mern-client) and [MERN Server](https://github.com/djizco/mern-server).
+NEW: For those of you who wish to separate the client and server into separate projects, I have created two repos that do just that! Check out [MERN Client](https://github.com/djizco/mern-client) and [MERN Server](https://github.com/djizco/mern-server).
 
 ## Requirements
 

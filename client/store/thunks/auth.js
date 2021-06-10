@@ -20,7 +20,7 @@ export const attemptLogin = user => dispatch =>
         animationIn: ['animated', 'fadeInRight'],
         animationOut: ['animated', 'fadeOutRight'],
         dismiss: {
-          duration: 5000,
+          duration: 0,
         },
       });
 

@@ -34,6 +34,12 @@ a {
   }
 }
 
+// Remove Bulma conflicts with React Notifications Component
+.notifications-component .notification {
+  background-color: unset;
+  padding: unset;
+}
+
 // Bug in production
 .select select {
   padding-right: 2.5em;

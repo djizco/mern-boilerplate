@@ -87,16 +87,12 @@ module.exports = {
               name: 'images/[name].[ext]',
             },
           },
-          {
-            loader: 'image-webpack-loader',
-            options: {
-              optipng: { optimizationLevel: 7 },
-              pngquant: { quality: [0.75, 0.90], speed: 3 },
-              mozjpeg: { progressive: true },
-              gifsicle: { interlaced: false },
-            },
-          },
         ],
+      },
+      {
+        test: /\.svg(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'file-loader',
+        options: { name: 'icons/[name].[ext]' },
       },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -106,11 +102,6 @@ module.exports = {
           limit: 8192,
           mimetype: 'application/font-woff',
         },
-      },
-      {
-        test: /\.svg(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file-loader',
-        options: { name: 'icons/[name].[ext]' },
       },
       {
         test: /\.(ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/,

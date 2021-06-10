@@ -2,7 +2,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
-const config = require('./webpack.config.js');
+const config = require('./webpack.config');
 
 config.optimization = {
   minimize: true,

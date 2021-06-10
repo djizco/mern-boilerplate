@@ -23,9 +23,13 @@ export default function Main({ location }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    let subscribed = true;
+
     dispatch(attemptGetUser())
       .catch(R.identity)
-      .then(() => setLoading(false));
+      .then(() => subscribed && setLoading(false));
+
+    return () => { subscribed = false; };
   }, []);
 
   useEffect(() => {

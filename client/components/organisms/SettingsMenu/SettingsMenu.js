@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { push } from 'connected-react-router';
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import R from 'ramda';
 
@@ -25,8 +25,9 @@ export default function SettingsMenu({ pathname }) {
         <Menu.List>
           <Menu.ListItem>
             <Menu.Link
-              onClick={() => dispatch(push('/settings/profile'))}
+              to="/settings/profile"
               active={pathname.includes('profile') || pathname === '/settings' || pathname === '/settings/'}
+              component={Link}
             >
               Profile
             </Menu.Link>
@@ -38,8 +39,9 @@ export default function SettingsMenu({ pathname }) {
         <Menu.List>
           <Menu.ListItem>
             <Menu.Link
-              onClick={() => dispatch(push('/settings/account'))}
+              to="/settings/account"
               active={pathname.includes('account')}
+              component={Link}
             >
               Account
             </Menu.Link>

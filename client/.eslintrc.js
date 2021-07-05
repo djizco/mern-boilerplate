@@ -9,9 +9,12 @@ module.exports = {
     },
   },
   extends: 'airbnb',
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
   parserOptions: {
-    ecmaVersion: 7,
+    ecmaVersion: 12,
+    ecmaFeatures: {
+      jsx: true,
+    },
     sourceType: 'module',
     allowImportExportEverywhere: false,
   },
@@ -23,11 +26,10 @@ module.exports = {
   rules: {
     // enable rules
     'react/jsx-key': 2,
-    'react-hooks/rules-of-hooks': 2,
 
     // override default options for rules from base configurations
     'eqeqeq': [2, 'smart'],
-    'max-len': [2, {'code': 120, 'tabWidth': 2, 'ignoreUrls': true}],
+    'max-len': [2, { 'code': 120, 'tabWidth': 2, 'ignoreUrls': true }],
     'newline-per-chained-call': [2, {'ignoreChainWithDepth': 4}],
     'no-cond-assign': [2, 'except-parens'],
     'no-multi-spaces': [2, {'exceptions': {

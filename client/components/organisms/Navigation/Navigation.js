@@ -1,7 +1,7 @@
 import React, { useState, useEffect }  from 'react';
 import PropTypes from 'prop-types';
-import { push } from 'connected-react-router';
-import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import R from 'ramda';
 
 import Navbar from 'react-bulma-companion/lib/Navbar';
@@ -13,7 +13,6 @@ import Button from 'react-bulma-companion/lib/Button';
 import UserDropdown from '_molecules/UserDropdown';
 
 export default function Navigation({ pathname }) {
-  const dispatch = useDispatch();
   const { user } = useSelector(R.pick(['user']));
 
   const [auth, setAuth] = useState(!R.isEmpty(user));
@@ -44,9 +43,9 @@ export default function Navigation({ pathname }) {
       <Container>
         <Navbar.Brand>
           <Navbar.Item
-            onClick={() => dispatch(push(auth ? '/home' : '/'))}
+            to={auth ? '/home' : '/'}
             aria-label="main navigation"
-            link
+            component={Link}
           >
             <Title className="logo" size="3">
               MERN Boilerplate
@@ -56,8 +55,8 @@ export default function Navigation({ pathname }) {
             {!auth && (
               <Navbar.Item
                 className="is-hidden-desktop"
-                onClick={() => dispatch(push('/login'))}
-                link
+                to="/login"
+                component={Link}
               >
                 <Title size="6">
                   Login
@@ -67,8 +66,8 @@ export default function Navigation({ pathname }) {
             {!auth && (
               <Navbar.Item
                 className="is-hidden-desktop"
-                onClick={() => dispatch(push('/register'))}
-                link
+                to="/register"
+                component={Link}
               >
                 <Button color="success">Sign Up</Button>
               </Navbar.Item>
@@ -79,7 +78,7 @@ export default function Navigation({ pathname }) {
                 onClick={toggleDropdown}
                 onKeyPress={toggleDropdown}
                 hoverable
-                link
+                component="a"
               >
                 <Image size="32x32">
                   <Image.Content
@@ -98,19 +97,19 @@ export default function Navigation({ pathname }) {
             <Navbar.Start>
               <Navbar.Item
                 className="is-hidden-mobile"
-                onClick={() => dispatch(push('/home'))}
+                to="/home"
                 active={isHome}
                 tab
-                link
+                component={Link}
               >
                 <Title size="6">Home</Title>
               </Navbar.Item>
               <Navbar.Item
                 className="is-hidden-mobile"
-                onClick={() => dispatch(push('/todo'))}
+                to="/todo"
                 active={isTodo}
                 tab
-                link
+                component={Link}
               >
                 <Title size="6">
                   Todo
@@ -118,10 +117,10 @@ export default function Navigation({ pathname }) {
               </Navbar.Item>
               <Navbar.Item
                 className="is-hidden-mobile"
-                onClick={() => dispatch(push('/settings'))}
+                to="/settings"
                 active={isSettings}
                 tab
-                link
+                component={Link}
               >
                 <Title size="6">
                   Settings
@@ -129,7 +128,7 @@ export default function Navigation({ pathname }) {
               </Navbar.Item>
             </Navbar.Start>
             <Navbar.End>
-              <Navbar.Item onClick={toggleDropdown} onKeyPress={toggleDropdown} hoverable link>
+              <Navbar.Item onClick={toggleDropdown} onKeyPress={toggleDropdown} hoverable component="a">
                 <Image size="32x32">
                   <Image.Content
                     className="profile-img"
@@ -143,12 +142,12 @@ export default function Navigation({ pathname }) {
         ) : (
           <Navbar.Menu>
             <Navbar.End>
-              <Navbar.Item onClick={() => dispatch(push('/login'))} link>
+              <Navbar.Item to="/login" component={Link}>
                 <Title size="6">
                   Login
                 </Title>
               </Navbar.Item>
-              <Navbar.Item onClick={() => dispatch(push('/register'))} link>
+              <Navbar.Item to="/register" component={Link}>
                 <Button color="success">Sign Up</Button>
               </Navbar.Item>
             </Navbar.End>

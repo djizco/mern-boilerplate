@@ -1,6 +1,6 @@
 const passport    = require('passport');
 const session     = require('express-session');
-const MongoStore  = require('connect-mongo')(session);
+const MongoStore  = require('connect-mongo');
 const uuid        = require('uuid');
 const mongoose    = require('mongoose');
 
@@ -9,9 +9,9 @@ const { User }    = require('../database/schemas');
 
 module.exports = app => {
   const sessionConfig = {
-    store: new MongoStore({
-      mongooseConnection: mongoose.connection,
-      collection: 'sessions',
+    store: MongoStore.create({
+      client: mongoose.connection.getClient(),
+      collectionName: 'sessions',
     }),
     genid: () => uuid.v4(),
     secret: process.env.SESSION_SECRET,

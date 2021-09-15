@@ -68,7 +68,7 @@
     "immutability-helper": "^3.1.1",
     "immutable": "^3.8.2",
     "json-style-converter": "^1.0.3",
-    "mongoose": "^5.13.2",
+    "mongoose": "^6.0.5",
     "mongoose-auto-increment-reworked": "^1.2.1",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",

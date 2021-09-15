@@ -25,8 +25,8 @@ config.plugins.push(new BundleAnalyzerPlugin({
 }));
 
 const MiniCssExtractPluginConfig = new MiniCssExtractPlugin({
-  filename: '[name].[hash].css',
-  chunkFilename: '[id].[hash].css',
+  filename: '[name].[fullhash].css',
+  chunkFilename: '[id].[fullhash].css',
 });
 
 config.plugins.push(MiniCssExtractPluginConfig);

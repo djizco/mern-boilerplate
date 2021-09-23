@@ -26,8 +26,8 @@ export default function Main({ location }) {
     let subscribed = true;
 
     dispatch(attemptGetUser())
-      .catch(R.identity)
-      .then(() => subscribed && setLoading(false));
+      .then(() => subscribed && setLoading(false))
+      .catch(R.identity);
 
     return () => { subscribed = false; };
   }, []);

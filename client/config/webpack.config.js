@@ -77,23 +77,23 @@ module.exports = {
         test: /\.(jpe?g|png|gif)$/,
         type: 'asset/resource',
         generator: {
-          filename: 'images/[name][ext]'
+          filename: 'images/[name][ext]',
         },
       },
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
         type: 'asset/resource',
         generator: {
-          filename: 'icons/[name][ext]'
+          filename: 'icons/[name][ext]',
         },
       },
       {
         test: /\.(woff(2)|ttf|eot|otf)?(\?v=\d+\.\d+\.\d+)?$/,
         type: 'asset/resource',
         generator: {
-          filename: 'fonts/[name][ext]'
+          filename: 'fonts/[name][ext]',
         },
-      }
+      },
     ],
   },
   plugins: [

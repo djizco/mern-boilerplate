@@ -82,7 +82,7 @@ You can now start updating files in your client to begin working on your own pro
 * Babel lets you use ES6/7 features.
 * CSS pre-processor setup for LESS and SASS lets you keep your styles clean and organized.
 * ESLint helps you maintain a high level of code quality.
-* Jest and Enzyme give you a robust testing framework to make sure your code works.
+* Jest gives you a robust testing framework to make sure your code works.
 
 ## Code Structure
 

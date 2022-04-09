@@ -10,7 +10,7 @@ const { User }    = require('../database/schemas');
 module.exports = app => {
   const sessionConfig = {
     store: MongoStore.create({
-      client: mongoose.connection.getClient(),
+      mongoUrl: process.env.DATABASE_URL,
       collectionName: 'sessions',
     }),
     genid: () => uuid.v4(),

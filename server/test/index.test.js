@@ -4,7 +4,7 @@ const routes = require('../routes');
 
 describe('The Server', () => {
   const app = express();
-  app.use('/', routes);
+  app.use('/api', routes);
 
   test('serves as an example endpoint', done => {
     request(app)

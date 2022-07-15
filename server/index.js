@@ -6,7 +6,7 @@ require('./config/environment');
 require('./database');
 
 const routes          = require('./routes/index');
-const configPassport  = require('./passport/passport-config');
+const configPassport  = require('./passport/config');
 
 const assetFolder  = path.resolve(__dirname, '../dist/');
 const port         = process.env.PORT;
@@ -17,6 +17,6 @@ app.use(bodyParser.json());
 
 configPassport(app, express);
 
-app.use('/', routes);
+app.use('/api', routes);
 
 app.listen(port, () => console.log(`Server is listening on port ${port}`));

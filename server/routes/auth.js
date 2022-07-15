@@ -60,12 +60,19 @@ router.post('/login', (req, res, next) => {
 });
 
 router.post('/logout', (req, res) => {
-  req.session.destroy(err => {
+  req.logout(err => {
     if (err) {
       res.status(400).send({ message: 'Logout failed', err });
     }
-    req.sessionID = null;
-    req.logout();
-    res.send({ message: 'Logged out successfully' });
+
+    req.session.destroy(err => {
+      if (err) {
+        res.status(400).send({ message: 'Logout failed', err });
+      }
+
+      res.clearCookie('connect.sid');
+      req.sessionID = null;
+      res.send({ message: 'Logged out successfully' });
+    });
   });
 });

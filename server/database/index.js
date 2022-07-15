@@ -1,11 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.Promise = global.Promise;
-
-const options = {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-};
+const options = {};
 
 const database = mongoose.connect(process.env.DATABASE_URL, options)
   .then(() => console.log('Connected to database.'))

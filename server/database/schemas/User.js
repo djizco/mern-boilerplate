@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
-const { MongooseAutoIncrementID } = require('mongoose-auto-increment-reworked');
+const { AutoIncrementID } = require('@typegoose/auto-increment');
 const bcrypt = require('bcryptjs');
 const R = require('ramda');
 
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
+  user: Number,
   username: { type: String, lowercase: true, required: true, unique: true, immutable: true },
   username_case: { type: String, required: true },
   password: { type: String, required: true },
@@ -17,19 +18,13 @@ const userSchema = new Schema({
   updated_at: { type: Date },
 }, { versionKey: false });
 
-if (process.env.NODE_ENV !== 'test') {
-  MongooseAutoIncrementID.initialise('counters');
-
-  userSchema.plugin(MongooseAutoIncrementID.plugin, {
-    modelName: 'User',
-    field: 'user',
-    incrementBy: 1,
-    startAt: 1,
-    unique: true,
-    nextCount: false,
-    resetCount: false,
-  });
-}
+userSchema.plugin(AutoIncrementID, {
+  field: 'user',
+  incrementBy: 1,
+  startAt: 1,
+  trackerCollection: 'counters',
+  trackerModelName: 'User',
+});
 
 userSchema.virtual('full_name').get(function() {
   if (this.first_name && this.last_name) {

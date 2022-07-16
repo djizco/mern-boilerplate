@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import R from 'ramda';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSync } from '@fortawesome/free-solid-svg-icons/faSync';
+import { faRotate } from '@fortawesome/free-solid-svg-icons/faRotate';
 
 import Box from 'react-bulma-companion/lib/Box';
 import Icon from 'react-bulma-companion/lib/Icon';
@@ -98,7 +98,7 @@ export default function GeneralProfile() {
   return (
     <Box className="general-profile">
       <Icon size="medium" className="is-pulled-right" onClick={refresh} onKeyPress={refresh}>
-        <FontAwesomeIcon icon={faSync} size="lg" />
+        <FontAwesomeIcon icon={faRotate} size="lg" />
       </Icon>
       <Title size="3">
         General

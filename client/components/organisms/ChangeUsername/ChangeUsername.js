@@ -4,7 +4,7 @@ import R from 'ramda';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
-import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons/faExclamationTriangle';
+import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons/faTriangleExclamation';
 
 import Box from 'react-bulma-companion/lib/Box';
 import Title from 'react-bulma-companion/lib/Title';
@@ -79,7 +79,7 @@ export default function ChangeUsername() {
               color={disabled ? (usernameCase !== user.usernameCase ? 'danger' : undefined) : 'success'}
             >
               <FontAwesomeIcon
-                icon={disabled ? (usernameCase !== user.usernameCase && faExclamationTriangle) : faCheck}
+                icon={disabled ? (usernameCase !== user.usernameCase && faTriangleExclamation) : faCheck}
               />
             </Icon>
           )}

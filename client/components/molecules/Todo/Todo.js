@@ -4,12 +4,12 @@ import { useDispatch } from 'react-redux';
 import { parseISO, formatDistanceToNow } from 'date-fns';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons/faTrashAlt';
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons/faTrashCan';
 import { faBan } from '@fortawesome/free-solid-svg-icons/faBan';
-import { faPencilAlt } from '@fortawesome/free-solid-svg-icons/faPencilAlt';
-import { faSave } from '@fortawesome/free-solid-svg-icons/faSave';
+import { faPencil } from '@fortawesome/free-solid-svg-icons/faPencil';
+import { faFloppyDisk } from '@fortawesome/free-solid-svg-icons/faFloppyDisk';
 import { faSquare } from '@fortawesome/free-regular-svg-icons/faSquare';
-import { faCheckSquare } from '@fortawesome/free-regular-svg-icons/faCheckSquare';
+import { faSquareCheck } from '@fortawesome/free-regular-svg-icons/faSquareCheck';
 
 import { attemptToggleCompleteTodo, attemptUpdateTodo, attemptDeleteTodo } from '_thunks/todos';
 import ConfirmModal from '_organisms/ConfirmModal';
@@ -64,7 +64,7 @@ export default function Todo({ id, text, completed, createdAt, updatedAt }) {
         <figure className="media-left">
           <span className="icon" onClick={toggleCompleteTodo} onKeyPress={toggleCompleteTodo}>
             {completed
-              ? <FontAwesomeIcon icon={faCheckSquare} size="lg" />
+              ? <FontAwesomeIcon icon={faSquareCheck} size="lg" />
               : <FontAwesomeIcon icon={faSquare} size="lg" />}
           </span>
         </figure>
@@ -99,11 +99,11 @@ export default function Todo({ id, text, completed, createdAt, updatedAt }) {
             <div className="level-right">
               {edit ? (
                 <span className="icon space-right" onClick={handleUpdateTodo} onKeyPress={handleUpdateTodo}>
-                  <FontAwesomeIcon icon={faSave} size="lg" />
+                  <FontAwesomeIcon icon={faFloppyDisk} size="lg" />
                 </span>
               ) : (
                 <span className="icon space-right" onClick={editTodo} onKeyPress={editTodo}>
-                  <FontAwesomeIcon icon={faPencilAlt} size="lg" />
+                  <FontAwesomeIcon icon={faPencil} size="lg" />
                 </span>
               )}
               {edit ? (
@@ -112,7 +112,7 @@ export default function Todo({ id, text, completed, createdAt, updatedAt }) {
                 </span>
               ) : (
                 <span className="icon" onClick={openModal} onKeyPress={cancelEdit}>
-                  <FontAwesomeIcon icon={faTrashAlt} size="lg" />
+                  <FontAwesomeIcon icon={faTrashCan} size="lg" />
                 </span>
               )}
             </div>

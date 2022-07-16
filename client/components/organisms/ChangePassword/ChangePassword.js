@@ -5,7 +5,7 @@ import R from 'ramda';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
-import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons/faExclamationTriangle';
+import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons/faTriangleExclamation';
 
 import Box from 'react-bulma-companion/lib/Box';
 import Block from 'react-bulma-companion/lib/Block';
@@ -101,7 +101,7 @@ export default function ChangePassword() {
           />
           {newPassword && (
             <Icon size="small" align="right" color={valid ? 'success' : 'danger'}>
-              <FontAwesomeIcon icon={valid ? faCheck : faExclamationTriangle} />
+              <FontAwesomeIcon icon={valid ? faCheck : faTriangleExclamation} />
             </Icon>
           )}
         </Control>
@@ -126,7 +126,7 @@ export default function ChangePassword() {
           />
           {confirmPassword && (
             <Icon size="small" align="right" color={match ? 'success' : 'danger'}>
-              <FontAwesomeIcon icon={match ? faCheck : faExclamationTriangle} />
+              <FontAwesomeIcon icon={match ? faCheck : faTriangleExclamation} />
             </Icon>
           )}
         </Control>

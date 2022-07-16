@@ -8,12 +8,12 @@ const todos        = require('./todos');
 
 const router = express.Router();
 
-router.use('/auth', auth);
-router.use('/user', user);
-router.use('/users', users);
-router.use('/todos', todos);
+router.use('/api/auth', auth);
+router.use('/api/user', user);
+router.use('/api/users', users);
+router.use('/api/todos', todos);
 
-router.get('/tags', (req, res) => {
+router.get('/api/tags', (req, res) => {
   res.send([
     'MERN', 'Node', 'Express', 'Webpack', 'React', 'Redux', 'Mongoose',
     'Bulma', 'Fontawesome', 'Ramda', 'ESLint', 'Jest',

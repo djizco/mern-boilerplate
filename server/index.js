@@ -17,6 +17,6 @@ app.use(bodyParser.json());
 
 configPassport(app, express);
 
-app.use('/api', routes);
+app.use('/', routes);
 
 app.listen(port, () => console.log(`Server is listening on port ${port}`));

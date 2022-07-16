@@ -25,17 +25,17 @@ export default function Todo({ id, text, completed, createdAt, updatedAt }) {
   const [updatedMessage, setUpdatedMessage] = useState('');
   const [createdMessage, setCreatedMessage] = useState('');
 
-  const updateMessages = () => {
-    setUpdatedMessage(updatedAt ? fromNow(updatedAt) : '');
-    setCreatedMessage(fromNow(createdAt));
-  };
-
   useEffect(() => {
+    const updateMessages = () => {
+      setUpdatedMessage(updatedAt ? fromNow(updatedAt) : '');
+      setCreatedMessage(fromNow(createdAt));
+    };
+
     updateMessages();
     const interval = window.setInterval(updateMessages, 1000);
 
     return () => clearInterval(interval);
-  }, [updatedAt]);
+  }, [updatedAt, createdAt]);
 
   const openModal = () => setConfirm(true);
   const closeModal = () => setConfirm(false);

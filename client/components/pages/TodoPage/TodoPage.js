@@ -20,7 +20,7 @@ export default function TodoPage() {
         .catch(R.identity)
         .then(() => setLoading(false));
     }
-  }, []);
+  }, [dispatch, user]);
 
   return !loading && (
     <div className="todo-page page">

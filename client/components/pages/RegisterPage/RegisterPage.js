@@ -13,7 +13,7 @@ export default function RegisterPage() {
     if (!R.isEmpty(user)) {
       dispatch(push('/home'));
     }
-  }, []);
+  }, [dispatch, user]);
 
   return (
     <div className="register-page page">

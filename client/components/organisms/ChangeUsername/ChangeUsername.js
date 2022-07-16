@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import R from 'ramda';
 
@@ -23,12 +23,6 @@ export default function ChangeUsername() {
   const { user } = useSelector(R.pick(['user']));
 
   const [usernameCase, setUsernameCase] = useState(user.usernameCase);
-
-  useEffect(() => {
-    if (!R.isEmpty(user)) {
-      setUsernameCase(user.usernameCase);
-    }
-  }, [user.username]);
 
   const updateUsernameCase = e => setUsernameCase(e.target.value);
 

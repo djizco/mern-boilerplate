@@ -15,7 +15,7 @@ export default function HomePage() {
     if (R.isEmpty(user)) {
       dispatch(push('/login'));
     }
-  }, []);
+  }, [dispatch, user]);
 
   return (
     <div className="home-page page">

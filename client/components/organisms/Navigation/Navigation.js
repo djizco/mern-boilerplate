@@ -20,7 +20,7 @@ export default function Navigation({ pathname }) {
 
   useEffect(() => {
     setAuth(!R.isEmpty(user));
-  }, [user.username]);
+  }, [user]);
 
   const toggleDropdown = () => setOpen(!open);
 

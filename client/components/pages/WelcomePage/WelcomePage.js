@@ -15,7 +15,7 @@ export default function WelcomePage() {
     if (!R.isEmpty(user)) {
       dispatch(push('/home'));
     }
-  }, []);
+  }, [dispatch, user]);
 
   return (
     <div className="welcome-page page">

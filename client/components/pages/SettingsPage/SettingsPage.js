@@ -22,7 +22,7 @@ export default function SettingsPage({ location }) {
     if (R.isEmpty(user)) {
       dispatch(push('/login'));
     }
-  }, []);
+  }, [dispatch, user]);
 
   return (
     <div className="settings-page page">

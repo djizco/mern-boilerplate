@@ -17,5 +17,5 @@ export default function useKeyPress(key, callback, active = true) {
         window.removeEventListener('keypress', keypress);
       }
     };
-  }, [callback, active]);
+  }, [key, callback, active]);
 }

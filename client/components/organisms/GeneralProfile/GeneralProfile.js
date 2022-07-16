@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import R from 'ramda';
 
@@ -45,10 +45,6 @@ export default function GeneralProfile() {
     setBioEdited(false);
     setProfilePicEdited(false);
   };
-
-  useEffect(() => {
-    resetState();
-  }, [user.firstName, user.lastName, user.bio, user.profilePic]);
 
   const updateFirstName = e => {
     if (validateName(e.target.value)) {

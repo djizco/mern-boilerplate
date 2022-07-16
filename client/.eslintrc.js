@@ -8,7 +8,7 @@ module.exports = {
       },
     },
   },
-  extends: 'airbnb',
+  extends: ['airbnb', 'airbnb/hooks'],
   parser: '@babel/eslint-parser',
   parserOptions: {
     ecmaVersion: 12,
@@ -42,6 +42,7 @@ module.exports = {
 
     // disable rules
     'arrow-parens': 0,
+    'default-param-last': 0,
     'function-paren-newline': 0,
     'implicit-arrow-linebreak': 0,
     'import/no-cycle': 0,

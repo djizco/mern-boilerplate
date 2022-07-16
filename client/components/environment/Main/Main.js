@@ -30,7 +30,7 @@ export default function Main({ location }) {
       .catch(R.identity);
 
     return () => { subscribed = false; };
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     window.scrollTo(0, 0);

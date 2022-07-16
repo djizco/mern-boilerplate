@@ -13,7 +13,7 @@ export default function LoginPage() {
     if (!R.isEmpty(user)) {
       dispatch(push('/home'));
     }
-  }, []);
+  }, [dispatch, user]);
 
   return (
     <div className="login-page page">

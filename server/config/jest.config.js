@@ -8,7 +8,6 @@ module.exports = {
   setupFiles: ['<rootDir>/server/config/jest.setup.js'],
   testEnvironment: 'node',
   testMatch: [path.join(__dirname, '../../**/?(*.)+(spec|test).[tj]s?(x)')],
-  testURL: 'http://localhost',
   transform: {
     '^.+\\.[t|j]sx?$': 'babel-jest',
   },

@@ -28,7 +28,6 @@ module.exports = {
   ],
   testEnvironment: 'jsdom',
   testMatch: [path.join(__dirname, '../../**/?(*.)+(spec|test).[tj]s?(x)')],
-  testURL: 'http://localhost',
   transform: {
     '^.+\\.[t|j]sx?$': 'babel-jest',
     // eslint-disable-next-line

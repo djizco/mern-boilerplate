@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { push } from 'redux-first-history';
-import { Switch, Route } from 'react-router';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import R from 'ramda';
 
 import Section from 'react-bulma-companion/lib/Section';
@@ -14,9 +13,10 @@ import ProfileSettings from '_templates/ProfileSettings';
 import AccountSettings from '_templates/AccountSettings';
 import SettingsMenu from '_organisms/SettingsMenu';
 
-export default function SettingsPage({ location }) {
+export default function SettingsPage() {
   const dispatch = useDispatch();
   const { user } = useSelector(R.pick(['user']));
+  const { pathname } = useLocation();
 
   useEffect(() => {
     if (R.isEmpty(user)) {
@@ -30,14 +30,14 @@ export default function SettingsPage({ location }) {
         <Container>
           <Columns>
             <Column size="3">
-              <SettingsMenu pathname={location.pathname} />
+              <SettingsMenu pathname={pathname} />
             </Column>
             <Column>
-              <Switch>
-                <Route path="/settings/profile/" component={ProfileSettings} />
-                <Route path="/settings/account/" component={AccountSettings} />
-                <Route path="*" component={ProfileSettings} />
-              </Switch>
+              <Routes>
+                <Route path="profile" element={<ProfileSettings />} />
+                <Route path="account" element={<AccountSettings />} />
+                <Route path="*" element={<ProfileSettings />} />
+              </Routes>
             </Column>
           </Columns>
         </Container>
@@ -45,9 +45,3 @@ export default function SettingsPage({ location }) {
     </div>
   );
 }
-
-SettingsPage.propTypes = {
-  location: PropTypes.shape({
-    pathname: PropTypes.string.isRequired,
-  }).isRequired,
-};

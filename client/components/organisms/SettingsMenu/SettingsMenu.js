@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import R from 'ramda';
 
@@ -9,7 +8,8 @@ import Box from 'react-bulma-companion/lib/Box';
 
 import { attemptLogout } from '_thunks/auth';
 
-export default function SettingsMenu({ pathname }) {
+export default function SettingsMenu() {
+  const { pathname } = useLocation();
   const dispatch = useDispatch();
 
   const logout = () =>
@@ -56,7 +56,3 @@ export default function SettingsMenu({ pathname }) {
     </Box>
   );
 }
-
-SettingsMenu.propTypes = {
-  pathname: PropTypes.string.isRequired,
-};

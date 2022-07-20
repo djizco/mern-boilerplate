@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { Switch, Route } from 'react-router';
-import ReactNotification from 'react-notifications-component';
-import { useDispatch } from 'react-redux';
 import R from 'ramda';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { ReactNotifications } from 'react-notifications-component';
+import { useDispatch } from 'react-redux';
 
 import { attemptGetUser } from '_thunks/user';
 
@@ -18,9 +17,10 @@ import LostPage from '_pages/LostPage';
 import Navigation from '_organisms/Navigation';
 import Footer from '_organisms/Footer';
 
-export default function Main({ location }) {
+export default function Main() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
+  const { pathname } = useLocation();
 
   useEffect(() => {
     let subscribed = true;
@@ -34,30 +34,24 @@ export default function Main({ location }) {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [location.pathname]);
+  }, [pathname]);
 
   return !loading && (
-    <div>
-      <ReactNotification />
-      <Navigation pathname={location.pathname} />
+    <React.Fragment>
+      <ReactNotifications />
+      <Navigation />
       <div className="main">
-        <Switch>
-          <Route exact path="/" component={WelcomePage} />
-          <Route path="/login" component={LoginPage} />
-          <Route path="/register" component={RegisterPage} />
-          <Route path="/home" component={HomePage} />
-          <Route path="/todo" component={TodoPage} />
-          <Route path="/settings" component={SettingsPage} />
-          <Route path="*" component={LostPage} />
-        </Switch>
+        <Routes>
+          <Route path="/" element={<WelcomePage />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="register" element={<RegisterPage />} />
+          <Route path="home" element={<HomePage />} />
+          <Route path="todo" element={<TodoPage />} />
+          <Route path="settings/*" element={<SettingsPage />} />
+          <Route path="*" element={<LostPage />} />
+        </Routes>
       </div>
       <Footer />
-    </div>
+    </React.Fragment>
   );
 }
-
-Main.propTypes = {
-  location: PropTypes.shape({
-    pathname: PropTypes.string,
-  }).isRequired,
-};

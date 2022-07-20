@@ -1,5 +1,5 @@
 import { snakeToCamelCase } from 'json-style-converter/es5';
-import { store as RNC } from 'react-notifications-component';
+import { Store as RNC } from 'react-notifications-component';
 
 import { getUser, putUser, putUserPassword } from '_api/user';
 import { updateUser } from '_actions/user';
@@ -23,6 +23,7 @@ export const attemptUpdateUser = updatedUser => dispatch =>
         title: 'Success!',
         message: data.message,
         type: 'success',
+        insert: 'bottom',
         container: 'top-right',
         animationIn: ['animated', 'fadeInRight'],
         animationOut: ['animated', 'fadeOutRight'],

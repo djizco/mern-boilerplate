@@ -1,5 +1,5 @@
 import { push } from 'redux-first-history';
-import { store as RNC } from 'react-notifications-component';
+import { Store as RNC } from 'react-notifications-component';
 
 import { logout } from '_actions/user';
 

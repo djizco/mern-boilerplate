@@ -1,6 +1,5 @@
 import React, { useState, useEffect }  from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import R from 'ramda';
 
@@ -12,7 +11,8 @@ import Button from 'react-bulma-companion/lib/Button';
 
 import UserDropdown from '_molecules/UserDropdown';
 
-export default function Navigation({ pathname }) {
+export default function Navigation() {
+  const { pathname } = useLocation();
   const { user } = useSelector(R.pick(['user']));
 
   const [auth, setAuth] = useState(!R.isEmpty(user));
@@ -158,7 +158,3 @@ export default function Navigation({ pathname }) {
     </Navbar>
   );
 }
-
-Navigation.propTypes = {
-  pathname: PropTypes.string.isRequired,
-};

@@ -1,8 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
-import history from '_client/history';
-import store from '_client/store';
+import { store, history } from '_store';
 
 import Root from './Root';
 
@@ -10,7 +9,9 @@ describe('Root Component', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
 
-    ReactDOM.render(<Root history={history} store={store} />, div);
-    ReactDOM.unmountComponentAtNode(div);
+    const root = createRoot(div);
+
+    root.render(<Root history={history} store={store} />);
+    root.unmount();
   });
 });

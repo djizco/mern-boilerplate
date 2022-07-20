@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { push } from 'connected-react-router';
+import { push } from 'redux-first-history';
 import { Switch, Route } from 'react-router';
 import R from 'ramda';
 

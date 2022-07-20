@@ -14,7 +14,7 @@ export default function UserDropdown({ open, closeDropdown }) {
 
   useEffect(() => {
     const dropdownListener = e =>
-      !e.path.includes(dropdown.current) && open && closeDropdown();
+      !e.composedPath().includes(dropdown.current) && open && closeDropdown();
 
     window.addEventListener('click', dropdownListener);
     window.addEventListener('touchend', dropdownListener);

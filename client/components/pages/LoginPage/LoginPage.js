@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { push } from 'connected-react-router';
+import { push } from 'redux-first-history';
 import R from 'ramda';
 
 import LoginSection from '_templates/LoginSection';

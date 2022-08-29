@@ -32,24 +32,25 @@ brew services start mongodb-community
 
 Start the client
 ```bash
-npm run dev
+npm run start:client
 ```
 
 Start the server
 ```bash
-npm start
+npm run start:server
 ```
 
 #### for Production
 
 ```bash
 npm run build
-npm start
+npm start:server
 ```
 
 #### Other Commands
 
 ```bash
+npm start
 npm test
 npm run lint
 npm run lint:fix

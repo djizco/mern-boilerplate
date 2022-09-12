@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { push } from 'redux-first-history';
 import R from 'ramda';
 
-import LoginSection from '_templates/LoginSection';
+import Section from 'react-bulma-companion/lib/Section';
+
+import Login from '_organisms/Login';
 
 export default function LoginPage() {
   const dispatch = useDispatch();
@@ -16,8 +18,8 @@ export default function LoginPage() {
   }, [dispatch, user]);
 
   return (
-    <div className="login-page page">
-      <LoginSection />
-    </div>
+    <Section>
+      <Login />
+    </Section>
   );
 }

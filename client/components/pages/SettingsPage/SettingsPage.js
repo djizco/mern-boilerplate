@@ -9,9 +9,9 @@ import Container from 'react-bulma-companion/lib/Container';
 import Columns from 'react-bulma-companion/lib/Columns';
 import Column from 'react-bulma-companion/lib/Column';
 
-import ProfileSettings from '_templates/ProfileSettings';
-import AccountSettings from '_templates/AccountSettings';
-import SettingsMenu from '_organisms/SettingsMenu';
+import SettingsMenu from './SettingsMenu';
+import ProfileSettings from './ProfileSettings';
+import AccountSettings from './AccountSettings';
 
 export default function SettingsPage() {
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ export default function SettingsPage() {
             <Column size="3">
               <SettingsMenu pathname={pathname} />
             </Column>
-            <Column>
+            <Column size="9">
               <Routes>
                 <Route path="profile" element={<ProfileSettings />} />
                 <Route path="account" element={<AccountSettings />} />

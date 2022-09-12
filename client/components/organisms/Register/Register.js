@@ -22,6 +22,8 @@ import { postCheckUsername } from '_api/users';
 import { validateUsername, validatePassword } from '_utils/validation';
 import { attemptRegister } from '_thunks/auth';
 
+import styles from './styles.module.css';
+
 export default function Register() {
   const dispatch = useDispatch();
 
@@ -88,7 +90,7 @@ export default function Register() {
   useKeyPress('Enter', register);
 
   return (
-    <Box className="register">
+    <Box className={styles.root}>
       <Title size="3">
         Sign Up
       </Title>

@@ -73,7 +73,7 @@
     "prop-types": "^15.8.1",
     "ramda": "^0.28.0",
     "react": "^18.2.0",
-    "react-bulma-companion": "0.5.0",
+    "react-bulma-companion": "0.5.1",
     "react-dom": "^18.2.0",
     "react-notifications-component": "^4.0.1",
     "react-redux": "^8.0.2",

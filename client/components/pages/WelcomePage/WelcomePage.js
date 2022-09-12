@@ -7,6 +7,8 @@ import Section from 'react-bulma-companion/lib/Section';
 import Container from 'react-bulma-companion/lib/Container';
 import Title from 'react-bulma-companion/lib/Title';
 
+import styles from './styles.module.css';
+
 export default function WelcomePage() {
   const dispatch = useDispatch();
   const { user } = useSelector(R.pick(['user']));
@@ -18,7 +20,7 @@ export default function WelcomePage() {
   }, [dispatch, user]);
 
   return (
-    <div className="welcome-page page">
+    <div className={styles.root}>
       <Section>
         <Container>
           <Title size="1">

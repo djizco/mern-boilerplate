@@ -17,6 +17,8 @@ import useKeyPress from '_hooks/useKeyPress';
 import { attemptLogin } from '_thunks/auth';
 import FormInput from '_molecules/FormInput';
 
+import styles from './styles.module.css';
+
 export default function Login() {
   const dispatch = useDispatch();
 
@@ -54,7 +56,7 @@ export default function Login() {
   const updatePassword = e => setPassword(e.target.value);
 
   return (
-    <Box className="login">
+    <Box className={styles.root}>
       <Title size="3">
         Login
       </Title>

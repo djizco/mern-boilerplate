@@ -17,6 +17,8 @@ import LostPage from '_pages/LostPage';
 import Navigation from '_organisms/Navigation';
 import Footer from '_organisms/Footer';
 
+import styles from './styles.module.css';
+
 export default function Main() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
@@ -40,7 +42,7 @@ export default function Main() {
     <React.Fragment>
       <ReactNotifications />
       <Navigation />
-      <div className="main">
+      <div className={styles.root}>
         <Routes>
           <Route path="/" element={<WelcomePage />} />
           <Route path="login" element={<LoginPage />} />

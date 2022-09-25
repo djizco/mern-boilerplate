@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import R from 'ramda';
 
+import Box from 'react-bulma-companion/lib/Box';
+
 import { attemptLogout } from '_thunks/auth';
 
 export default function UserDropdown({ open, closeDropdown }) {
@@ -38,7 +40,7 @@ export default function UserDropdown({ open, closeDropdown }) {
   };
 
   return open && (
-    <div className="dropdown box" ref={dropdown}>
+    <Box className="dropdown" ref={dropdown}>
       <ul className="dropdown-list">
         <li className="dropdown-header">
           {user.usernameCase}
@@ -61,7 +63,7 @@ export default function UserDropdown({ open, closeDropdown }) {
           </a>
         </li>
       </ul>
-    </div>
+    </Box>
   );
 }
 

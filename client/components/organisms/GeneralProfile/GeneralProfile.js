@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import R from 'ramda';
 
@@ -45,6 +45,10 @@ export default function GeneralProfile() {
     setBioEdited(false);
     setProfilePicEdited(false);
   };
+
+  useEffect(() => {
+    resetState();
+  }, [user.firstName, user.lastName, user.bio, user.profilePic]);
 
   const updateFirstName = e => {
     if (validateName(e.target.value)) {
@@ -93,7 +97,7 @@ export default function GeneralProfile() {
 
   return (
     <Box className="general-profile">
-      <Icon size="medium" className="is-pulled-right" onClick={refresh} onKeyPress={refresh}>
+      <Icon size="medium" pull="right" onClick={refresh} onKeyPress={refresh}>
         <FontAwesomeIcon icon={faRotate} size="lg" />
       </Icon>
       <Title size="3">
@@ -102,7 +106,7 @@ export default function GeneralProfile() {
       <hr className="separator" />
       <Columns>
         <Column size="4">
-          <Title size="3" className="has-text-centered">
+          <Title size="3" textAlign="center">
             {user.usernameCase}
           </Title>
           <Image>

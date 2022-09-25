@@ -11,6 +11,13 @@ import { faFloppyDisk } from '@fortawesome/free-solid-svg-icons/faFloppyDisk';
 import { faSquare } from '@fortawesome/free-regular-svg-icons/faSquare';
 import { faSquareCheck } from '@fortawesome/free-regular-svg-icons/faSquareCheck';
 
+import Box from 'react-bulma-companion/lib/Box';
+import Media from 'react-bulma-companion/lib/Media';
+import Content from 'react-bulma-companion/lib/Content';
+import Level from 'react-bulma-companion/lib/Level';
+import Icon from 'react-bulma-companion/lib/Icon';
+import Textarea from 'react-bulma-companion/lib/Textarea';
+
 import { attemptToggleCompleteTodo, attemptUpdateTodo, attemptDeleteTodo } from '_thunks/todos';
 import ConfirmModal from '_organisms/ConfirmModal';
 
@@ -59,25 +66,24 @@ export default function Todo({ id, text, completed, createdAt, updatedAt }) {
   const deleteTodo = () => dispatch(attemptDeleteTodo(id));
 
   return (
-    <li className="todo box">
-      <article className="media">
-        <figure className="media-left">
-          <span className="icon" onClick={toggleCompleteTodo} onKeyPress={toggleCompleteTodo}>
+    <Box className="todo" component="li">
+      <Media>
+        <Media.Left>
+          <Icon onClick={toggleCompleteTodo} onKeyPress={toggleCompleteTodo}>
             {completed
               ? <FontAwesomeIcon icon={faSquareCheck} size="lg" />
               : <FontAwesomeIcon icon={faSquare} size="lg" />}
-          </span>
-        </figure>
-        <div className="media-content">
-          <div className="content">
+          </Icon>
+        </Media.Left>
+        <Media.Content>
+          <Content>
             <p>
               <small>
                 {`created ${createdMessage}`}
               </small>
             </p>
             {edit ? (
-              <textarea
-                className="textarea"
+              <Textarea
                 value={currentText}
                 onChange={updateText}
               />
@@ -86,45 +92,45 @@ export default function Todo({ id, text, completed, createdAt, updatedAt }) {
                 {text}
               </p>
             )}
-          </div>
+          </Content>
 
-          <nav className="level is-mobile">
-            <div className="level-left">
+          <Level mobile>
+            <Level.Left>
               {!!updatedAt && (
                 <small>
                   {`edited ${updatedMessage}`}
                 </small>
               )}
-            </div>
-            <div className="level-right">
+            </Level.Left>
+            <Level.Right>
               {edit ? (
-                <span className="icon space-right" onClick={handleUpdateTodo} onKeyPress={handleUpdateTodo}>
+                <Icon className="space-right" onClick={handleUpdateTodo} onKeyPress={handleUpdateTodo}>
                   <FontAwesomeIcon icon={faFloppyDisk} size="lg" />
-                </span>
+                </Icon>
               ) : (
-                <span className="icon space-right" onClick={editTodo} onKeyPress={editTodo}>
+                <Icon className="space-right" onClick={editTodo} onKeyPress={editTodo}>
                   <FontAwesomeIcon icon={faPencil} size="lg" />
-                </span>
+                </Icon>
               )}
               {edit ? (
-                <span className="icon" onClick={cancelEdit} onKeyPress={cancelEdit}>
+                <Icon onClick={cancelEdit} onKeyPress={cancelEdit}>
                   <FontAwesomeIcon icon={faBan} size="lg" />
-                </span>
+                </Icon>
               ) : (
-                <span className="icon" onClick={openModal} onKeyPress={cancelEdit}>
+                <Icon onClick={openModal} onKeyPress={cancelEdit}>
                   <FontAwesomeIcon icon={faTrashCan} size="lg" />
-                </span>
+                </Icon>
               )}
-            </div>
-          </nav>
-        </div>
-      </article>
+            </Level.Right>
+          </Level>
+        </Media.Content>
+      </Media>
       <ConfirmModal
         confirm={confirm}
         closeModal={closeModal}
         deleteTodo={deleteTodo}
       />
-    </li>
+    </Box>
   );
 }
 

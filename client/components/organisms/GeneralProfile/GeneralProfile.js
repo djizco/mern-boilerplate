@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import R from 'ramda';
 
@@ -35,7 +35,7 @@ export default function GeneralProfile() {
   const [bioEdited, setBioEdited] = useState(false);
   const [profilePicEdited, setProfilePicEdited] = useState(false);
 
-  const resetState = () => {
+  const resetState = useCallback(() => {
     setFirstName(user.firstName || '');
     setLastName(user.lastName || '');
     setBio(user.bio || '');
@@ -44,11 +44,11 @@ export default function GeneralProfile() {
     setLastNameEdited(false);
     setBioEdited(false);
     setProfilePicEdited(false);
-  };
+  }, [user]);
 
   useEffect(() => {
     resetState();
-  }, [user.firstName, user.lastName, user.bio, user.profilePic]);
+  }, [user, resetState]);
 
   const updateFirstName = e => {
     if (validateName(e.target.value)) {

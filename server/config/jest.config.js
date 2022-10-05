@@ -1,14 +1,17 @@
 const path = require('path');
 
 module.exports = {
-  collectCoverageFrom: ['**/*.{js}'],
+  collectCoverageFrom: [
+    '<rootDir>/server/database/**/*.js',
+    '<rootDir>/server/routes/**/*.js',
+  ],
   moduleDirectories: ['node_modules'],
   moduleFileExtensions: ['js'],
   rootDir: path.join(__dirname, '../..'),
   setupFiles: ['<rootDir>/server/config/jest.setup.js'],
   testEnvironment: 'node',
-  testMatch: [path.join(__dirname, '../../**/?(*.)+(spec|test).[tj]s?(x)')],
+  testMatch: [path.join(__dirname, '../../**/?(*.)+(spec|test).js')],
   transform: {
-    '^.+\\.[t|j]sx?$': 'babel-jest',
+    '^.+\\.js$': 'babel-jest',
   },
 };

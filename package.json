@@ -13,6 +13,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "./scripts/test.sh",
+    "test:verbose": "./scripts/test-verbose.sh",
+    "test:coverage": "./scripts/test-coverage.sh",
     "test:watch-client": "./scripts/test-watch-client.sh",
     "test:watch-server": "./scripts/test-watch-server.sh"
   },

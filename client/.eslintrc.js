@@ -1,34 +1,32 @@
-/* eslint-disable */
 module.exports = {
   root: true,
-  settings: {
-    'import/resolver': {
-      webpack: {
-        config: './client/config/webpack.config.js',
-      },
-    },
-  },
   extends: ['airbnb', 'airbnb/hooks'],
   parser: '@babel/eslint-parser',
   env: {
     browser: true,
     jest: true,
   },
+  settings: {
+    'import/resolver': {
+      webpack: { config: './client/config/webpack.config.js' },
+    },
+  },
   rules: {
     // enable rules
     'react/jsx-key': 2,
 
-    // override default options for rules from base configurations
+    // override defaults
     'eqeqeq': [2, 'smart'],
-    'max-len': [2, { 'code': 120, 'tabWidth': 2, 'ignoreUrls': true }],
-    'newline-per-chained-call': [2, { 'ignoreChainWithDepth': 4 }],
+    'max-len': [2, { code: 120, tabWidth: 2, ignoreUrls: true }],
+    'newline-per-chained-call': [2, { ignoreChainWithDepth: 4 }],
     'no-cond-assign': [2, 'except-parens'],
-    'no-multi-spaces': [2, {'exceptions': {
-      'ImportDeclaration': true,
-      'Property': true,
-      'VariableDeclarator': true
-    }}],
-    'react/jsx-filename-extension': [2, { 'extensions': ['.js', '.jsx'] }],
+    'no-multi-spaces': [2, { exceptions: {
+      ImportDeclaration: true,
+      Property: true,
+      VariableDeclarator: true,
+    } }],
+    'quote-props': [2, 'consistent-as-needed'],
+    'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx'] }],
     'react/jsx-fragments': [2, 'element'],
 
     // disable rules

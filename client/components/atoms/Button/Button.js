@@ -28,7 +28,7 @@ export default function Button(props) {
 
   const buttonClasses = classNames({
     [className]: !!className,
-    button: true,
+    'button': true,
     [isType]: true,
     [isSize]: true,
     'is-outlined': outlined,

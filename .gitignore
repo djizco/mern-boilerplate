@@ -2,20 +2,20 @@
 node_modules
 
 # App Packaged
-dist/
-build/
+dist
+build
 *.zip
+
+# Test
+coverage
+
+# Environment
+.env*
 
 # NPM
 .npm
 package-lock.json
 yarn.lock
-
-# Environment
-.env*
-
-# Test
-coverage
 
 # Logs
 logs
@@ -25,7 +25,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # Patches
-patches/
+patches
 
 # OSX
 .DS_Store

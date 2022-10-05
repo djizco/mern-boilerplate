@@ -1,6 +1,6 @@
 import React from 'react';
-import ChangeUsername from '_organisms/ChangeUsername';
-import ChangePassword from '_organisms/ChangePassword';
+import ChangeUsername from '_components/organisms/ChangeUsername';
+import ChangePassword from '_components/organisms/ChangePassword';
 
 export default function Account() {
   return (

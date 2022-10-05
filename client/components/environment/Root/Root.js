@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import { HistoryRouter as Router } from 'redux-first-history/rr6';
 
-import Main from '_environment/Main';
+import Main from '_components/environment/Main';
 
 export default function Root({ history, store }) {
   return (

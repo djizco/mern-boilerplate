@@ -9,7 +9,7 @@ import 'animate.css/animate.compat.css';
 
 import { store, history } from '_store';
 
-import Root from '_environment/Root';
+import Root from '_components/environment/Root';
 
 render(
   <Root history={history} store={store} />,

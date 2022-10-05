@@ -8,10 +8,10 @@ import Title from 'react-bulma-companion/lib/Title';
 import Columns from 'react-bulma-companion/lib/Columns';
 import Column from 'react-bulma-companion/lib/Column';
 
-import { attemptGetTodos } from '_thunks/todos';
+import { attemptGetTodos } from '_store/thunks/todos';
 
-import AddTodo from '_molecules/AddTodo';
-import TodoList from '_organisms/TodoList';
+import AddTodo from '_components/molecules/AddTodo';
+import TodoList from '_components/organisms/TodoList';
 
 export default function TodoPage() {
   const dispatch = useDispatch();

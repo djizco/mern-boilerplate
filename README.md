@@ -54,7 +54,6 @@ npm start
 npm test
 npm run lint
 npm run lint:fix
-npm run test:verbose
 npm run test:watch-client
 npm run test:watch-server
 ```
@@ -97,7 +96,6 @@ You can now start updating files in your client to begin working on your own pro
     - atoms
     - molecules
     - organisms
-    - templates
     - pages
     - environment
   - hooks
@@ -117,7 +115,7 @@ You can now start updating files in your client to begin working on your own pro
 
 Component Heirarchy:
 
-Environment > Pages > Templates > Organisms > Molecules > Atoms
+Environment > Pages > Organisms > Molecules > Atoms
 
 This is based on atomic design. Learn more about [atomic design](http://bradfrost.com/blog/post/atomic-web-design/).
 

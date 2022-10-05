@@ -20,7 +20,7 @@ import Help from 'react-bulma-companion/lib/Help';
 import Input from 'react-bulma-companion/lib/Input';
 
 import { validateName } from '_utils/validation';
-import { attemptGetUser, attemptUpdateUser } from '_thunks/user';
+import { attemptGetUser, attemptUpdateUser } from '_store/thunks/user';
 
 export default function GeneralProfile() {
   const dispatch = useDispatch();

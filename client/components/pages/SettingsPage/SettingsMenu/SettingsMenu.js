@@ -6,7 +6,7 @@ import R from 'ramda';
 import Menu from 'react-bulma-companion/lib/Menu';
 import Box from 'react-bulma-companion/lib/Box';
 
-import { attemptLogout } from '_thunks/auth';
+import { attemptLogout } from '_store/thunks/auth';
 
 export default function SettingsMenu() {
   const { pathname } = useLocation();

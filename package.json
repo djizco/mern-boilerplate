@@ -10,14 +10,16 @@
     "start": "concurrently \"npm run start:server\" \"npm run start:client\"",
     "start:server": "nodemon server/index.js",
     "start:client": "./scripts/watch-dev.sh",
-    "lint": "eslint client server",
-    "lint:fix": "eslint client server --fix",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "test": "./scripts/test.sh",
-    "test:verbose": "./scripts/test-verbose.sh",
-    "test:coverage": "./scripts/test-coverage.sh",
     "test:watch-client": "./scripts/test-watch-client.sh",
     "test:watch-server": "./scripts/test-watch-server.sh"
   },
+  "pre-commit": [
+    "lint",
+    "test"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/djizco/mern-boilerplate.git"
@@ -96,6 +98,9 @@
     "@babel/eslint-parser": "^7.19.1",
     "@babel/preset-env": "^7.19.3",
     "@babel/preset-react": "^7.18.6",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
     "babel-loader": "^8.2.5",
     "babel-plugin-ramda": "^2.1.1",
     "concurrently": "^7.4.0",
@@ -117,6 +122,7 @@
     "less-loader": "^11.0.0",
     "mini-css-extract-plugin": "^2.6.1",
     "nodemon": "^2.0.20",
+    "pre-commit": "^1.2.2",
     "sass": "^1.55.0",
     "sass-loader": "^13.0.2",
     "style-loader": "^3.3.1",

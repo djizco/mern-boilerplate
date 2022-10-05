@@ -3,7 +3,7 @@ import { Store as RNC } from 'react-notifications-component';
 import { push } from 'redux-first-history';
 
 import { postRegister, postLogin, postLogout } from '_api/auth';
-import { login, logout } from '_actions/user';
+import { login, logout } from '_store/actions/user';
 
 import { dispatchError } from '_utils/api';
 

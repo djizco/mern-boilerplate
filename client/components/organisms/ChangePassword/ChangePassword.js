@@ -19,7 +19,7 @@ import Icon from 'react-bulma-companion/lib/Icon';
 import Button from 'react-bulma-companion/lib/Button';
 
 import { validatePassword } from '_utils/validation';
-import { attemptUpdatePassword } from '_thunks/user';
+import { attemptUpdatePassword } from '_store/thunks/user';
 
 export default function ChangePassword() {
   const dispatch = useDispatch();

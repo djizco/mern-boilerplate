@@ -24,7 +24,7 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 module.exports = {
   devtool: 'source-map',
   entry: [
-    resolve('client/styles/index.scss'),
+    resolve('client/styles/scss/index.scss'),
     resolve('client/assets/index.js'),
     resolve('client/index.js'),
   ],
@@ -37,21 +37,11 @@ module.exports = {
   resolve: {
     alias: {
       _client: resolve('client'),
-      _assets: resolve('client/assets/'),
-      _styles: resolve('client/styles/'),
-      _utils: resolve('client/utils/'),
-      _api: resolve('client/api/'),
-      _hooks: resolve('client/hooks/'),
-      _atoms: resolve('client/components/atoms/'),
-      _molecules: resolve('client/components/molecules/'),
-      _organisms: resolve('client/components/organisms/'),
-      _templates: resolve('client/components/templates/'),
-      _pages: resolve('client/components/pages/'),
-      _environment: resolve('client/components/environment/'),
+      _components: resolve('client/components/'),
       _store: resolve('client/store/'),
-      _actions: resolve('client/store/actions/'),
-      _reducers: resolve('client/store/reducers/'),
-      _thunks: resolve('client/store/thunks/'),
+      _utils: resolve('client/utils/'),
+      _hooks: resolve('client/hooks/'),
+      _api: resolve('client/api/'),
     },
   },
   module: {
@@ -62,13 +52,12 @@ module.exports = {
         include: [resolve('client')],
       },
       {
-        test: /\.css$/,
+        test: /\.module.css$/,
         use: [
           isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
-              importLoaders: 1,
               modules: {
                 mode: 'local',
                 localIdentName: '[folder]-[local]--[hash:base64:5]',
@@ -76,7 +65,6 @@ module.exports = {
             },
           },
         ],
-        include: /\.module\.css$/,
       },
       {
         test: /\.css$/,

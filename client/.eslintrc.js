@@ -10,19 +10,10 @@ module.exports = {
   },
   extends: ['airbnb', 'airbnb/hooks'],
   parser: '@babel/eslint-parser',
-  parserOptions: {
-    ecmaVersion: 12,
-    ecmaFeatures: {
-      jsx: true,
-    },
-    sourceType: 'module',
-    allowImportExportEverywhere: false,
-  },
   env: {
     browser: true,
     jest: true,
   },
-  plugins: ['react', 'react-hooks'],
   rules: {
     // enable rules
     'react/jsx-key': 2,

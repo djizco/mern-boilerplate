@@ -20,7 +20,7 @@ import Help from 'react-bulma-companion/lib/Help';
 import useKeyPress from '_hooks/useKeyPress';
 import { postCheckUsername } from '_api/users';
 import { validateUsername, validatePassword } from '_utils/validation';
-import { attemptRegister } from '_thunks/auth';
+import { attemptRegister } from '_store/thunks/auth';
 
 import styles from './styles.module.css';
 

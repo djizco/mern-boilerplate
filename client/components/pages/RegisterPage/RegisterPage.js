@@ -5,7 +5,7 @@ import R from 'ramda';
 
 import Section from 'react-bulma-companion/lib/Section';
 
-import Register from '_organisms/Register';
+import Register from '_components/organisms/Register';
 
 export default function RegisterPage() {
   const dispatch = useDispatch();

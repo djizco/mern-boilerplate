@@ -6,7 +6,7 @@ import R from 'ramda';
 
 import Box from 'react-bulma-companion/lib/Box';
 
-import { attemptLogout } from '_thunks/auth';
+import { attemptLogout } from '_store/thunks/auth';
 
 export default function UserDropdown({ open, closeDropdown }) {
   const dispatch = useDispatch();

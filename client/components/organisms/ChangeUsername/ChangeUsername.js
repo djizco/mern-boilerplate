@@ -16,7 +16,7 @@ import Icon from 'react-bulma-companion/lib/Icon';
 import Help from 'react-bulma-companion/lib/Help';
 import Button from 'react-bulma-companion/lib/Button';
 
-import { attemptUpdateUser } from '_thunks/user';
+import { attemptUpdateUser } from '_store/thunks/user';
 
 export default function ChangeUsername() {
   const dispatch = useDispatch();

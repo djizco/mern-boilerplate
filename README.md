@@ -54,6 +54,8 @@ npm start
 npm test
 npm run lint
 npm run lint:fix
+npm run test:verbose
+npm run test:coverage
 npm run test:watch-client
 npm run test:watch-server
 ```

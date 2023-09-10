@@ -1,73 +1,85 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+
 import R from 'ramda';
 
-import Box from 'react-bulma-companion/lib/Box';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons/faCaretDown';
+
+import Dropdown from 'react-bulma-companion/lib/Dropdown';
+import Image from 'react-bulma-companion/lib/Image';
+import Icon from 'react-bulma-companion/lib/Icon';
 
 import { attemptLogout } from '_store/thunks/auth';
 
-export default function UserDropdown({ open, closeDropdown }) {
+import styles from './styles.module.css';
+
+export default function UserDropdown({
+  active,
+  onClose,
+}) {
   const dispatch = useDispatch();
   const user = useSelector(state => state.user);
 
-  const dropdown = useRef(null);
-
-  useEffect(() => {
-    let init = false;
-
-    const dropdownListener = e => {
-      if (!e.composedPath().includes(dropdown.current) && open && init) {
-        closeDropdown();
-      }
-      init = true;
-    };
-
-    window.addEventListener('click', dropdownListener);
-    window.addEventListener('touchend', dropdownListener);
-
-    return () => {
-      window.removeEventListener('click', dropdownListener);
-      window.removeEventListener('touchend', dropdownListener);
-    };
-  }, [open, closeDropdown]);
-
   const logout = () => {
-    closeDropdown();
     dispatch(attemptLogout())
+      .then(onClose)
       .catch(R.identity);
   };
 
-  return open && (
-    <Box className="dropdown" domRef={dropdown}>
-      <ul className="dropdown-list">
-        <li className="dropdown-header">
-          {user.usernameCase}
-        </li>
-        <hr className="dropdown-separator" />
-        <li className="dropdown-item">
-          <Link to="/todo" onClick={closeDropdown}>
+  return (
+    <Dropdown active={active} right>
+      <Dropdown.Trigger display="flex" alignItems="center">
+        <Image size="32x32">
+          <Image.Content
+            className="profile-img"
+            src={user.profilePic || '/images/default-profile.png'}
+          />
+        </Image>
+        <Icon size="small" color="grey-lighter">
+          <FontAwesomeIcon icon={faCaretDown} />
+        </Icon>
+      </Dropdown.Trigger>
+      <Dropdown.Menu id="dropdown-menu" role="menu">
+        <Dropdown.Content className={styles.content}>
+          <Dropdown.Item className={styles.header} textAlign="center">
+            {user.usernameCase}
+          </Dropdown.Item>
+          <Dropdown.Divider />
+          <Dropdown.Item
+            className={styles.item}
+            component={Link}
+            to="/todo"
+            onClick={onClose}
+          >
             Todo List
-          </Link>
-        </li>
-        <li className="dropdown-item">
-          <Link to="/settings" onClick={closeDropdown}>
+          </Dropdown.Item>
+          <Dropdown.Item
+            className={styles.item}
+            component={Link}
+            to="/settings"
+            onClick={onClose}
+          >
             Settings
-          </Link>
-        </li>
-        <hr className="dropdown-separator" />
-        <li className="dropdown-item">
-          <a onClick={logout} onKeyPress={logout}>
+          </Dropdown.Item>
+          <Dropdown.Divider />
+          <Dropdown.Item
+            className={styles.item}
+            component={Link}
+            onClick={logout}
+          >
             Logout
-          </a>
-        </li>
-      </ul>
-    </Box>
+          </Dropdown.Item>
+        </Dropdown.Content>
+      </Dropdown.Menu>
+    </Dropdown>
   );
 }
 
 UserDropdown.propTypes = {
-  open: PropTypes.bool.isRequired,
-  closeDropdown: PropTypes.func.isRequired,
+  active: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
 };

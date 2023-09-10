@@ -1,0 +1,11 @@
+.content {
+  min-width: 15rem;
+}
+
+.header {
+  padding: 0 1rem;
+}
+
+.item {
+  font-weight: 700;
+}

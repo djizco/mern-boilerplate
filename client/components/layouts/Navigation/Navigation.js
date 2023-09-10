@@ -5,7 +5,6 @@ import R from 'ramda';
 
 import Navbar from 'react-bulma-companion/lib/Navbar';
 import Container from 'react-bulma-companion/lib/Container';
-import Image from 'react-bulma-companion/lib/Image';
 import Title from 'react-bulma-companion/lib/Title';
 import Button from 'react-bulma-companion/lib/Button';
 
@@ -78,15 +77,12 @@ export default function Navigation() {
                 onClick={toggleDropdown}
                 onKeyPress={toggleDropdown}
                 hoverable
-                component="a"
+                clickable
               >
-                <Image size="32x32">
-                  <Image.Content
-                    className="profile-img"
-                    src={user.profilePic || '/images/default-profile.png'}
-                  />
-                </Image>
-                <span className="dropdown-caret" />
+                <UserDropdown
+                  active={open}
+                  onClose={closeDropdown}
+                />
               </Navbar.Item>
             )}
           </div>
@@ -128,14 +124,16 @@ export default function Navigation() {
               </Navbar.Item>
             </Navbar.Start>
             <Navbar.End>
-              <Navbar.Item onClick={toggleDropdown} onKeyPress={toggleDropdown} hoverable component="a">
-                <Image size="32x32">
-                  <Image.Content
-                    className="profile-img"
-                    src={user.profilePic || '/images/default-profile.png'}
-                  />
-                </Image>
-                <span className="dropdown-caret" />
+              <Navbar.Item
+                onClick={toggleDropdown}
+                onKeyPress={toggleDropdown}
+                hoverable
+                clickable
+              >
+                <UserDropdown
+                  active={open}
+                  onClose={closeDropdown}
+                />
               </Navbar.Item>
             </Navbar.End>
           </Navbar.Menu>
@@ -153,7 +151,6 @@ export default function Navigation() {
             </Navbar.End>
           </Navbar.Menu>
         )}
-        <UserDropdown open={open} closeDropdown={closeDropdown} />
       </Container>
     </Navbar>
   );

@@ -1,6 +1,4 @@
-import React, { useEffect, useRef } from 'react';
-
-import PropTypes from 'prop-types';
+import React from 'react';
 
 import R from 'ramda';
 
@@ -19,40 +17,17 @@ import { attemptLogout } from '_store/thunks/auth';
 
 import styles from './styles.module.css';
 
-export default function UserDropdown({
-  active,
-  onClose,
-}) {
+export default function UserDropdown() {
   const dispatch = useDispatch();
   const user = useSelector(state => state.user);
 
-  const dropdown = useRef(null);
-
-  // Handles close on click away
-  useEffect(() => {
-    const dropdownListener = e => {
-      if (!e.composedPath().includes(dropdown.current) && active) {
-        onClose();
-      }
-    };
-
-    window.addEventListener('click', dropdownListener);
-    window.addEventListener('touchend', dropdownListener);
-
-    return () => {
-      window.removeEventListener('click', dropdownListener);
-      window.removeEventListener('touchend', dropdownListener);
-    };
-  }, [active, onClose]);
-
   const logout = () => {
     dispatch(attemptLogout())
-      .then(onClose)
       .catch(R.identity);
   };
 
   return (
-    <Dropdown active={active} right domRef={dropdown}>
+    <Dropdown right hoverable>
       <Dropdown.Trigger display="flex" alignItems="center">
         <Image size="32x32">
           <Image.Content
@@ -74,7 +49,6 @@ export default function UserDropdown({
             className={styles.item}
             component={Link}
             to="/todo"
-            onClick={onClose}
           >
             Todo List
           </Dropdown.Item>
@@ -82,7 +56,6 @@ export default function UserDropdown({
             className={styles.item}
             component={Link}
             to="/settings"
-            onClick={onClose}
           >
             Settings
           </Dropdown.Item>
@@ -99,8 +72,3 @@ export default function UserDropdown({
     </Dropdown>
   );
 }
-
-UserDropdown.propTypes = {
-  active: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-};

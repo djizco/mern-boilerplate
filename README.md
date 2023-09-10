@@ -135,11 +135,11 @@ You can now start updating files in your client to begin working on your own pro
 
 [React Notifications Component](https://teodosii.github.io/react-notifications-component/) - Notification System
 
+[Material-UI](http://material-ui.com/) - React Component Library
+
 [Bulma](http://bulma.io/) - CSS Framework
 
 [React Bulma Companion](https://github.com/djizco/react-bulma-companion) - Bulma Component Library
-
-[Material-UI](http://material-ui.com/) - React Component Library
 
 [FontAwesome](http://fontawesome.io/) - Icons
 

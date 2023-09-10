@@ -41,6 +41,7 @@
     "webpack",
     "express",
     "passport",
+    "material-ui",
     "bulma",
     "fontawesome",
     "ramda",
@@ -49,7 +50,7 @@
   ],
   "homepage": "https://github.com/djizco/mern-boilerplate#readme",
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=16.0.0"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",

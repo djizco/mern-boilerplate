@@ -18,15 +18,10 @@ export default function Navigation() {
   const user = useSelector(state => state.user);
 
   const [auth, setAuth] = useState(!R.isEmpty(user));
-  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     setAuth(!R.isEmpty(user));
   }, [user]);
-
-  const toggleDropdown = () => setOpen(!open);
-
-  const closeDropdown = () => setOpen(false);
 
   const isHome = (pathname.length === 5)
     ? pathname === '/home'
@@ -50,7 +45,7 @@ export default function Navigation() {
             component={Link}
           >
             <Title className="logo" size="3">
-              MERN Boilerplate
+              MERN
             </Title>
           </Navbar.Item>
           <div className="navbar-brand-right">
@@ -77,15 +72,10 @@ export default function Navigation() {
             {auth && (
               <Navbar.Item
                 className="is-hidden-desktop"
-                onClick={toggleDropdown}
-                onKeyPress={toggleDropdown}
                 hoverable
                 clickable
               >
-                <UserDropdown
-                  active={open}
-                  onClose={closeDropdown}
-                />
+                <UserDropdown />
               </Navbar.Item>
             )}
           </div>
@@ -128,15 +118,10 @@ export default function Navigation() {
             </Navbar.Start>
             <Navbar.End>
               <Navbar.Item
-                onClick={toggleDropdown}
-                onKeyPress={toggleDropdown}
                 hoverable
                 clickable
               >
-                <UserDropdown
-                  active={open}
-                  onClose={closeDropdown}
-                />
+                <UserDropdown />
               </Navbar.Item>
             </Navbar.End>
           </Navbar.Menu>

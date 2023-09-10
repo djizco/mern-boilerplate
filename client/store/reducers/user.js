@@ -1,4 +1,5 @@
 import update from 'immutability-helper';
+
 import { LOGIN_USER, LOGOUT_USER, UPDATE_USER } from '_store/actions/user';
 
 export default function user(state = {}, action) {

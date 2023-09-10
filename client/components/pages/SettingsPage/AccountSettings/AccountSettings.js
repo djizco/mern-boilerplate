@@ -1,6 +1,7 @@
 import React from 'react';
-import ChangeUsername from './ChangeUsername';
+
 import ChangePassword from './ChangePassword';
+import ChangeUsername from './ChangeUsername';
 
 export default function Account() {
   return (

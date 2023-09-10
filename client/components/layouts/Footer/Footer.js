@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Footer from 'react-bulma-companion/lib/Footer';
 import Container from 'react-bulma-companion/lib/Container';
 import Content from 'react-bulma-companion/lib/Content';
+import Footer from 'react-bulma-companion/lib/Footer';
 
 import styles from './styles.module.css';
 

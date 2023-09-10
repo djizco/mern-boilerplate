@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
+
+import R from 'ramda';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { push } from 'redux-first-history';
-import R from 'ramda';
 
 import Section from 'react-bulma-companion/lib/Section';
 

@@ -1,17 +1,21 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { push } from 'redux-first-history';
-import { Routes, Route, useLocation } from 'react-router-dom';
+
 import R from 'ramda';
 
-import Section from 'react-bulma-companion/lib/Section';
-import Container from 'react-bulma-companion/lib/Container';
-import Columns from 'react-bulma-companion/lib/Columns';
-import Column from 'react-bulma-companion/lib/Column';
+import { useDispatch, useSelector } from 'react-redux';
 
-import SettingsMenu from './SettingsMenu';
-import ProfileSettings from './ProfileSettings';
+import { Route, Routes, useLocation } from 'react-router-dom';
+
+import { push } from 'redux-first-history';
+
+import Column from 'react-bulma-companion/lib/Column';
+import Columns from 'react-bulma-companion/lib/Columns';
+import Container from 'react-bulma-companion/lib/Container';
+import Section from 'react-bulma-companion/lib/Section';
+
 import AccountSettings from './AccountSettings';
+import ProfileSettings from './ProfileSettings';
+import SettingsMenu from './SettingsMenu';
 
 export default function SettingsPage() {
   const dispatch = useDispatch();

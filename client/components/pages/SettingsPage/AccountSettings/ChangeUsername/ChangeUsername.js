@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
 import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons/faTriangleExclamation';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Box from 'react-bulma-companion/lib/Box';
-import Title from 'react-bulma-companion/lib/Title';
-import Field from 'react-bulma-companion/lib/Field';
-import Control from 'react-bulma-companion/lib/Control';
-import Label from 'react-bulma-companion/lib/Label';
-import Input from 'react-bulma-companion/lib/Input';
-import Icon from 'react-bulma-companion/lib/Icon';
-import Help from 'react-bulma-companion/lib/Help';
 import Button from 'react-bulma-companion/lib/Button';
+import Control from 'react-bulma-companion/lib/Control';
+import Field from 'react-bulma-companion/lib/Field';
+import Help from 'react-bulma-companion/lib/Help';
+import Icon from 'react-bulma-companion/lib/Icon';
+import Input from 'react-bulma-companion/lib/Input';
+import Label from 'react-bulma-companion/lib/Label';
+import Title from 'react-bulma-companion/lib/Title';
 
 import { attemptUpdateUser } from '_store/thunks/user';
 

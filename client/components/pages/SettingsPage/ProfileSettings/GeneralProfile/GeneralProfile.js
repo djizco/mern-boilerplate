@@ -1,26 +1,28 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useCallback, useEffect, useState } from 'react';
+
 import R from 'ramda';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { faRotate } from '@fortawesome/free-solid-svg-icons/faRotate';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Box from 'react-bulma-companion/lib/Box';
-import Icon from 'react-bulma-companion/lib/Icon';
-import Title from 'react-bulma-companion/lib/Title';
-import Columns from 'react-bulma-companion/lib/Columns';
-import Column from 'react-bulma-companion/lib/Column';
 import Button from 'react-bulma-companion/lib/Button';
-import Image from 'react-bulma-companion/lib/Image';
-import Field from 'react-bulma-companion/lib/Field';
+import Column from 'react-bulma-companion/lib/Column';
+import Columns from 'react-bulma-companion/lib/Columns';
 import Control from 'react-bulma-companion/lib/Control';
-import Textarea from 'react-bulma-companion/lib/Textarea';
-import Label from 'react-bulma-companion/lib/Label';
+import Field from 'react-bulma-companion/lib/Field';
 import Help from 'react-bulma-companion/lib/Help';
+import Icon from 'react-bulma-companion/lib/Icon';
+import Image from 'react-bulma-companion/lib/Image';
 import Input from 'react-bulma-companion/lib/Input';
+import Label from 'react-bulma-companion/lib/Label';
+import Textarea from 'react-bulma-companion/lib/Textarea';
+import Title from 'react-bulma-companion/lib/Title';
 
-import { validateName } from '_utils/validation';
 import { attemptGetUser, attemptUpdateUser } from '_store/thunks/user';
+import { validateName } from '_utils/validation';
 
 export default function GeneralProfile() {
   const dispatch = useDispatch();

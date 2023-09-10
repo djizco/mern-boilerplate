@@ -1,17 +1,19 @@
 import React, { useEffect, useRef } from 'react';
+
 import PropTypes from 'prop-types';
 
 import R from 'ramda';
 
-import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
+
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons/faCaretDown';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Dropdown from 'react-bulma-companion/lib/Dropdown';
-import Image from 'react-bulma-companion/lib/Image';
 import Icon from 'react-bulma-companion/lib/Icon';
+import Image from 'react-bulma-companion/lib/Image';
 
 import { attemptLogout } from '_store/thunks/auth';
 

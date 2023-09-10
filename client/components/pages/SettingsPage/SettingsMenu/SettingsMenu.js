@@ -1,10 +1,13 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+
 import R from 'ramda';
 
-import Menu from 'react-bulma-companion/lib/Menu';
+import { useDispatch } from 'react-redux';
+
+import { Link, useLocation } from 'react-router-dom';
+
 import Box from 'react-bulma-companion/lib/Box';
+import Menu from 'react-bulma-companion/lib/Menu';
 
 import { attemptLogout } from '_store/thunks/auth';
 

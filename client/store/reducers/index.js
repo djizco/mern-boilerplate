@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import user from './user';
 import todos from './todos';
+import user from './user';
 
 const createRootReducer = routerReducer => combineReducers({
   router: routerReducer,

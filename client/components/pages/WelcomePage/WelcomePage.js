@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { push } from 'redux-first-history';
+
 import R from 'ramda';
 
-import Section from 'react-bulma-companion/lib/Section';
+import { useDispatch, useSelector } from 'react-redux';
+import { push } from 'redux-first-history';
+
 import Container from 'react-bulma-companion/lib/Container';
+import Section from 'react-bulma-companion/lib/Section';
 import Title from 'react-bulma-companion/lib/Title';
 
 export default function WelcomePage() {

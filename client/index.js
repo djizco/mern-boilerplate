@@ -1,4 +1,5 @@
 import React from 'react';
+
 // eslint-disable-next-line react/no-deprecated
 import { render } from 'react-dom';
 // import { createRoot } from 'react-dom/client';
@@ -12,9 +13,8 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
-import { store, history } from '_store';
-
 import Root from '_components/environment/Root';
+import { history, store } from '_store';
 
 render(
   <Root history={history} store={store} />,

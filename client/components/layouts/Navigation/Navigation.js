@@ -1,12 +1,15 @@
-import React, { useState, useEffect }  from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState }  from 'react';
+
 import R from 'ramda';
 
-import Navbar from 'react-bulma-companion/lib/Navbar';
-import Container from 'react-bulma-companion/lib/Container';
-import Title from 'react-bulma-companion/lib/Title';
+import { useSelector } from 'react-redux';
+
+import { Link, useLocation } from 'react-router-dom';
+
 import Button from 'react-bulma-companion/lib/Button';
+import Container from 'react-bulma-companion/lib/Container';
+import Navbar from 'react-bulma-companion/lib/Navbar';
+import Title from 'react-bulma-companion/lib/Title';
 
 import UserDropdown from './UserDropdown';
 

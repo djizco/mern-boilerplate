@@ -1,16 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+
 import R from 'ramda';
 
-import { faUser } from '@fortawesome/free-solid-svg-icons/faUser';
-import { faLock } from '@fortawesome/free-solid-svg-icons/faLock';
+import { useDispatch } from 'react-redux';
 
-import Box from 'react-bulma-companion/lib/Box';
+import { Link } from 'react-router-dom';
+
+import { faLock } from '@fortawesome/free-solid-svg-icons/faLock';
+import { faUser } from '@fortawesome/free-solid-svg-icons/faUser';
+
 import Block from 'react-bulma-companion/lib/Block';
-import Title from 'react-bulma-companion/lib/Title';
+import Box from 'react-bulma-companion/lib/Box';
 import Button from 'react-bulma-companion/lib/Button';
 import Checkbox from 'react-bulma-companion/lib/Checkbox';
+import Title from 'react-bulma-companion/lib/Title';
 
 import FormInput from '_components/elements/FormInput';
 

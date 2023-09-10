@@ -1,5 +1,5 @@
-import { createStore, applyMiddleware } from 'redux';
 import { createBrowserHistory } from 'history';
+import { applyMiddleware, createStore } from 'redux';
 import { createReduxHistoryContext } from 'redux-first-history';
 import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk';

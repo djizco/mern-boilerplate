@@ -1,25 +1,28 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+
 import R from 'ramda';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { Link } from 'react-router-dom';
+
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
 import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons/faTriangleExclamation';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import Box from 'react-bulma-companion/lib/Box';
 import Block from 'react-bulma-companion/lib/Block';
-import Title from 'react-bulma-companion/lib/Title';
-import Field from 'react-bulma-companion/lib/Field';
+import Box from 'react-bulma-companion/lib/Box';
+import Button from 'react-bulma-companion/lib/Button';
 import Control from 'react-bulma-companion/lib/Control';
-import Label from 'react-bulma-companion/lib/Label';
-import Input from 'react-bulma-companion/lib/Input';
+import Field from 'react-bulma-companion/lib/Field';
 import Help from 'react-bulma-companion/lib/Help';
 import Icon from 'react-bulma-companion/lib/Icon';
-import Button from 'react-bulma-companion/lib/Button';
+import Input from 'react-bulma-companion/lib/Input';
+import Label from 'react-bulma-companion/lib/Label';
+import Title from 'react-bulma-companion/lib/Title';
 
-import { validatePassword } from '_utils/validation';
 import { attemptUpdatePassword } from '_store/thunks/user';
+import { validatePassword } from '_utils/validation';
 
 export default function ChangePassword() {
   const dispatch = useDispatch();

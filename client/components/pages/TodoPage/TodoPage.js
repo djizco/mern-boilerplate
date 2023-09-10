@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { push } from 'redux-first-history';
+import React, { useEffect, useState } from 'react';
+
 import R from 'ramda';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { push } from 'redux-first-history';
+
+import Column from 'react-bulma-companion/lib/Column';
+import Columns from 'react-bulma-companion/lib/Columns';
 import Section from 'react-bulma-companion/lib/Section';
 import Title from 'react-bulma-companion/lib/Title';
-import Columns from 'react-bulma-companion/lib/Columns';
-import Column from 'react-bulma-companion/lib/Column';
 
 import { attemptGetTodos } from '_store/thunks/todos';
 

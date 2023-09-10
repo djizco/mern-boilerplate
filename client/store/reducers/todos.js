@@ -2,7 +2,7 @@ import update from 'immutability-helper';
 import R from 'ramda';
 
 import {
-  SET_TODOS, ADD_TODO, TOGGLE_COMPLETE_TODO, UPDATE_TODO, REMOVE_TODO,
+  ADD_TODO, REMOVE_TODO, SET_TODOS, TOGGLE_COMPLETE_TODO, UPDATE_TODO,
 } from '_store/actions/todos';
 
 import { LOGOUT_USER } from '_store/actions/user';

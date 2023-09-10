@@ -1,27 +1,29 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+
 import R from 'ramda';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
 import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons/faTriangleExclamation';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Box from 'react-bulma-companion/lib/Box';
 import Button from 'react-bulma-companion/lib/Button';
+import Control from 'react-bulma-companion/lib/Control';
 import Element from 'react-bulma-companion/lib/Element';
 import Field from 'react-bulma-companion/lib/Field';
-import Title from 'react-bulma-companion/lib/Title';
-import Control from 'react-bulma-companion/lib/Control';
+import Help from 'react-bulma-companion/lib/Help';
 import Icon from 'react-bulma-companion/lib/Icon';
 import Input from 'react-bulma-companion/lib/Input';
 import Label from 'react-bulma-companion/lib/Label';
-import Help from 'react-bulma-companion/lib/Help';
+import Title from 'react-bulma-companion/lib/Title';
 
-import useKeyPress from '_hooks/useKeyPress';
 import { postCheckUsername } from '_api/users';
-import { validateUsername, validatePassword } from '_utils/validation';
+import useKeyPress from '_hooks/useKeyPress';
 import { attemptRegister } from '_store/thunks/auth';
+import { validatePassword, validateUsername } from '_utils/validation';
 
 import styles from './styles.module.css';
 

@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+
 import R from 'ramda';
-import { Routes, Route, useLocation } from 'react-router-dom';
 import { ReactNotifications } from 'react-notifications-component';
 import { useDispatch } from 'react-redux';
+import { Route, Routes, useLocation } from 'react-router-dom';
+
+import Footer from '_components/layouts/Footer';
+import Navigation from '_components/layouts/Navigation';
+import HomePage from '_components/pages/HomePage';
+import LoginPage from '_components/pages/LoginPage';
+import LostPage from '_components/pages/LostPage';
+import RegisterPage from '_components/pages/RegisterPage';
+import SettingsPage from '_components/pages/SettingsPage';
+import TodoPage from '_components/pages/TodoPage';
+import WelcomePage from '_components/pages/WelcomePage';
 
 import { attemptGetUser } from '_store/thunks/user';
-
-import WelcomePage from '_components/pages/WelcomePage';
-import LoginPage from '_components/pages/LoginPage';
-import RegisterPage from '_components/pages/RegisterPage';
-import HomePage from '_components/pages/HomePage';
-import TodoPage from '_components/pages/TodoPage';
-import SettingsPage from '_components/pages/SettingsPage';
-import LostPage from '_components/pages/LostPage';
-
-import Navigation from '_components/layouts/Navigation';
-import Footer from '_components/layouts/Footer';
 
 import styles from './styles.module.css';
 

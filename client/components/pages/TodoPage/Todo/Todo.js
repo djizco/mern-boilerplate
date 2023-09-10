@@ -1,30 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+
+import { formatDistanceToNow, parseISO } from 'date-fns';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { parseISO, formatDistanceToNow } from 'date-fns';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashCan } from '@fortawesome/free-solid-svg-icons/faTrashCan';
-import { faBan } from '@fortawesome/free-solid-svg-icons/faBan';
-import { faPencil } from '@fortawesome/free-solid-svg-icons/faPencil';
-import { faFloppyDisk } from '@fortawesome/free-solid-svg-icons/faFloppyDisk';
 import { faSquare } from '@fortawesome/free-regular-svg-icons/faSquare';
 import { faSquareCheck } from '@fortawesome/free-regular-svg-icons/faSquareCheck';
+import { faBan } from '@fortawesome/free-solid-svg-icons/faBan';
+import { faFloppyDisk } from '@fortawesome/free-solid-svg-icons/faFloppyDisk';
+import { faPencil } from '@fortawesome/free-solid-svg-icons/faPencil';
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons/faTrashCan';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Box from 'react-bulma-companion/lib/Box';
-import Media from 'react-bulma-companion/lib/Media';
 import Content from 'react-bulma-companion/lib/Content';
-import Level from 'react-bulma-companion/lib/Level';
 import Icon from 'react-bulma-companion/lib/Icon';
+import Level from 'react-bulma-companion/lib/Level';
+import Media from 'react-bulma-companion/lib/Media';
 import Textarea from 'react-bulma-companion/lib/Textarea';
 
 import DeleteModal from '_components/library/DeleteModal';
 
-import { attemptToggleCompleteTodo, attemptUpdateTodo, attemptDeleteTodo } from '_store/thunks/todos';
+import { attemptDeleteTodo, attemptToggleCompleteTodo, attemptUpdateTodo } from '_store/thunks/todos';
 
 const fromNow = date => formatDistanceToNow(parseISO(date), { addSuffix: true });
 
-export default function Todo({ id, text, completed, createdAt, updatedAt }) {
+export default function Todo({
+  id, text, completed, createdAt, updatedAt,
+}) {
   const dispatch = useDispatch();
 
   const [currentText, setCurrentText] = useState(text);

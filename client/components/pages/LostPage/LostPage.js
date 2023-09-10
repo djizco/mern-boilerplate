@@ -9,9 +9,9 @@ export default function LostPage() {
       <Title size="1">
         404
       </Title>
-      <p>
+      <Title subtitle size="6">
         The page you requested was not found.
-      </p>
+      </Title>
     </Section>
   );
 }

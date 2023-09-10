@@ -14,8 +14,8 @@ import TodoPage from '_components/pages/TodoPage';
 import SettingsPage from '_components/pages/SettingsPage';
 import LostPage from '_components/pages/LostPage';
 
-import Navigation from '_components/organisms/Navigation';
-import Footer from '_components/organisms/Footer';
+import Navigation from '_components/layouts/Navigation';
+import Footer from '_components/layouts/Footer';
 
 import styles from './styles.module.css';
 

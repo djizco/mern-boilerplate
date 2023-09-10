@@ -9,7 +9,7 @@ import Image from 'react-bulma-companion/lib/Image';
 import Title from 'react-bulma-companion/lib/Title';
 import Button from 'react-bulma-companion/lib/Button';
 
-import UserDropdown from '_components/molecules/UserDropdown';
+import UserDropdown from './UserDropdown';
 
 export default function Navigation() {
   const { pathname } = useLocation();

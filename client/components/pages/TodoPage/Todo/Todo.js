@@ -18,8 +18,9 @@ import Level from 'react-bulma-companion/lib/Level';
 import Icon from 'react-bulma-companion/lib/Icon';
 import Textarea from 'react-bulma-companion/lib/Textarea';
 
+import DeleteModal from '_components/library/DeleteModal';
+
 import { attemptToggleCompleteTodo, attemptUpdateTodo, attemptDeleteTodo } from '_store/thunks/todos';
-import ConfirmModal from '_components/organisms/ConfirmModal';
 
 const fromNow = date => formatDistanceToNow(parseISO(date), { addSuffix: true });
 
@@ -125,10 +126,10 @@ export default function Todo({ id, text, completed, createdAt, updatedAt }) {
           </Level>
         </Media.Content>
       </Media>
-      <ConfirmModal
-        confirm={confirm}
-        closeModal={closeModal}
-        deleteTodo={deleteTodo}
+      <DeleteModal
+        active={confirm}
+        onClose={closeModal}
+        onDelete={deleteTodo}
       />
     </Box>
   );

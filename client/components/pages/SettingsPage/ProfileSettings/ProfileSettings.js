@@ -1,6 +1,6 @@
 import React from 'react';
 
-import GeneralProfile from '_components/organisms/GeneralProfile';
+import GeneralProfile from './GeneralProfile';
 
 export default function ProfileSettings() {
   return (

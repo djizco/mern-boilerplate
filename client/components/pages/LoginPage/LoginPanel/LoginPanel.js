@@ -12,9 +12,10 @@ import Title from 'react-bulma-companion/lib/Title';
 import Button from 'react-bulma-companion/lib/Button';
 import Checkbox from 'react-bulma-companion/lib/Checkbox';
 
+import FormInput from '_components/elements/FormInput';
+
 import useKeyPress from '_hooks/useKeyPress';
 import { attemptLogin } from '_store/thunks/auth';
-import FormInput from '_components/molecules/FormInput';
 
 import styles from './styles.module.css';
 

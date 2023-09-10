@@ -19,8 +19,8 @@ export default function HomePage() {
 
   return (
     <Section>
-      <Container textAlign="center">
-        <Title size="1">
+      <Container>
+        <Title size="1" textAlign="center">
           Home Page
         </Title>
       </Container>

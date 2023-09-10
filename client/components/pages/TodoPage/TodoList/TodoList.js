@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import R from 'ramda';
 
-import Todo from '_components/molecules/Todo';
+import Todo from '../Todo';
 
 export default function TodoList() {
   const todos = useSelector(state => state.todos);

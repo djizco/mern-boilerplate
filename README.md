@@ -139,6 +139,8 @@ You can now start updating files in your client to begin working on your own pro
 
 [React Bulma Companion](https://github.com/djizco/react-bulma-companion) - Bulma Component Library
 
+[Material-UI](http://material-ui.com/) - React Component Library
+
 [FontAwesome](http://fontawesome.io/) - Icons
 
 [Ramda](http://ramdajs.com/) - Functional Library

@@ -32,7 +32,7 @@ export function todo(state = {
 }
 
 export default function todos(state = [], action) {
-  const index = R.findIndex(R.propEq('id', action.id), state);
+  const index = R.findIndex(R.propEq(action.id, 'id'), state);
   const updatedAtIndex = { $splice: [[index, 1, todo(state[index], action)]] };
 
   switch (action.type) {

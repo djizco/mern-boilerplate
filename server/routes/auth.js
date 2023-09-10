@@ -17,25 +17,26 @@ router.post('/register', (req, res) => {
   const { username } = req.body;
   const newUser = User(req.body);
 
-  User.find({ username }, (err, users) => {
-    if (err) {
+  User.find({ username })
+    .then(users => {
+      if (users[0]) {
+        res.status(400).send({ message: 'Username exists' });
+      }
+
+      newUser.hashPassword()
+        .then(() => {
+          newUser.save()
+            .then(savedUser => {
+              res.send({ message: 'User created successfully', user: savedUser.hidePassword() });
+            })
+            .catch(err => {
+              res.status(400).send({ message: 'Create user failed', err });
+            });
+        });
+    })
+    .catch(err => {
       res.status(400).send({ message: 'Create user failed', err });
-    }
-    if (users[0]) {
-      res.status(400).send({ message: 'Username exists' });
-    }
-
-    newUser.hashPassword().then(() => {
-      newUser.save((err, savedUser) => {
-        if (err || !savedUser) {
-          res.status(400).send({ message: 'Create user failed', err });
-        } else {
-          res.send({ message: 'User created successfully', user: savedUser.hidePassword() });
-        }
-      });
     });
-
-  });
 });
 
 router.post('/login', (req, res, next) => {

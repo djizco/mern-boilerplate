@@ -7,13 +7,13 @@ const router   = express.Router();
 module.exports = router;
 
 router.get('/', requireAuth, (req, res) => {
-  Todo.find({ user: req.user.id }, { __v: 0, user: 0 }, (err, todos) => {
-    if (err) {
-      res.status(400).send({ message: 'Get users failed', err });
-    } else {
+  Todo.find({ user: req.user.id }, { __v: 0, user: 0 })
+    .then(todos => {
       res.send({ message: 'Todos retrieved successfully', todos });
-    }
-  });
+    })
+    .catch(err => {
+      res.status(400).send({ message: 'Get users failed', err });
+    });
 });
 
 router.post('/', requireAuth, (req, res) => {
@@ -21,56 +21,58 @@ router.post('/', requireAuth, (req, res) => {
 
   const newTodo = Todo(req.body);
 
-  newTodo.save((err, savedTodo) => {
-    if (err) {
-      res.status(400).send({ message: 'Create todo failed', err });
-    } else {
+  newTodo.save()
+    .then(savedTodo => {
       res.send({ message: 'Todo created successfully', todo: savedTodo });
-    }
-  });
+    })
+    .catch(err => {
+      res.status(400).send({ message: 'Create todo failed', err });
+    });
 });
 
 router.put('/complete', requireAuth, (req, res) => {
-  Todo.findById(req.body.id, { __v: 0, user: 0 }, (err, todo) => {
-    if (err) {
-      res.status(400).send({ message: 'Toggle todo failed', err });
-    } else {
+  Todo.findById(req.body.id, { __v: 0, user: 0 })
+    .then(todo => {
       todo.completed = !todo.completed;
-      todo.save((err, savedTodo) => {
-        if (err) {
-          res.status(400).send({ message: 'Toggle todo failed', err });
-        } else {
+
+      todo.save()
+        .then(savedTodo => {
           res.send({ message: 'Toggled complete todo successfully', todo: savedTodo });
-        }
-      });
-    }
-  });
+        })
+        .catch(err => {
+          res.status(400).send({ message: 'Toggle todo failed', err });
+        });
+    })
+    .catch(err => {
+      res.status(400).send({ message: 'Toggle todo failed', err });
+    });
 });
 
 router.put('/', requireAuth, (req, res) => {
-  Todo.findById(req.body.id, { __v: 0, user: 0 }, (err, todo) => {
-    if (err) {
-      res.status(400).send({ message: 'Update todo failed', err });
-    } else {
+  Todo.findById(req.body.id, { __v: 0, user: 0 })
+    .then(todo => {
       todo.text = req.body.text;
       todo.updated_at = Date.now();
-      todo.save((err, savedTodo) => {
-        if (err) {
-          res.status(400).send({ message: 'Update todo failed', err });
-        } else {
+
+      todo.save()
+        .then(savedTodo => {
           res.send({ message: 'Updated todo successfully', todo: savedTodo });
-        }
-      });
-    }
-  });
+        })
+        .catch(err => {
+          res.status(400).send({ message: 'Update todo failed', err });
+        });
+    })
+    .catch(err => {
+      res.status(400).send({ message: 'Update todo failed', err });
+    });
 });
 
 router.delete('/', requireAuth, (req, res) => {
-  Todo.findByIdAndRemove(req.body.id, err => {
-    if (err) {
-      res.status(400).send({ message: 'Delete todo failed', err });
-    } else {
+  Todo.findByIdAndRemove(req.body.id)
+    .then(() => {
       res.send({ message: 'Todo successfully delete' });
-    }
-  });
+    })
+    .catch((err) => {
+      res.status(400).send({ message: 'Delete todo failed', err });
+    });
 });

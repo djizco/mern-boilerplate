@@ -31,7 +31,7 @@ export default function FormInput({
           </Icon>
         )}
         {rightIcon && (
-          <Icon size="small" align="left">
+          <Icon size="small" align="right">
             <FontAwesomeIcon icon={rightIcon} />
           </Icon>
         )}

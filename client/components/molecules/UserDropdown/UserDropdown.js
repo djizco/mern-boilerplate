@@ -10,7 +10,7 @@ import { attemptLogout } from '_store/thunks/auth';
 
 export default function UserDropdown({ open, closeDropdown }) {
   const dispatch = useDispatch();
-  const { user } = useSelector(R.pick(['user']));
+  const user = useSelector(state => state.user);
 
   const dropdown = useRef(null);
 

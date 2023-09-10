@@ -13,9 +13,9 @@ export function todo(state = {
   switch (action.type) {
     case ADD_TODO:
       return update(state, {
-        id: { $set: action.id },
-        text: { $set: action.text },
-        createdAt: { $set: action.createdAt },
+        id: { $set: action.payload.id },
+        text: { $set: action.payload.text },
+        createdAt: { $set: action.payload.createdAt },
       });
     case TOGGLE_COMPLETE_TODO:
       return update(state, {
@@ -23,8 +23,8 @@ export function todo(state = {
       });
     case UPDATE_TODO:
       return update(state, {
-        text: { $set: action.text },
-        updatedAt: { $set: action.updatedAt },
+        text: { $set: action.payload.text },
+        updatedAt: { $set: action.payload.updatedAt },
       });
     default:
       return state;
@@ -32,12 +32,12 @@ export function todo(state = {
 }
 
 export default function todos(state = [], action) {
-  const index = R.findIndex(R.propEq(action.id, 'id'), state);
+  const index = R.findIndex(R.propEq(action.payload?.id, 'id'), state);
   const updatedAtIndex = { $splice: [[index, 1, todo(state[index], action)]] };
 
   switch (action.type) {
     case SET_TODOS:
-      return update(state, { $set: action.todos });
+      return update(state, { $set: action.payload.todos });
     case ADD_TODO:
       return update(state, { $push: [todo(undefined, action)] });
     case TOGGLE_COMPLETE_TODO:

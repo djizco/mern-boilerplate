@@ -9,8 +9,9 @@ import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons/faTrian
 
 import Box from 'react-bulma-companion/lib/Box';
 import Button from 'react-bulma-companion/lib/Button';
-import Title from 'react-bulma-companion/lib/Title';
+import Element from 'react-bulma-companion/lib/Element';
 import Field from 'react-bulma-companion/lib/Field';
+import Title from 'react-bulma-companion/lib/Title';
 import Control from 'react-bulma-companion/lib/Control';
 import Icon from 'react-bulma-companion/lib/Icon';
 import Input from 'react-bulma-companion/lib/Input';
@@ -24,7 +25,7 @@ import { attemptRegister } from '_store/thunks/auth';
 
 import styles from './styles.module.css';
 
-export default function Register() {
+export default function RegisterPanel() {
   const dispatch = useDispatch();
 
   const [username, setUsername] = useState('');
@@ -91,8 +92,8 @@ export default function Register() {
 
   return (
     <Box className={styles.root}>
-      <Title size="3">
-        Sign Up
+      <Title size="3" textAlign="center">
+        Register
       </Title>
       <hr className="separator" />
       <p className="has-space-below">
@@ -163,11 +164,11 @@ export default function Register() {
         )}
       </Field>
       <hr className="separator" />
-      <div className="has-text-right">
+      <Element textAlign="right">
         <Button color="success" onClick={register} disabled={!passwordValid || !usernameAvailable}>
           Create Account
         </Button>
-      </div>
+      </Element>
     </Box>
   );
 }

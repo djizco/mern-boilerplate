@@ -9,7 +9,6 @@ import { faLock } from '@fortawesome/free-solid-svg-icons/faLock';
 import Box from 'react-bulma-companion/lib/Box';
 import Block from 'react-bulma-companion/lib/Block';
 import Title from 'react-bulma-companion/lib/Title';
-import Control from 'react-bulma-companion/lib/Control';
 import Button from 'react-bulma-companion/lib/Button';
 import Checkbox from 'react-bulma-companion/lib/Checkbox';
 
@@ -19,7 +18,7 @@ import FormInput from '_components/molecules/FormInput';
 
 import styles from './styles.module.css';
 
-export default function Login() {
+export default function LoginPanel() {
   const dispatch = useDispatch();
 
   const [remember, setRemember] = useState(false);
@@ -57,7 +56,7 @@ export default function Login() {
 
   return (
     <Box className={styles.root}>
-      <Title size="3">
+      <Title size="3" textAlign="center">
         Login
       </Title>
       <hr className="separator" />
@@ -67,34 +66,36 @@ export default function Login() {
           Create an account.
         </Link>
       </Block>
-      <FormInput
-        onChange={updateUsername}
-        placeholder="Username"
-        value={username}
-        leftIcon={faUser}
-      />
-      <FormInput
-        onChange={updatePassword}
-        placeholder="Password"
-        value={password}
-        leftIcon={faLock}
-        type="password"
-      />
+      <Block>
+        <FormInput
+          onChange={updateUsername}
+          placeholder="Username"
+          value={username}
+          leftIcon={faUser}
+        />
+        <FormInput
+          onChange={updatePassword}
+          placeholder="Password"
+          value={password}
+          leftIcon={faLock}
+          type="password"
+        />
+      </Block>
       <Block>
         <Link to="/recovery">
           Forgot your password?
         </Link>
       </Block>
       <hr className="separator" />
-      <Control className="is-clearfix">
-        <Button className="is-pulled-right" color="success" onClick={login}>
-          Login
-        </Button>
-        <Checkbox>
+      <div className={styles.foot}>
+        <Checkbox display="flex" alignItems="center">
           <input type="checkbox" onChange={rememberMe} checked={remember} />
           <span>&nbsp; Remember me</span>
         </Checkbox>
-      </Control>
+        <Button color="success" onClick={login}>
+          Login
+        </Button>
+      </div>
     </Box>
   );
 }

@@ -7,8 +7,6 @@ import Section from 'react-bulma-companion/lib/Section';
 import Container from 'react-bulma-companion/lib/Container';
 import Title from 'react-bulma-companion/lib/Title';
 
-import styles from './styles.module.css';
-
 export default function HomePage() {
   const dispatch = useDispatch();
   const user = useSelector(state => state.user);
@@ -20,14 +18,12 @@ export default function HomePage() {
   }, [dispatch, user]);
 
   return (
-    <div className={styles.root}>
-      <Section>
-        <Container>
-          <Title size="1">
-            Home Page
-          </Title>
-        </Container>
-      </Section>
-    </div>
+    <Section>
+      <Container textAlign="center">
+        <Title size="1">
+          Home Page
+        </Title>
+      </Container>
+    </Section>
   );
 }

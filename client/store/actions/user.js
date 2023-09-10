@@ -5,7 +5,9 @@ export const UPDATE_USER = 'UPDATE_USER';
 export function login(user) {
   return {
     type: LOGIN_USER,
-    user,
+    payload: {
+      user,
+    },
   };
 }
 
@@ -18,6 +20,8 @@ export function logout() {
 export function updateUser(user) {
   return {
     type: UPDATE_USER,
-    user,
+    payload: {
+      user,
+    },
   };
 }

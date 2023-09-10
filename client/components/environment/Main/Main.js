@@ -25,13 +25,10 @@ export default function Main() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    let subscribed = true;
-
     dispatch(attemptGetUser())
-      .then(() => subscribed && setLoading(false))
-      .catch(R.identity);
-
-    return () => { subscribed = false; };
+      .then(() => setLoading(false))
+      .catch(R.identity)
+      .finally(() => setLoading(false));
   }, [dispatch]);
 
   useEffect(() => {
@@ -42,7 +39,7 @@ export default function Main() {
     <React.Fragment>
       <ReactNotifications />
       <Navigation />
-      <div className={styles.root}>
+      <main className={styles.root}>
         <Routes>
           <Route path="/" element={<WelcomePage />} />
           <Route path="login" element={<LoginPage />} />
@@ -52,7 +49,7 @@ export default function Main() {
           <Route path="settings/*" element={<SettingsPage />} />
           <Route path="*" element={<LostPage />} />
         </Routes>
-      </div>
+      </main>
       <Footer />
     </React.Fragment>
   );

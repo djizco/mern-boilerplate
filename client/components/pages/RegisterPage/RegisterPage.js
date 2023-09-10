@@ -5,7 +5,7 @@ import R from 'ramda';
 
 import Section from 'react-bulma-companion/lib/Section';
 
-import Register from '_components/organisms/Register';
+import RegisterPanel from './RegisterPanel';
 
 export default function RegisterPage() {
   const dispatch = useDispatch();
@@ -18,10 +18,8 @@ export default function RegisterPage() {
   }, [dispatch, user]);
 
   return (
-    <div>
-      <Section>
-        <Register />
-      </Section>
-    </div>
+    <Section display="flex" justifyContent="center">
+      <RegisterPanel />
+    </Section>
   );
 }

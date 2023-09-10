@@ -5,7 +5,7 @@ import R from 'ramda';
 
 import Section from 'react-bulma-companion/lib/Section';
 
-import Login from '_components/organisms/Login';
+import LoginPanel from './LoginPanel';
 
 export default function LoginPage() {
   const dispatch = useDispatch();
@@ -18,8 +18,8 @@ export default function LoginPage() {
   }, [dispatch, user]);
 
   return (
-    <Section>
-      <Login />
+    <Section display="flex" justifyContent="center">
+      <LoginPanel />
     </Section>
   );
 }

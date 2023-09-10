@@ -40,7 +40,7 @@ export default function UserDropdown({ open, closeDropdown }) {
   };
 
   return open && (
-    <Box className="dropdown" ref={dropdown}>
+    <Box className="dropdown" domRef={dropdown}>
       <ul className="dropdown-list">
         <li className="dropdown-header">
           {user.usernameCase}

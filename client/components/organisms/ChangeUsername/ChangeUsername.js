@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import R from 'ramda';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
@@ -20,7 +19,7 @@ import { attemptUpdateUser } from '_store/thunks/user';
 
 export default function ChangeUsername() {
   const dispatch = useDispatch();
-  const { user } = useSelector(R.pick(['user']));
+  const user = useSelector(state => state.user);
 
   const [usernameCase, setUsernameCase] = useState(user.usernameCase);
 

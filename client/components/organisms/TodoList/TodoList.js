@@ -5,7 +5,7 @@ import R from 'ramda';
 import Todo from '_components/molecules/Todo';
 
 export default function TodoList() {
-  const { todos } = useSelector(R.pick(['todos']));
+  const todos = useSelector(state => state.todos);
 
   return (
     <ul className="todo-list">

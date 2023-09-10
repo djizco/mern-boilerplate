@@ -24,7 +24,7 @@ import { attemptGetUser, attemptUpdateUser } from '_store/thunks/user';
 
 export default function GeneralProfile() {
   const dispatch = useDispatch();
-  const { user } = useSelector(R.pick(['user']));
+  const user = useSelector(state => state.user);
 
   const [firstName, setFirstName] = useState(user.firstName || '');
   const [lastName, setLastName] = useState(user.lastName || '');

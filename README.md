@@ -40,6 +40,11 @@ Start the server
 npm run start:server
 ```
 
+Or run client and server together
+```bash
+npm start
+```
+
 #### for Production
 
 ```bash
@@ -95,9 +100,6 @@ You can now start updating files in your client to begin working on your own pro
     - images
     - icons
   - components
-    - atoms
-    - molecules
-    - organisms
     - pages
     - environment
   - hooks
@@ -114,12 +116,6 @@ You can now start updating files in your client to begin working on your own pro
   - routes
 - scripts
 ```
-
-Component Heirarchy:
-
-Environment > Pages > Organisms > Molecules > Atoms
-
-This is based on atomic design. Learn more about [atomic design](http://bradfrost.com/blog/post/atomic-web-design/).
 
 ## Technologies
 

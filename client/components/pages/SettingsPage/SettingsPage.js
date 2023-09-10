@@ -15,7 +15,7 @@ import AccountSettings from './AccountSettings';
 
 export default function SettingsPage() {
   const dispatch = useDispatch();
-  const { user } = useSelector(R.pick(['user']));
+  const user = useSelector(state => state.user);
   const { pathname } = useLocation();
 
   useEffect(() => {

@@ -23,7 +23,7 @@ import { attemptUpdatePassword } from '_store/thunks/user';
 
 export default function ChangePassword() {
   const dispatch = useDispatch();
-  const { user } = useSelector(R.pick(['user']));
+  const user = useSelector(state => state.user);
 
   const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');

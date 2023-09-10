@@ -9,7 +9,7 @@ import Register from '_components/organisms/Register';
 
 export default function RegisterPage() {
   const dispatch = useDispatch();
-  const { user } = useSelector(R.pick(['user']));
+  const user = useSelector(state => state.user);
 
   useEffect(() => {
     if (!R.isEmpty(user)) {

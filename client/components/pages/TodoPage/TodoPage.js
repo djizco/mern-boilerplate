@@ -15,7 +15,7 @@ import TodoList from '_components/organisms/TodoList';
 
 export default function TodoPage() {
   const dispatch = useDispatch();
-  const { user } = useSelector(R.pick(['user']));
+  const user = useSelector(state => state.user);
 
   const [loading, setLoading] = useState(true);
 

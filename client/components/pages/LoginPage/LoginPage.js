@@ -9,7 +9,7 @@ import Login from '_components/organisms/Login';
 
 export default function LoginPage() {
   const dispatch = useDispatch();
-  const { user } = useSelector(R.pick(['user']));
+  const user = useSelector(state => state.user);
 
   useEffect(() => {
     if (!R.isEmpty(user)) {

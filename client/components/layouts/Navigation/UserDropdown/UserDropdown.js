@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import R from 'ramda';
@@ -24,6 +24,25 @@ export default function UserDropdown({
   const dispatch = useDispatch();
   const user = useSelector(state => state.user);
 
+  const dropdown = useRef(null);
+
+  // Handles close on click away
+  useEffect(() => {
+    const dropdownListener = e => {
+      if (!e.composedPath().includes(dropdown.current) && active) {
+        onClose();
+      }
+    };
+
+    window.addEventListener('click', dropdownListener);
+    window.addEventListener('touchend', dropdownListener);
+
+    return () => {
+      window.removeEventListener('click', dropdownListener);
+      window.removeEventListener('touchend', dropdownListener);
+    };
+  }, [active, onClose]);
+
   const logout = () => {
     dispatch(attemptLogout())
       .then(onClose)
@@ -31,7 +50,7 @@ export default function UserDropdown({
   };
 
   return (
-    <Dropdown active={active} right>
+    <Dropdown active={active} right domRef={dropdown}>
       <Dropdown.Trigger display="flex" alignItems="center">
         <Image size="32x32">
           <Image.Content

@@ -26,6 +26,8 @@ export default function LoginPanel() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     const username = localStorage.getItem('username');
     if (username) {
@@ -41,8 +43,10 @@ export default function LoginPanel() {
       localStorage.setItem('username', username);
     }
 
+    setLoading(true);
     dispatch(attemptLogin(userCredentials))
-      .catch(R.identity);
+      .catch(R.identity)
+      .finally(() => setLoading(false));
   };
 
   useKeyPress('Enter', login);
@@ -93,7 +97,7 @@ export default function LoginPanel() {
           <input type="checkbox" onChange={rememberMe} checked={remember} />
           <span>&nbsp; Remember me</span>
         </Checkbox>
-        <Button color="success" onClick={login}>
+        <Button color="success" onClick={login} disabled={loading}>
           Login
         </Button>
       </div>

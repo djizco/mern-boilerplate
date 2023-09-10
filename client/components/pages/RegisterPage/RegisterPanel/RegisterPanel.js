@@ -35,6 +35,8 @@ export default function RegisterPanel() {
   const [usernameAvailable, setUsernameAvailable] = useState(false);
   const [passwordValid, setPasswordValid] = useState(false);
 
+  const [loading, setLoading] = useState(false);
+
   const checkPassword = (newUsername, newPassword) => {
     const { valid, message } = validatePassword(newUsername, newPassword);
 
@@ -83,8 +85,10 @@ export default function RegisterPanel() {
         password,
       };
 
+      setLoading(true);
       dispatch(attemptRegister(newUser))
-        .catch(R.identity);
+        .catch(R.identity)
+        .finally(() => setLoading(false));
     }
   };
 
@@ -165,7 +169,11 @@ export default function RegisterPanel() {
       </Field>
       <hr className="separator" />
       <Element textAlign="right">
-        <Button color="success" onClick={register} disabled={!passwordValid || !usernameAvailable}>
+        <Button
+          color="success"
+          onClick={register}
+          disabled={!passwordValid || !usernameAvailable || loading}
+        >
           Create Account
         </Button>
       </Element>

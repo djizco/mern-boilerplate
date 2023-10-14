@@ -7,7 +7,13 @@ const { Schema } = mongoose;
 
 const userSchema = new Schema({
   user: Number,
-  username: { type: String, lowercase: true, required: true, unique: true, immutable: true },
+  username: {
+    type: String,
+    lowercase: true,
+    required: true,
+    unique: true,
+    immutable: true,
+  },
   username_case: { type: String, required: true },
   password: { type: String, required: true },
   profile_pic: { type: String },

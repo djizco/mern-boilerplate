@@ -7,6 +7,10 @@ module.exports = {
   },
   rules: {
     // enable rules
+    'object-curly-newline': [2, {
+      ObjectExpression: { minProperties: 4, multiline: true, consistent: true },
+      ObjectPattern: { minProperties: 4, multiline: true, consistent: true },
+    }],
     'import/order': [2, {
       'alphabetize': {
         order: 'asc',
@@ -21,11 +25,13 @@ module.exports = {
     'max-len': [2, { code: 120, tabWidth: 2, ignoreUrls: true }],
     'newline-per-chained-call': [2, { ignoreChainWithDepth: 4 }],
     'no-cond-assign': [2, 'except-parens'],
-    'no-multi-spaces': [2, { exceptions: {
-      ImportDeclaration: true,
-      Property: true,
-      VariableDeclarator: true,
-    } }],
+    'no-multi-spaces': [2, {
+      exceptions: {
+        ImportDeclaration: true,
+        Property: true,
+        VariableDeclarator: true,
+      },
+    }],
     'prefer-destructuring': [2, {
       array: false,
       object: true,
@@ -48,7 +54,6 @@ module.exports = {
     'no-plusplus': 0,
     'no-shadow': 0,
     'no-underscore-dangle': 0,
-    'object-curly-newline': 0,
     'padded-blocks': 0,
   },
 };

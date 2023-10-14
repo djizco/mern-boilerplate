@@ -1,11 +1,8 @@
 import React, { useEffect } from 'react';
 
 import R from 'ramda';
-
 import { useDispatch, useSelector } from 'react-redux';
-
 import { Route, Routes, useLocation } from 'react-router-dom';
-
 import { push } from 'redux-first-history';
 
 import Column from 'react-bulma-companion/lib/Column';

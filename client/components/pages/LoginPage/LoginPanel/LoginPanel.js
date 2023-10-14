@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import R from 'ramda';
-
 import { useDispatch } from 'react-redux';
-
 import { Link } from 'react-router-dom';
 
 import { faLock } from '@fortawesome/free-solid-svg-icons/faLock';
@@ -17,8 +15,9 @@ import Title from 'react-bulma-companion/lib/Title';
 
 import FormInput from '_components/elements/FormInput';
 
-import useKeyPress from '_hooks/useKeyPress';
 import { attemptLogin } from '_store/thunks/auth';
+
+import useKeyPress from '_hooks/useKeyPress';
 
 import styles from './styles.module.css';
 

@@ -7,6 +7,7 @@ import { HistoryRouter as Router } from 'redux-first-history/rr6';
 import { ThemeProvider } from '@mui/material/styles';
 
 import theme from '_client/styles/js/theme';
+
 import Main from '_components/environment/Main';
 
 export default function Root({ history, store }) {

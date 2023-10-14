@@ -1,9 +1,7 @@
 import React, { useEffect, useState }  from 'react';
 
 import R from 'ramda';
-
 import { useSelector } from 'react-redux';
-
 import { Link, useLocation } from 'react-router-dom';
 
 import Button from 'react-bulma-companion/lib/Button';

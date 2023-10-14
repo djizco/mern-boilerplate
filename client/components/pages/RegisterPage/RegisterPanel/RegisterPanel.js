@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 import R from 'ramda';
-
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -21,8 +20,11 @@ import Label from 'react-bulma-companion/lib/Label';
 import Title from 'react-bulma-companion/lib/Title';
 
 import { postCheckUsername } from '_api/users';
-import useKeyPress from '_hooks/useKeyPress';
+
 import { attemptRegister } from '_store/thunks/auth';
+
+import useKeyPress from '_hooks/useKeyPress';
+
 import { validatePassword, validateUsername } from '_utils/validation';
 
 import styles from './styles.module.css';

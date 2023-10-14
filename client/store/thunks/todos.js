@@ -2,6 +2,7 @@ import { snakeToCamelCase } from 'json-style-converter/es5';
 import R from 'ramda';
 
 import { deleteTodo, getTodos, postTodo, putTodo, putToggleCompleteTodo } from '_api/todos';
+
 import { addTodo, removeTodo, setTodos, toggleCompleteTodo, updateTodo } from '_store/actions/todos';
 
 import { dispatchError } from '_utils/api';

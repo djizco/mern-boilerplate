@@ -1,9 +1,7 @@
 import React from 'react';
 
 import R from 'ramda';
-
 import { useDispatch, useSelector } from 'react-redux';
-
 import { Link } from 'react-router-dom';
 
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons/faCaretDown';

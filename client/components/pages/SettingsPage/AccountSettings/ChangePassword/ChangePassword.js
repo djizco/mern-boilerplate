@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 
 import R from 'ramda';
-
 import { useDispatch, useSelector } from 'react-redux';
-
 import { Link } from 'react-router-dom';
 
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
@@ -22,6 +20,7 @@ import Label from 'react-bulma-companion/lib/Label';
 import Title from 'react-bulma-companion/lib/Title';
 
 import { attemptUpdatePassword } from '_store/thunks/user';
+
 import { validatePassword } from '_utils/validation';
 
 export default function ChangePassword() {

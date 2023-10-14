@@ -1,9 +1,7 @@
 import React from 'react';
 
 import R from 'ramda';
-
 import { useDispatch } from 'react-redux';
-
 import { Link, useLocation } from 'react-router-dom';
 
 import Box from 'react-bulma-companion/lib/Box';

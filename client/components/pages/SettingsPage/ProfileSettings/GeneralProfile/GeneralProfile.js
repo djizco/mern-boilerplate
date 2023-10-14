@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
 import R from 'ramda';
-
 import { useDispatch, useSelector } from 'react-redux';
 
 import { faRotate } from '@fortawesome/free-solid-svg-icons/faRotate';
@@ -22,6 +21,7 @@ import Textarea from 'react-bulma-companion/lib/Textarea';
 import Title from 'react-bulma-companion/lib/Title';
 
 import { attemptGetUser, attemptUpdateUser } from '_store/thunks/user';
+
 import { validateName } from '_utils/validation';
 
 export default function GeneralProfile() {

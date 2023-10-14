@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
 
 import R from 'ramda';
-
 import { useDispatch, useSelector } from 'react-redux';
-
 import { push } from 'redux-first-history';
 
 import Container from 'react-bulma-companion/lib/Container';

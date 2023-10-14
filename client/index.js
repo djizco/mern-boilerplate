@@ -13,8 +13,9 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
-import Root from '_components/environment/Root';
 import { history, store } from '_store';
+
+import Root from '_components/environment/Root';
 
 render(
   <Root history={history} store={store} />,

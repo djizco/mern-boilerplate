@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
 const { AutoIncrementID } = require('@typegoose/auto-increment');
 const bcrypt = require('bcryptjs');
+const mongoose = require('mongoose');
 const R = require('ramda');
 
 const { Schema } = mongoose;

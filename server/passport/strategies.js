@@ -1,4 +1,5 @@
 const LocalStrategy = require('passport-local').Strategy;
+
 const { User } = require('../database/schemas');
 
 const Strategies = module.exports;

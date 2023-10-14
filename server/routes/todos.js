@@ -1,6 +1,8 @@
 const express = require('express');
-const { requireAuth } = require('./middleware');
+
 const { Todo } = require('../database/schemas');
+
+const { requireAuth } = require('./middleware');
 
 const router   = express.Router();
 

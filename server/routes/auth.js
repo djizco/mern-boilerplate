@@ -1,5 +1,6 @@
 const express  = require('express');
 const passport = require('passport');
+
 const { User } = require('../database/schemas');
 
 const router = express.Router();

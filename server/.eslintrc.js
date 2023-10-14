@@ -6,6 +6,16 @@ module.exports = {
     jest: true,
   },
   rules: {
+    // enable rules
+    'import/order': [2, {
+      'alphabetize': {
+        order: 'asc',
+        caseInsensitive: true,
+      },
+      'newlines-between': 'always',
+      'groups': ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+    }],
+
     // override defaults
     'eqeqeq': [2, 'smart'],
     'max-len': [2, { code: 120, tabWidth: 2, ignoreUrls: true }],

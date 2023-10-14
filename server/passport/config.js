@@ -1,10 +1,11 @@
-const passport    = require('passport');
-const session     = require('express-session');
 const MongoStore  = require('connect-mongo');
+const session     = require('express-session');
+const passport    = require('passport');
 const uuid        = require('uuid');
 
-const Strategies  = require('./strategies');
 const { User }    = require('../database/schemas');
+
+const Strategies  = require('./strategies');
 
 module.exports = app => {
   const sessionConfig = {

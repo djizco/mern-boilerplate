@@ -1,6 +1,6 @@
 import R from 'ramda';
 
-export const validateUsername = username => {
+export const validateUsername = (username) => {
   let valid = true;
   let message = 'Username Valid';
 
@@ -41,7 +41,7 @@ export const validatePassword = (username, password) => {
   return { valid, message };
 };
 
-export const validateName = name => {
+export const validateName = (name) => {
   if (name === '') {
     return true;
   }

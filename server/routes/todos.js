@@ -54,7 +54,7 @@ router.put('/', requireAuth, (req, res) => {
   Todo.findById(req.body.id, { __v: 0, user: 0 })
     .then(todo => {
       todo.text = req.body.text;
-      todo.updated_at = Date.now();
+      todo.updatedAt = Date.now();
 
       todo.save()
         .then(savedTodo => {

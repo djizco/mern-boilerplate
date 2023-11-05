@@ -21,6 +21,15 @@ const userSchema = new Schema({
   bio: { type: String, maxlength: 240 },
   createdAt: { type: Date, default: Date.now, immutable: true },
   updatedAt: { type: Date },
+}, { versionKey: false });
+
+userSchema.set('toJSON', {
+  transform: (doc, ret) => {
+    ret.id = ret._id;
+    delete ret._id;
+    delete ret.__v;
+    delete ret.password;
+  },
 });
 
 userSchema.plugin(AutoIncrementID, {
@@ -64,15 +73,6 @@ userSchema.methods.hashPassword = function() {
     });
   });
 };
-
-userSchema.set('toJSON', {
-  transform: (doc, ret) => {
-    ret.id = ret._id;
-    delete ret._id;
-    delete ret.__v;
-    delete ret.password;
-  },
-});
 
 const User = mongoose.model('User', userSchema);
 

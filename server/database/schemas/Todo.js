@@ -10,10 +10,6 @@ const todoSchema = new Schema({
   updatedAt: { type: Date },
 }, { versionKey: false });
 
-todoSchema.virtual('id').get(function() {
-  return this._id;
-});
-
 todoSchema.set('toJSON', {
   transform: (doc, ret) => {
     ret.id = ret._id;

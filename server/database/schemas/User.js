@@ -1,7 +1,6 @@
 const { AutoIncrementID } = require('@typegoose/auto-increment');
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
-const R = require('ramda');
 
 const { Schema } = mongoose;
 
@@ -14,7 +13,7 @@ const userSchema = new Schema({
     unique: true,
     immutable: true,
   },
-  username_case: { type: String, required: true },
+  usernameCase: { type: String, required: true },
   password: { type: String, required: true },
   profilePic: { type: String },
   firstName: { type: String, maxlength: 20 },
@@ -22,7 +21,7 @@ const userSchema = new Schema({
   bio: { type: String, maxlength: 240 },
   createdAt: { type: Date, default: Date.now, immutable: true },
   updatedAt: { type: Date },
-}, { versionKey: false });
+});
 
 userSchema.plugin(AutoIncrementID, {
   field: 'user',
@@ -66,9 +65,18 @@ userSchema.methods.hashPassword = function() {
   });
 };
 
-userSchema.methods.hidePassword = function() {
-  return R.omit(['password', '_id'], this.toObject({ virtuals: true }));
-};
+userSchema.set('toJSON', {
+  transform: (doc, ret) => {
+    ret.id = ret._id;
+    delete ret._id;
+    delete ret.__v;
+    delete ret.password;
+  },
+});
+
+// userSchema.methods.hidePassword = function() {
+//   return R.omit(['password', '_id'], this.toObject({ virtuals: true }));
+// };
 
 const User = mongoose.model('User', userSchema);
 

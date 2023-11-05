@@ -12,7 +12,7 @@ router.post('/register', (req, res) => {
     res.status(400).send({ message: 'Username and Password required' });
   }
 
-  req.body.username_case = req.body.username;
+  req.body.usernameCase = req.body.username;
   req.body.username = req.body.username.toLowerCase();
 
   const { username } = req.body;
@@ -27,8 +27,8 @@ router.post('/register', (req, res) => {
       newUser.hashPassword()
         .then(() => {
           newUser.save()
-            .then(savedUser => {
-              res.send({ message: 'User created successfully', user: savedUser.hidePassword() });
+            .then(user => {
+              res.send({ message: 'User created successfully', user });
             })
             .catch(err => {
               res.status(400).send({ message: 'Create user failed', err });
@@ -55,7 +55,7 @@ router.post('/login', (req, res, next) => {
       if (err) {
         res.status(401).send({ message: 'Login failed', err });
       }
-      res.send({ message: 'Logged in successfully', user: user.hidePassword() });
+      res.send({ message: 'Logged in successfully', user });
     });
 
   })(req, res, next);

@@ -9,7 +9,7 @@ const router   = express.Router();
 module.exports = router;
 
 router.get('/', requireAuth, (req, res) => {
-  Todo.find({ user: req.user.id }, { __v: 0, user: 0 })
+  Todo.find({ user: req.user.id }, { user: 0 })
     .then(todos => {
       res.send({ message: 'Todos retrieved successfully', todos });
     })

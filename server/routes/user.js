@@ -10,7 +10,7 @@ const router = express.Router();
 module.exports = router;
 
 router.get('/', (req, res) => {
-  const user = (req.user && req.user.hidePassword()) || {};
+  const user = req.user || {};
 
   res.send({ message: 'User info successfully retreived', user });
 });
@@ -45,9 +45,12 @@ router.put('/password', requireAuth, (req, res) => {
 router.put('/', requireAuth, (req, res) => {
   req.body.updatedAt = Date.now();
 
+  console.log('req.user', req.user);
+  console.log('updating user', req.body);
+
   User.findByIdAndUpdate({ _id: req.user._id }, req.body, { new: true })
     .then((user) => {
-      res.status(200).send({ message: 'User successfully updated', user: user.hidePassword() });
+      res.status(200).send({ message: 'User successfully updated', user });
     })
     .catch(err => {
       res.status(400).send({ err, message: 'Error updating user' });

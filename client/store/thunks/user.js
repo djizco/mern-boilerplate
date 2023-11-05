@@ -1,4 +1,3 @@
-import { snakeToCamelCase } from 'json-style-converter/es5';
 import { Store as RNC } from 'react-notifications-component';
 
 import { getUser, putUser, putUserPassword } from '_api/user';
@@ -10,7 +9,7 @@ import { dispatchError } from '_utils/api';
 export const attemptGetUser = () => dispatch =>
   getUser()
     .then(data => {
-      dispatch(updateUser(snakeToCamelCase(data.user)));
+      dispatch(updateUser(data.user));
       return data.user;
     })
     .catch(dispatchError(dispatch));
@@ -18,7 +17,7 @@ export const attemptGetUser = () => dispatch =>
 export const attemptUpdateUser = updatedUser => dispatch =>
   putUser(updatedUser)
     .then(data => {
-      dispatch(updateUser(snakeToCamelCase(data.user)));
+      dispatch(updateUser(data.user));
 
       RNC.addNotification({
         title: 'Success!',

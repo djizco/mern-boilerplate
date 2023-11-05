@@ -31,7 +31,7 @@ export default function ChangeUsername() {
 
   const saveUsernameCase = () => {
     if (usernameCase.toLowerCase() === user.username) {
-      const updatedUser = { username_case: usernameCase };
+      const updatedUser = { usernameCase };
 
       dispatch(attemptUpdateUser(updatedUser))
         .catch(() => setUsernameCase(user.usernameCase));

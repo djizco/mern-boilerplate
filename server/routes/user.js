@@ -45,9 +45,6 @@ router.put('/password', requireAuth, (req, res) => {
 router.put('/', requireAuth, (req, res) => {
   req.body.updatedAt = Date.now();
 
-  console.log('req.user', req.user);
-  console.log('updating user', req.body);
-
   User.findByIdAndUpdate({ _id: req.user._id }, req.body, { new: true })
     .then((user) => {
       res.status(200).send({ message: 'User successfully updated', user });
